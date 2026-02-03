@@ -1,0 +1,140 @@
+// Waypoint Manager Menu UI - Painted wood pixel art style
+
+@TitleStyle = LabelStyle(
+    FontSize: 32,
+    TextColor: #FFFFFF,
+    RenderBold: true,
+    HorizontalAlignment: Center,
+    LetterSpacing: 2
+);
+
+@CommandLabelStyle = LabelStyle(
+    FontSize: 16,
+    TextColor: #FFFFFF,
+    HorizontalAlignment: Start
+);
+
+@WaypointListStyle = LabelStyle(
+    FontSize: 14,
+    TextColor: #FFFFFF,
+    HorizontalAlignment: Start,
+    Wrap: true
+);
+
+@LegendStyle = LabelStyle(
+    FontSize: 12,
+    TextColor: #FFFFFF,
+    HorizontalAlignment: Center
+);
+
+Group {
+    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+    LayoutMode: Center;
+
+    Group #WaypointMenuContainer {
+        Anchor: (Width: 1200, Height: 1700);
+
+        Group #MenuBackgroundInner {
+            Anchor: (Left: 28, Top: 28, Right: 28, Bottom: 28);
+            Background: #8B5A2B;
+        }
+
+        Group #MenuBackgroundOuter {
+            Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+            Background: #3D2817;
+        }
+
+        Group #WaypointMenuContent {
+            Anchor: (Left: 24, Top: 24, Right: 24, Bottom: 24);
+
+            // Title
+            Label #TitleLabel {
+                Anchor: (Top: 50, Left: 100, Right: 100, Height: 80);
+                Style: @TitleStyle;
+                Text: "WAYPOINT MANAGER";
+            }
+
+            // Commands Section Background
+            Group #CommandsBackground {
+                Anchor: (Top: 160, Left: 120, Right: 120, Height: 280);
+                Background: #D4A574;
+            }
+
+            Label #CommandsTitle {
+                Anchor: (Top: 180, Left: 150, Right: 150, Height: 40);
+                Style: (FontSize: 22, TextColor: #FFFFFF, HorizontalAlignment: Center, RenderBold: true);
+                Text: "COMMANDS";
+            }
+
+            Label #CommandAdd {
+                Anchor: (Top: 235, Left: 160, Right: 160, Height: 30);
+                Style: @CommandLabelStyle;
+                Text: "• /waypoint add <name>     - Create new waypoint";
+                
+            }
+
+            Label #CommandRemove {
+                Anchor: (Top: 275, Left: 160, Right: 160, Height: 30);
+                Style: @CommandLabelStyle;
+                Text: "• /waypoint remove <name>  - Delete waypoint";
+            }
+
+            Label #CommandToggle {
+                Anchor: (Top: 315, Left: 160, Right: 160, Height: 30);
+                Style: @CommandLabelStyle;
+                Text: "• /waypoint toggle <name>  - Show/Hide on map";
+            }
+
+            Label #CommandList {
+                Anchor: (Top: 355, Left: 160, Right: 160, Height: 30);
+                Style: @CommandLabelStyle;
+                Text: "• /waypoint list           - Show all in chat";
+            }
+
+            Label #CommandMenu {
+                Anchor: (Top: 395, Left: 160, Right: 160, Height: 30);
+                Style: @CommandLabelStyle;
+                Text: "• /waypoint menu           - Open this menu";
+            }
+
+            // Waypoints List Section
+            Label #WaypointListTitle {
+                Anchor: (Top: 470, Left: 150, Right: 150, Height: 50);
+                Style: (FontSize: 24, TextColor: #FFFFFF, HorizontalAlignment: Center, RenderBold: true);
+                Text: "YOUR WAYPOINTS";
+            }
+
+            // List background using textbox
+            Group #ListBackground {
+                Anchor: (Top: 540, Left: 120, Right: 120, Bottom: 180);
+                Background: #D4A574;
+            }
+
+            // Waypoint list text
+            Label #WaypointListLabel {
+                Anchor: (Top: 560, Left: 150, Right: 150, Bottom: 200);
+                Style: @WaypointListStyle;
+                Text: "Loading waypoints...";
+            }
+
+            // Legend
+            Label #Legend {
+                Anchor: (Bottom: 130, Left: 150, Right: 150, Height: 30);
+                Style: @LegendStyle;
+                Text: "[VISIBLE] = Shown on map  |  [HIDDEN] = Not shown on map";
+            }
+
+            // Close button at bottom
+            Group #CloseButton {
+                Anchor: (Left: 387, Bottom: 40, Width: 250, Height: 70);
+                Background: #8C3A3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: (FontSize: 18, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "CLOSE";
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,86 @@
+---
+title: Pamācību Rakstīšana
+---
+
+## Pamācības faila veidošana
+
+Lai sāktu rakstīt pamācības, jums jāizveido fails ar nosaukumu ".mdx". Šis fails ir jāizveido angliski "/content/docs/en" direktorijā . Tālāk izkārtojums ir atkarīgs no vēlamās sadaļas, kam vēlies izveidot pamācību.
+
+Pieņemsim, ka vēlamies izveidot java pamatu pamācību. Es to ieliku `/content/docs/en/guides/java-basics`. Jums vajadzēs nedaud parakties, lai noskaidrotu kur labāk ievietot pamācību.
+
+<Callout>
+  Ja sadaļā, par kuru vēlaties rakstīt, jau ir pamācība, varat nospiest pogu "Rediģēt GitHub" mūsu vietnē, un tas novirzīs jūs uz to mapi. Tagad varat rakstīt dokumentu šajā mapē, lai jūsu pamācība parādītos tajā pašā sadaļā. Sākotnējās pamācības jāraksta angliski un vēlāk kļūst tūlkojamas.
+</Callout>
+
+## Priekšjautājums (Frontmatter)
+
+Frontmatter ir jūsu pamācības metadati, tie norāda mūsu vietnei, kā parādīt jūsu pamācību. Tam jābūt pašā faila augšpusē, kas sākas ar "---" un beidzas ar "---".
+
+Piemēram šādi:
+
+```mdx
+---
+title: "Java Basics"
+description: "Learn the basics of Java programming."
+authors:
+    - name: "Your Name"
+      url: "https://yourwebsite.com"
+---
+```
+
+Tagad, kā redzat, tas ir diezgan pašsaprotami, jums vienkārši jāaizpilda informācija par konkrēto pamācību. Ja nav URL, uz kuru vēlaties izveidot saiti, tad nerakstiet visu attiecīgo rindiņu. Papildus, autoru sadaļa arī nav obligāta, tāpēc, ja nevēlaties to pievienot, varat to vienkārši izlaist, lai gan mēs iesakām to darīt un kreditēt sevi.
+
+Atkāpes iekš Frontmatter ir svarīgas, tāpēc pārliecinieties, ka viss atbilst piemēram.
+
+## Satura Struktūra
+
+Jums ir skaidri un organizēti jāstrukturē pamācības saturs. Šeit ir daži padomi, kā to izdarīt:
+
+- **Ievads:** Sāciet ar pārskatu par tēmu un to, ko lasītājs var apgūt.
+- **Priekšnosacījumi:** Uzskaitiet visus priekšnoteikumus vai iepriekšējās zināšanas, kas lasītājam būtu jāzina pirms iedziļināšanās saturā.
+- **Soli pa solim:** Sadaliet saturu skaidrās, praktiskās darbībās. Izmantojiet virsrakstus un apakšvirsrakstus, lai kārtotu informāciju.
+- **Koda piemēri:** Iekļaujiet koda fragmentus, lai ilustrētu galvenos punktus. Noteikti rūpīgi izskaidrojiet katru piemēru.
+- **Secinājums:** Apkopojiet galvenos punktus un mudiniet lasītāju izpētīt tālāk vai izmēģināt to, ko viņi ir iemācījušies.
+
+Ja rakstat patiešām lielu sadaļu, to vajadzētu sadalīt vairākās lapās, lai lasītājam būtu vieglāk uzņemt informāciju. Neviens nevēlas lasīt lielus teksta blāķus!
+
+Kad rakstām pamācības, mums būtu jāpadomā kā lasitāji tās uztvers un daudzi vairāk izvēlas pārskriet pāri saturam, nekā izlasīt to detalizēti. Tāpēc ir labāk informāciju sadalīt vairākās lapās, lai informācijas saturs izskatītos mazāks lasītājam. Papildus, padomā par punktu, skaitļu sarakstiem un citām formatēšanas metodēm, lai saturs būtu pārskatāmāks.
+
+## Formatēšana
+
+Mēs izmantojam [Markdown](https://www.markdownguide.org/) priekš pamācību formatēšanas. Šeit pāris galvenie punkti, kas jāpatur prātā:
+
+- Izmanto virsrakstus (`#`, `##`, `###`) satura kārtošanai.
+- Izmanto punktu un skaitļu sarakstus skaidrībai.
+- Izmanto koda blokus (\`\`\`) priekš koda daļām.
+- Izmanto saites priekš atsaucēm uz citām pamācībām un resursiem.
+
+Šo formatēšanu redzēsi visās citās dokumentācijas mājaslapās un sociālo mēdiju platformās, kā Discord.
+
+Jūs varat arī izveidot Callout, lai izceltu svarīgu informāciju, vai ieteikumus. Izmanto sekojošo sintaksi:
+
+```mdx
+<Callout>
+    Šī ziņa ir izcelta.
+</Callout>
+```
+
+<Callout>
+  Šī ziņa ir izcelta.
+</Callout>
+
+Jūs varat nomainīt Callout krāsu pievienojot `type` īpašību. Piemēram:
+
+```mdx
+<Callout type="info">
+    Šī ziņa ir izcelta.
+</Callout>
+```
+
+Pieejamie tipi ir: `info`, `warning`, `error`, un `success`.
+
+## Secinājumi
+
+Tas arī viss! Tagad esat pamācību meistars. Tikai atcerieties, ka nav jābūt perfektiem ar savu angļu valodu. Rakstiet pamācību tā, kā tēmu kādam pasniegtu un nevilcinieties prasīt atsauksmes, vai palīdzību, ja vajadzīgs.
+
+Laimīgu rakstīšanu!

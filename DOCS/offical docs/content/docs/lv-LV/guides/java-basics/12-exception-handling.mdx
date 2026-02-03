@@ -1,0 +1,504 @@
+---
+title: 12 - Izņēmumu Apstrāde
+description: Iemācies eleganti apstrādāt kļūdas savā Java programmā.
+---
+
+Izņēmumi ir kļūdas, kas parādās programmai strādājot. Tā vietā, lai programma avarētu, tu vari "noķert" šīs kļūdas un eleganti apstrādāt.
+
+## Kas ir Izņēmums?
+
+Izņēmums ir notikums, kas iztraucē vēlamo programmas plūsmu:
+
+```java
+String text = null;
+System.out.println(text.length());  // NullPointerException - avārija!
+```
+
+Bez apstrādes šis avarēs mod un pārtrauks spēli!
+
+## Mēģināt-Noķert (Try-Catch) Bloki
+
+Izmanto `try-catch`, lai apstrādātu izņēmumus:
+
+```java
+try {
+    // Kods, kas varētu būt izņēmuma kļūda
+    String text = null;
+    System.out.println(text.length());
+} catch (NullPointerException e) {
+    // Kods kļūdas apstrādāšanai
+    System.out.println("Kļūda: teksts izmeta null!");
+}
+
+System.out.println("Programma var turpināt strādāt...");
+```
+
+<Callout type="info" title="Kā Try-Catch Strādā">
+  1. Kods iekš `try` bloka strādā normāli
+  2. Ja parādāsizņēmums, izpildīšana pāriet uz `catch` bloku
+  3. Pēc `catch` bloka programma turpina strādāt kā iepriekš
+  4. Ja izņēmumi neparādās, `catch` tiek izlaists
+
+  ```java
+  try {
+      // Mēģini veikt riskantu darbību
+      int result = 10 / 0;  // Dalīšana ar 0!
+  } catch (ArithmeticException e) {
+      // Apstrādā kļūdu
+      System.out.println("Nulli nevar dalīt!");
+  }
+  // Programma turpina strādāt
+  ```
+</Callout>
+
+## Biežākie Izņēmuma Tipi
+
+### NullPointerException
+
+Mēģinot piekļūt metodēm/īpašībām ar null objektiem:
+
+```java
+String name = null;
+
+try {
+    int length = name.length();
+} catch (NullPointerException e) {
+    System.out.println("Nosaukums ir null!");
+}
+```
+
+### ArrayIndexOutOfBoundsException
+
+Piekļūstot nederīgam masīva (array) indeksam:
+
+```java
+int[] numbers = {1, 2, 3};
+
+try {
+    int value = numbers[10];  // Indekss 10 neeksistē
+} catch (ArrayIndexOutOfBoundsException e) {
+    System.out.println("Nederīgs indekss!");
+}
+```
+
+### NumberFormatException
+
+Pārveidojot nesaderīgas virknes uz skaitļiem:
+
+```java
+try {
+    int number = Integer.parseInt("abc");  // Tie nav skaitļi!
+} catch (NumberFormatException e) {
+    System.out.println("Nederīgs skaitļu formāts!");
+}
+```
+
+### ArithmeticException
+
+Matemātiska kļūda, kā dalīšana ar nulli:
+
+```java
+try {
+    int result = 10 / 0;
+} catch (ArithmeticException e) {
+    System.out.println("Matemātikas kļūda!");
+}
+```
+
+## Vairāki Ķeršanas Bloki
+
+Apstrādā dažādus izņēmumus savādāk:
+
+```java
+String input = "abc";
+
+try {
+    int number = Integer.parseInt(input);
+    int result = 100 / number;
+    System.out.println(result);
+} catch (NumberFormatException e) {
+    System.out.println("Nederīgs skaitlis!");
+} catch (ArithmeticException e) {
+    System.out.println("Nevar dalīt nulli!");
+}
+```
+
+## Vairāku Izņēmumu Ķeršana
+
+Noķer vairākus izņēmumus vienā blokā:
+
+```java
+try {
+    // Some risky code
+} catch (NumberFormatException | ArithmeticException e) {
+    System.out.println("Matemātiska kļūda!");
+}
+```
+
+## Finally bloks
+
+Kods, kas **vienmēr** nostrādās ar kļūdām vai bez:
+
+```java
+try {
+    System.out.println("Atver failu...");
+    // Kods, kas varētu izgāsties
+} catch (Exception e) {
+    System.out.println("Error: " + e.getMessage());
+} finally {
+    System.out.println("Aizver failu...");
+    // Šis VIENMĒR nostrādās - laba metode iztīrīšanai
+}
+```
+
+<Callout type="info" title="Kad Izmantot Finally">
+  Izmanto `finally` priekš tīrīšanas uzdevumiem, kam jānotiek vienmēr:
+
+  - Aizverot failu
+  - Atbrīvojot Resursus
+  - Saglabājot datus
+  - Darbību reģistrēšanai
+
+  ```java
+  FileReader file = null;
+  try {
+      file = new FileReader("data.txt");
+      // Read file
+  } catch (Exception e) {
+      System.out.println("Kļūda lasot failu");
+  } finally {
+      if (file != null) {
+          file.close();  // Vienmēr aizver failu!
+      }
+  }
+  ```
+</Callout>
+
+## Izņēmuma Informācijas Dabūšana
+
+Izņēmumu objekti satur noderīgu informāciju:
+
+```java
+try {
+    int result = Integer.parseInt("xyz");
+} catch (NumberFormatException e) {
+    System.out.println("Message: " + e.getMessage());
+    System.out.println("Type: " + e.getClass().getName());
+    e.printStackTrace();  // Izmet konsolē visas kļūdas detaļas
+}
+```
+
+## Praktiski Piemēri
+
+### Droša Spēlētāja Ievade
+
+```java
+import java.util.Scanner;
+
+public class PlayerInput {
+    public static int getPlayerChoice(Scanner scanner) {
+        while (true) {
+            try {
+                System.out.print("Enter choice (1-5): ");
+                String input = scanner.nextLine();
+                int choice = Integer.parseInt(input);
+                
+                if (choice < 1 || choice > 5) {
+                    System.out.println("Lūdzu, ievadiet skaitli no 1 līdz 5");
+                    continue;
+                }
+                
+                return choice;
+            } catch (NumberFormatException e) {
+                System.out.println("Ievadīta nederīga informācija. Lūdzu, ievadied skaitli.");
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice = getPlayerChoice(scanner);
+        System.out.println("Tu izvēlējies: " + choice);
+    }
+}
+```
+
+### Drošs Priekšmetu Izturības Atjauninājums
+
+```java
+public class Item {
+    private String name;
+    private int durability;
+    private int maxDurability;
+    
+    public Item(String name, int maxDurability) {
+        this.name = name;
+        this.durability = maxDurability;
+        this.maxDurability = maxDurability;
+    }
+    
+    public void damage(int amount) {
+        try {
+            if (amount < 0) {
+                throw new IllegalArgumentException("Bojājumi nevar būt negatīvā!");
+            }
+            
+            durability -= amount;
+            
+            if (durability < 0) {
+                durability = 0;
+            }
+            
+            System.out.println(name + " izturība: " + durability + "/" + maxDurability);
+            
+            if (durability == 0) {
+                System.out.println(name + " salūza!");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+```
+
+### Droša Konfigurācijas Ielāde
+
+```java
+import java.util.HashMap;
+
+public class ConfigLoader {
+    private HashMap<String, String> settings;
+    
+    public ConfigLoader() {
+        this.settings = new HashMap<>();
+        loadDefaults();
+    }
+    
+    private void loadDefaults() {
+        settings.put("maxPlayers", "10");
+        settings.put("difficulty", "normal");
+        settings.put("pvpEnabled", "true");
+    }
+    
+    public int getIntSetting(String key, int defaultValue) {
+        try {
+            String value = settings.get(key);
+            if (value == null) {
+                return defaultValue;
+            }
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            System.out.println("Nederīgs skaitlis priekš " + key + ", tiks izmantots noklusējums");
+            return defaultValue;
+        }
+    }
+    
+    public boolean getBooleanSetting(String key, boolean defaultValue) {
+        try {
+            String value = settings.get(key);
+            if (value == null) {
+                return defaultValue;
+            }
+            return Boolean.parseBoolean(value);
+        } catch (Exception e) {
+            System.out.println("Nederīgs boolean priekš " + key + ", tiks izmantots noklusējums");
+            return defaultValue;
+        }
+    }
+    
+    public void setSetting(String key, String value) {
+        if (key == null || value == null) {
+            System.out.println("Key un value nevar būt null!");
+            return;
+        }
+        settings.put(key, value);
+    }
+}
+```
+
+### Droša Masīva (Array) Piekļuve
+
+```java
+public class Inventory {
+    private String[] items;
+    
+    public Inventory(int size) {
+        this.items = new String[size];
+    }
+    
+    public boolean setItem(int slot, String item) {
+        try {
+            if (slot < 0 || slot >= items.length) {
+                throw new ArrayIndexOutOfBoundsException("Nederīga vieta: " + slot);
+            }
+            
+            items[slot] = item;
+            System.out.println("Ievietots " + item + " vietā " + slot);
+            return true;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Kļūda: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public String getItem(int slot) {
+        try {
+            return items[slot];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Nederīga vieta: " + slot);
+            return null;
+        }
+    }
+}
+```
+
+### Komandu Lasītājs ar Kļūdu Apstrādāšanu
+
+```java
+public class CommandParser {
+    public static void parseCommand(String command) {
+        try {
+            if (command == null || command.trim().isEmpty()) {
+                throw new IllegalArgumentException("Komanda nevar būt tukša!");
+            }
+            
+            String[] parts = command.split(" ");
+            
+            if (parts.length < 2) {
+                throw new IllegalArgumentException("Nederīgs komandas formāts!");
+            }
+            
+            String action = parts[0];
+            String target = parts[1];
+            
+            switch (action) {
+                case "give":
+                    if (parts.length < 4) {
+                        throw new IllegalArgumentException("Jāievada: give <player> <item> <amount>");
+                    }
+                    String item = parts[2];
+                    int amount = Integer.parseInt(parts[3]);
+                    
+                    if (amount <= 0) {
+                        throw new IllegalArgumentException("Daudzumam jābūt pozitīvam skaitlim!");
+                    }
+                    
+                    System.out.println("Iedeva " + amount + " " + item + " spēlētājam " + target);
+                    break;
+                    
+                case "tp":
+                    if (parts.length < 5) {
+                        throw new IllegalArgumentException("Jāievada: tp <player> <x> <y> <z>");
+                    }
+                    int x = Integer.parseInt(parts[2]);
+                    int y = Integer.parseInt(parts[3]);
+                    int z = Integer.parseInt(parts[4]);
+                    
+                    System.out.println("Teleportē " + target + " uz " + x + ", " + y + ", " + z);
+                    break;
+                    
+                default:
+                    throw new IllegalArgumentException("Nezināma komanda: " + action);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Kļūda: Nederīgs skaitlis komandā!");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Kļūda: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Negaidīta Kļūda: " + e.getMessage());
+        }
+    }
+    
+    public static void main(String[] args) {
+        parseCommand("give Steve diamond 5");
+        parseCommand("give Steve sword abc");  // Nederīgs skaitlis
+        parseCommand("tp Alice 10 64 20");
+        parseCommand("unknown command");       // Nezināma komanda
+    }
+}
+```
+
+## Izņēmuma Uzmešana
+
+Tu vari uzmest savus izņēmumus:
+
+```java
+public class Player {
+    private int health;
+    
+    public void setHealth(int health) {
+        if (health < 0) {
+            throw new IllegalArgumentException("Dzīvības nevar būt negatīvā!");
+        }
+        if (health > 100) {
+            throw new IllegalArgumentException("Dzīvības nevar pārsniegt 100!");
+        }
+        this.health = health;
+    }
+}
+```
+
+<Callout type="info" title="Kad Uzmest Izņēmumus">
+  Uzmet tos, kad:
+
+  - Metode saņem nederīgu informāciju
+  - Operāciju nevar izpildīt
+  - Pirmsnosacījumi nav sasniegti
+  - Kas negaidīts notiek
+
+  ```java
+  public void damagePlayer(int damage) {
+      if (damage < 0) {
+          throw new IllegalArgumentException("Bojājumiem jābūt pozitīvā!");
+      }
+      // Pēc pārbaudes turpināt apstrādāt bojājumus
+  }
+
+  public Item getItem(int slot) {
+      if (slot < 0 || slot >= inventory.length) {
+          throw new IndexOutOfBoundsException("Nederīga Inventāra vieta!");
+      }
+      return inventory[slot];
+  }
+  ```
+</Callout>
+
+## Pārbaudīti pret Nepārbaudītiem Izņēmumiem
+
+<Callout type="warning" title="Izņēmumu Tipi">
+  **Nepārbaudīti Izņēmumi** (RuntimeException):
+
+  - Nav jānoķer (try-catch)
+  - Drīzāk programmēšanas kļūdas
+  - Piemēri: NullPointerException, ArrayIndexOutOfBoundsException
+
+  **Pārbaudīti Izņēmumi**
+
+  - Jābūt noķertiem vai deklarētiem
+  - Drīzāk ārējās kļūdas (faili, tīkls)
+  - Piemēri: IOException, FileNotFoundException
+
+  ```java
+  // Unchecked - nav jāķer
+  int result = 10 / 0;  // ArithmeticException
+
+  // Checked - jāķer vai jādeklarē
+  try {
+      FileReader file = new FileReader("data.txt");  // IOException
+  } catch (IOException e) {
+      // Apstrādā kļūdu
+  }
+  ```
+</Callout>
+
+## Praktiskās Nodarbības
+
+1. **Drošas dalīšanas kalkulators**: Izveido metodi, kas sadala divus skaitļus. Elegnati apstrādā dalīšanu ar 0 un nederīgi ievadītu informāciju
+
+2. **Spēlētāja līmeņa noteicējs**: Izveido metodi, kas nosaka spēlētāja līmeni (1-100). Izmet izņēmumu, ja tas nav derīgs, un apstrādā to iekš main.
+
+3. **Droša masīva piekļuve**: Izveido metodi, kas droši piekļūst masīva elementiem. Atgriez null, ja indekss ir nederīgs, nevis avarē.
+
+4. **Konfigurācijas Lasītājs**: Izlasi konfigurācijas virkni, piemēram, "maxPlayers=10", un parsē to. Apstrādā nederīgus formātus.
+
+5. **Faila nosaukuma validators**: Izveido metodi, kas pārbauda, vai faila nosaukums ir derīgs (bez īpašām rakstzīmēm, nav tukšs). Izmet Izņēmumus nederīgiem vārdiem.

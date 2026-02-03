@@ -1,0 +1,306 @@
+// Waypoint List Page - Painted wood pixel art style
+// Syncs with Hytale's native map waypoint system
+
+@WaypointButtonStyle = LabelStyle(
+    FontSize: 20,
+    TextColor: #FFFFFF,
+    RenderBold: true,
+    HorizontalAlignment: Center,
+    VerticalAlignment: Center
+);
+
+@ButtonLabelStyle = LabelStyle(
+    FontSize: 15,
+    TextColor: #FFFFFF,
+    RenderBold: true,
+    HorizontalAlignment: Center,
+    VerticalAlignment: Center
+);
+
+@SearchLabelStyle = LabelStyle(
+    FontSize: 15,
+    TextColor: #FFFFFF,
+    RenderBold: true,
+    HorizontalAlignment: Start,
+    VerticalAlignment: Center
+);
+
+@InputStyle = InputFieldStyle(
+    FontSize: 14,
+    TextColor: #FFFFFF
+);
+
+Group {
+    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+    LayoutMode: Center;
+
+    Group #ListContainer {
+        Anchor: (Width: 700, Height: 680);
+
+        Group #MenuBackgroundInner {
+            Anchor: (Left: 35, Top: 34, Right: 35, Bottom: 34);
+            Background: #8B5A2B;
+        }
+
+        Group #MenuBackgroundOuter {
+            Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+            Background: #3D2817;
+        }
+
+        Group #ListContent {
+            Anchor: (Left: 12, Top: 12, Right: 12, Bottom: 12);
+
+            // Fancy Header with wood border
+            Group #HeaderBorder {
+                Anchor: (Top: 15, Left: 80, Right: 80, Height: 54);
+                Background: #5D4E37;
+            }
+
+            Group #HeaderPanel {
+                Anchor: (Top: 17, Left: 82, Right: 82, Height: 50);
+                Background: #6B4423;
+
+                Label #HeaderIcon {
+                    Anchor: (Left: 10, Top: 0, Bottom: 0, Width: 40);
+                    Style: (FontSize: 22, TextColor: #FFD700, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "◆";
+                }
+
+                Label #ListTitle {
+                    Anchor: (Left: 50, Top: 0, Right: 50, Bottom: 0);
+                    Style: (FontSize: 20, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center, LetterSpacing: 2);
+                    Text: "WAYPOINTS";
+                }
+
+                Label #HeaderIconRight {
+                    Anchor: (Right: 10, Top: 0, Bottom: 0, Width: 40);
+                    Style: (FontSize: 22, TextColor: #FFD700, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "◆";
+                }
+            }
+
+            // Search Bar
+            Group #SearchBackground {
+                Anchor: (Top: 90, Left: 113, Right: 113, Height: 27);
+                Background: #D4A574;
+
+                TextField #SearchInput {
+                    Anchor: (Top: 4, Left: 2, Right: 1, Height: 19);
+                    Style: (FontSize: 13, TextColor: #FFFFFF);
+                    PlaceholderText: "Search...";
+                }
+            }
+
+            // Waypoint List Container - 4 items per page with pagination
+            Group #WaypointListContainer {
+                Anchor: (Top: 157, Left: 47, Right: 47, Height: 254);
+                LayoutMode: Top;
+
+                // Dynamic waypoint buttons (4 per page)
+                Button #Waypoint0 {
+                    Anchor: (Left: 21, Right: 21, Height: 47);
+                    Background: #6B4423;
+                    Visible: false;
+
+                    Label #Waypoint0Label {
+                        Anchor: (Full: 0);
+                        Style: @WaypointButtonStyle;
+                        Text: "";
+                    }
+
+                    Group #Waypoint0Icon {
+                        Anchor: (Right: 5, Top: 24, Width: 1, Height: 3);
+                        Background: #FFFFFF;
+                    }
+                }
+
+                Group #Spacer0 { Anchor: (Height: 8); }
+
+                Button #Waypoint1 {
+                    Anchor: (Left: 21, Right: 21, Height: 47);
+                    Background: #6B4423;
+                    Visible: false;
+
+                    Label #Waypoint1Label {
+                        Anchor: (Full: 0);
+                        Style: @WaypointButtonStyle;
+                        Text: "";
+                    }
+
+                    Group #Waypoint1Icon {
+                        Anchor: (Right: 5, Top: 24, Width: 1, Height: 3);
+                        Background: #FFFFFF;
+                    }
+                }
+
+                Group #Spacer1 { Anchor: (Height: 8); }
+
+                Button #Waypoint2 {
+                    Anchor: (Left: 21, Right: 21, Height: 47);
+                    Background: #6B4423;
+                    Visible: false;
+
+                    Label #Waypoint2Label {
+                        Anchor: (Full: 0);
+                        Style: @WaypointButtonStyle;
+                        Text: "";
+                    }
+
+                    Group #Waypoint2Icon {
+                        Anchor: (Right: 5, Top: 24, Width: 1, Height: 3);
+                        Background: #FFFFFF;
+                    }
+                }
+
+                Group #Spacer2 { Anchor: (Height: 8); }
+
+                Button #Waypoint3 {
+                    Anchor: (Left: 21, Right: 21, Height: 47);
+                    Background: #6B4423;
+                    Visible: false;
+
+                    Label #Waypoint3Label {
+                        Anchor: (Full: 0);
+                        Style: @WaypointButtonStyle;
+                        Text: "";
+                    }
+
+                    Group #Waypoint3Icon {
+                        Anchor: (Right: 5, Top: 24, Width: 1, Height: 3);
+                        Background: #FFFFFF;
+                    }
+                }
+            }
+
+            // Page Navigation - numbered page buttons (centered)
+            Group #PageNavigation {
+                Anchor: (Top: 421, Left: 47, Right: 47, Height: 34);
+
+                Button #Page1Button {
+                    Anchor: (Left: 82, Width: 15, Top: 0, Bottom: 0);
+                    Background: #6B4423;
+                    Visible: false;
+
+                    Label #Page1Label {
+                        Anchor: (Full: 0);
+                        Style: (FontSize: 16, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                        Text: "1";
+                    }
+                }
+
+                Button #Page2Button {
+                    Anchor: (Left: 101, Width: 15, Top: 0, Bottom: 0);
+                    Background: #6B4423;
+                    Visible: false;
+
+                    Label #Page2Label {
+                        Anchor: (Full: 0);
+                        Style: (FontSize: 16, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                        Text: "2";
+                    }
+                }
+
+                Button #Page3Button {
+                    Anchor: (Left: 120, Width: 15, Top: 0, Bottom: 0);
+                    Background: #6B4423;
+                    Visible: false;
+
+                    Label #Page3Label {
+                        Anchor: (Full: 0);
+                        Style: (FontSize: 16, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                        Text: "3";
+                    }
+                }
+            }
+
+            // No waypoints message
+            Label #NoWaypointsLabel {
+                Anchor: (Top: 274, Left: 47, Right: 47, Height: 39);
+                Style: (FontSize: 13, TextColor: #CCCCCC, HorizontalAlignment: Center, VerticalAlignment: Center);
+                Text: "No waypoints found. Click 'Add' to create one.";
+                Visible: false;
+            }
+
+            // Add Waypoint Section (hidden by default, shown when adding)
+            Group #AddWaypointSection {
+                Anchor: (Bottom: 132, Left: 47, Right: 47, Height: 117);
+                Visible: false;
+
+                Group #AddInnerBG {
+                    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+                    Background: #8B5A2B;
+                }
+
+                Label #AddWaypointLabel {
+                    Anchor: (Top: 12, Left: 3, Right: 3, Height: 23);
+                    Style: (FontSize: 14, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "New Waypoint Name:";
+                }
+
+                Group #AddNameBackground {
+                    Anchor: (Top: 39, Left: 3, Right: 3, Height: 37);
+                    Background: #D4A574;
+
+                    TextField #AddNameInput {
+                        Anchor: (Left: 3, Top: 8, Right: 1, Bottom: 0);
+                        Style: @InputStyle;
+                        PlaceholderText: "Enter name...";
+                    }
+                }
+
+                Button #ConfirmAddButton {
+                    Anchor: (Bottom: 10, Left: 3, Width: 27, Height: 34);
+                    Background: #5A8C3A;
+
+                    Label {
+                        Anchor: (Full: 0);
+                        Style: (FontSize: 14, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                        Text: "ADD";
+                    }
+                }
+
+                Button #CancelAddButton {
+                    Anchor: (Bottom: 10, Right: 3, Width: 27, Height: 34);
+                    Background: #6B4423;
+
+                    Label {
+                        Anchor: (Full: 0);
+                        Style: (FontSize: 13, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                        Text: "BACK";
+                    }
+                }
+            }
+
+            // Info Label
+            Label #InfoLabel {
+                Anchor: (Bottom: 70, Left: 47, Right: 47, Height: 19);
+                Style: (FontSize: 11, TextColor: #CCCCCC, HorizontalAlignment: Center, VerticalAlignment: Center);
+                Text: "Click a waypoint to edit";
+            }
+
+            // Add Waypoint button
+            Button #AddWaypointButton {
+                Anchor: (Left: 55, Bottom: 15, Width: 180, Height: 42);
+                Background: #5A8C3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "+ ADD NEW";
+                }
+            }
+
+            // Back button
+            Button #BackButton {
+                Anchor: (Right: 55, Bottom: 15, Width: 180, Height: 42);
+                Background: #8C3A3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "BACK";
+                }
+            }
+        }
+    }
+}

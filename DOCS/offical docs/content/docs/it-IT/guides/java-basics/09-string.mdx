@@ -1,0 +1,487 @@
+---
+title: 09 - Lavorare con le stringhe
+description: Padroneggia la manipolazione del testo e le operazioni sulle stringhe in Java.
+---
+
+Le Stringhe sono uno dei tipi più comunemente utilizzati in Java. Sono essenziali per gestire i nomi dei giocatori, i messaggi della chat, le descrizioni degli oggetti e tutto ciò che vedi.
+
+## Nozioni di base sulle Stringhe
+
+Le stringhe sono oggetti che memorizzano del testo:
+
+```java
+String name = "Simon";
+String message = "Benvenuto su Hytale!";
+String empty = "";
+```
+
+<Callout type="warning" title="Le stringhe sono immutabili">
+  Una volta creata, una stringa **non può essere modificata**. I metodi che sembrano modificare una stringa in realtà ne creano una nuova!
+
+  ```java
+  String text = "Ciao";
+  text.toUpperCase();           // Crea "CIAO" ma non lo salva
+  System.out.println(text);     // Ancora "Ciao"
+
+  String upper = text.toUpperCase();  // ✓ Salva il risultato
+  System.out.println(upper);          // "CIAO"
+  ```
+</Callout>
+
+## Metodi del tipo String
+
+### Lunghezza
+
+```java
+String name = "Alice";
+int length = name.length();
+System.out.println(length);  // 5
+```
+
+### Modifica Maiuscole/Minuscole
+
+```java
+String text = "Hello World";
+String upper = text.toUpperCase();  // "HELLO WORLD"
+String lower = text.toLowerCase();  // "hello world"
+```
+
+### Controllo dei Contenuti
+
+```java
+String message = "Benvenuto su Hytale";
+
+boolean hasHytale = message.contains("Hytale");  // true
+boolean hasMinecraft = message.contains("Minecraft");  // false
+
+boolean starts = message.startsWith("Benvenuto");  // true
+boolean ends = message.endsWith("Hytale");  // true
+```
+
+### Estrarre delle porzioni di stringa
+
+```java
+String text = "Hello World";
+
+char first = text.charAt(0);      // 'H'
+char last = text.charAt(10);      // 'd'
+
+String sub1 = text.substring(0, 5);   // "Hello"
+String sub2 = text.substring(6);      // "World
+```
+
+<Callout type="info" title="Posizione nelle sottostringhe">
+  `substring(start, end)` include `start` ma esclude `end`:
+
+  ```java
+  String text = "Hytale";
+  //             012345 (indices)
+
+  text.substring(0, 2);  // "Hy" (posizioni 0 e 1)
+  text.substring(2, 6);  // "tale" (posizioni 2, 3, 4, 5)
+  text.substring(2);     // "tale" (da 2 a end)
+  ```
+</Callout>
+
+### Sostituire del Testo
+
+```java
+String text = "Io amo Minecraft";
+String replaced = text.replace("Minecraft", "Hytale");
+System.out.println(replaced);  // "I amo Hytale"
+
+String noSpaces = "Hello World".replace(" ", "");
+System.out.println(noSpaces);  // "HelloWorld"
+```
+
+### Trimming degli spazi
+
+```java
+String messy = "  Hello World  ";
+String clean = messy.trim();
+System.out.println(clean);  // "Hello World" (nessuno spazio alla fine)
+```
+
+### Dividere Stringhe
+
+```java
+String command = "give player sword 5";
+String[] parts = command.split(" ");
+
+System.out.println(parts[0]);  // "give"
+System.out.println(parts[1]);  // "player"
+System.out.println(parts[2]);  // "sword"
+System.out.println(parts[3]);  // "5"
+```
+
+## Confronto stringhe
+
+<Callout type="warning" title="Non usare mai == per le stringhe">
+  Usa sempre `.equals()` per confrontare i contenuti delle stringhe!
+
+  ```java
+  String name1 = "Steve";
+  String name2 = "Steve";
+
+  // Sbagliato - comparazione tra oggetti
+  if (name1 == name2) {
+      System.out.println("Uguali");
+  }
+
+  // Corretto - comparazione tra i due testi
+  if (name1.equals(name2)) {
+      System.out.println("Uguali");
+  }
+
+  // Ignora le maiuscole nel comparare
+  if (name1.equalsIgnoreCase("steve")) {
+      System.out.println("Uguali (ignorando maiuscole)");
+  }
+  ```
+</Callout>
+
+### Ordine Di Confronto
+
+```java
+String a = "Apple";
+String b = "Banana";
+
+int result = a.compareTo(b);
+// result < 0 se a viene prima di b
+// result == 0 se a e b sono uguali
+// result > 0 se a viene dopo b
+
+if (a.compareTo(b) < 0) {
+    System.out.println(a + " viene dopo " + b);
+}
+```
+
+## Concatenazione di Stringhe
+
+### Utilizzare l'Operatore +
+
+```java
+String first = "Hello";
+String second = "World";
+String combined = first + " " + second;  // "Hello World"
+
+int score = 100;
+String message = "Punteggio: " + score;  // "Punteggio: 100"
+```
+
+### Usare concat()
+
+```java
+String result = "Hello".concat(" World");  // "Hello World"
+```
+
+### Costruire Stringhe Lunghe
+
+Per molte concatenazioni, usa `StringBuilder`:
+
+```java
+StringBuilder builder = new StringBuilder();
+builder.append("Giocatore: ");
+builder.append("Alice");
+builder.append(", Livello: ");
+builder.append(10);
+builder.append(", Salute: ");
+builder.append(100);
+
+String result = builder.toString();
+System.out.println(result);
+// "Giocatore: Alice, Livello: 10, Salute: 100"
+```
+
+<Callout type="info" title="Perché StringBuilder?">
+  La concatenazione standard crea molte stringhe temporanee:
+
+  ```java
+  // Inefficiente - Crea molte stringhe temporanee
+  String result = "";
+  for (int i = 0; i < 1000; i++) {
+      result = result + i;  // Crea 1000 stringhe temporanee!
+  }
+
+  // Efficiente - StringBuilder è mutabile
+  StringBuilder sb = new StringBuilder();
+  for (int i = 0; i < 1000; i++) {
+      sb.append(i);  // Modifica un oggetto
+  }
+  String result = sb.toString();
+  ```
+
+  Usa `StringBuilder` quando costruisci stringhe in loop!
+</Callout>
+
+## Esempi Pratici
+
+### Analizza il Comando di un Giocatore
+
+```java
+public class CommandParser {
+    public static void parseCommand(String command) {
+        // "/give Steve diamond_sword 1"
+        String[] parts = command.split(" ");
+        
+        String action = parts[0].replace("/", "");  // "give"
+        String player = parts[1];                   // "Steve"
+        String item = parts[2];                     // "diamond_sword"
+        int amount = Integer.parseInt(parts[3]);    // 1
+        
+        System.out.println("Azione: " + action);
+        System.out.println("Giocatore: " + player);
+        System.out.println("Item: " + item);
+        System.out.println("Quantita': " + amount);
+    }
+    
+    public static void main(String[] args) {
+        parseCommand("/give Steve diamond_sword 1");
+    }
+}
+```
+
+### Formattazione del Nome di un Giocatore
+
+```java
+public class PlayerFormatter {
+    public static String formatName(String name, int level, String rank) {
+        StringBuilder formatted = new StringBuilder();
+        
+        if (rank != null && !rank.isEmpty()) {
+            formatted.append("[").append(rank).append("] ");
+        }
+        
+        formatted.append(name);
+        formatted.append(" (Lv. ").append(level).append(")");
+        
+        return formatted.toString();
+    }
+    
+    public static void main(String[] args) {
+        String display1 = formatName("Alice", 10, "VIP");
+        System.out.println(display1);  // "[VIP] Alice (Lv. 10)"
+        
+        String display2 = formatName("Bob", 5, null);
+        System.out.println(display2);  // "Bob (Lv. 5)"
+    }
+}
+```
+
+### Convalida Username
+
+```java
+public class UsernameValidator {
+    public static boolean isValid(String username) {
+        // Regole: solamente 3-16 caratteri, lettere and numeri
+        
+        if (username == null || username.isEmpty()) {
+            return false;
+        }
+        
+        username = username.trim();
+        
+        if (username.length() < 3 || username.length() > 16) {
+            return false;
+        }
+        
+        for (int i = 0; i < username.length(); i++) {
+            char c = username.charAt(i);
+            if (!Character.isLetterOrDigit(c)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(isValid("Steve"));      // true
+        System.out.println(isValid("Player_123")); // false (ha underscore)
+        System.out.println(isValid("ab"));         // false (troppo corto)
+        System.out.println(isValid(""));           // false (vuoto)
+    }
+}
+```
+
+### Builder per la Descrizione di un Item
+
+```java
+public class ItemDescription {
+    public static String buildDescription(String name, String rarity, 
+                                         int damage, int durability) {
+        StringBuilder desc = new StringBuilder();
+        
+        // Title with rarity color code
+        desc.append(getRarityColor(rarity));
+        desc.append(name);
+        desc.append("\n");
+        
+        // Stats
+        desc.append("Danno: ").append(damage).append("\n");
+        desc.append("Durabilita': ").append(durability).append("/");
+        desc.append(durability).append("\n");
+        desc.append("Rarita': ").append(rarity);
+        
+        return desc.toString();
+    }
+    
+    private static String getRarityColor(String rarity) {
+        switch (rarity.toLowerCase()) {
+            case "leggendario": return "§6";  // Oro
+            case "epico": return "§5";       // Viola
+            case "raro": return "§9";       // Blu
+            case "comune": return "§f";     // Bianco
+            default: return "§7";           // Grigio
+        }
+    }
+    
+    public static void main(String[] args) {
+        String desc = buildDescription("Excalibur", "Leggendario", 50, 1000);
+        System.out.println(desc);
+    }
+}
+```
+
+### Filtro Messaggi della Chat
+
+```java
+public class ChatFilter {
+    private static String[] bannedWords = {"parolabandita1", "parolabandita2"};
+    
+    public static String filterMessage(String message) {
+        String filtered = message.toLowerCase();
+        
+        for (String word : bannedWords) {
+            if (filtered.contains(word)) {
+                String replacement = "*".repeat(word.length());
+                filtered = filtered.replace(word, replacement);
+            }
+        }
+        
+        return filtered;
+    }
+    
+    public static void main(String[] args) {
+        String message = "Questo è un test della parolabandita1";
+        String clean = filterMessage(message);
+        System.out.println(clean);  // "Questo è un test della **************"
+    }
+}
+```
+
+## Formattazione Stringhe
+
+### Utilizzo di String.format()
+
+```java
+String formatted = String.format("%s è al livello %d con l'%.1f%% di salute", name, level, health);
+System.out.println(formatted);
+// "Alice è al livello 10 con l'85,5% di salute"
+```
+
+<Callout type="info" title="Specificatore di formato:">
+  Codici di formato comuni:
+
+  - `%s` - String
+  - `%d` - Intero
+  - `%f` - Virgola mobile
+  - `%.2f` - Virgola mobile con 2 decimali
+  - `%n` - A capo (indipendente dalla piattaforma)
+
+  ```java
+  String.format("Nome: %s", "Steve"); // "Nome: Steve"
+  String.format("Livello: %d", 10); // "Livello: 10"
+  String.format("Salute: %.1f", 85.5); // "Salute: 85.5"
+  String.format("Posizione: (%d, %d, %d)", 10, 64, -5);  // "Posizione: (10, 64, -5)"
+  ```
+</Callout>
+
+## Operazioni Comuni con le Stringhe
+
+### Controlla se la Stringa è vuota
+
+```java
+String text = "";
+
+// Controlla se è vuota o nulla
+if (text == null || text.isEmpty()) {
+    System.out.println("Vuota!");
+}
+
+// Verifica se è vuoto, nullo o contiene solo spazi
+if (text == null || text.trim().isEmpty()) {
+    System.out.println("Vuota o composta da spazi!");
+}
+```
+
+### Conteggio Occorrenze
+
+```java
+public static int countOccurrences(String text, String target) {
+    int count = 0;
+    int index = 0;
+    
+    while ((index = text.indexOf(target, index)) != -1) {
+        count++;
+        index += target.length();
+    }
+    
+    return count;
+}
+
+// Utilizzo
+int count = countOccurrences("hello hello world", "hello");
+System.out.println(count);  // 2
+```
+
+### Invertire una Stringa
+
+```java
+public static String reverse(String text) {
+    StringBuilder sb = new StringBuilder(text);
+    return sb.reverse().toString();
+}
+
+// Utilizzo
+String reversed = reverse("Hello");
+System.out.println(reversed);  // "olleH"
+```
+
+### Verifica se Palindromo
+
+```java
+public static boolean isPalindrome(String text) {
+    String cleaned = text.toLowerCase().replaceAll("[^a-z0-9]", "");
+    String reversed = new StringBuilder(cleaned).reverse().toString();
+    return cleaned.equals(reversed);
+}
+
+// Utilizzo
+System.out.println(isPalindrome("ingegni"));     // true
+System.out.println(isPalindrome("hello"));       // false
+```
+
+## Esercizi Pratici
+
+1. **Verifica nome utente**: Scrivi un metodo che verifichi se un nome utente:
+   - È compreso tra 3 e 16 caratteri
+   - Contiene solo lettere, numeri e trattini bassi
+   - Non inizia con un numero
+   - Restituisce true se valido, false altrimenti
+
+2. **Parser dei comandi**: Analizza questo formato di comando: `/teleport x y z`
+   - Estrai le coordinate
+   - Convertile in numeri interi
+   - Restituisci un array dei tre valori
+
+3. **Formattatore della chat**: crea un metodo che formatti i messaggi chat:
+   - Input: nome del giocatore, rango, messaggio
+   - Output: `"[RANK] PlayerName: message"`
+   - Se non c'è un rank, mostra semplicemente `"PlayerName: message"`
+
+4. **Contatore di parole**: Contare quante parole sono in una frase (le parole sono separate da spazi)
+
+5. **Titolo Maiuscolo**: converti le parole di un titolo in maiuscole:
+   - Input: `"hello world"`
+   - Output: `"Hello World"`

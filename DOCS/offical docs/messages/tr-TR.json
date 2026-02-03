@@ -1,0 +1,75 @@
+{
+  "displayName": "Türkçe",
+  "nav": {
+    "title": "Hytale Modding",
+    "documentation": "Dökümantasyon",
+    "sponsors": "Sponsorlar",
+    "search": "Ara"
+  },
+  "home": {
+    "title": "Hytale Modlama için 1 Numaralı Kaynak {flipwords}",
+    "flipwords": [
+      "Kılavuzlar",
+      "Dokümantasyon",
+      "Araçlar",
+      "Öğreticiler"
+    ],
+    "description": "Hytale modlama serüveninize hızlı bir başlangıç yapmanız için kapsamlı rehberler, detaylı dokümantasyon ve gerekli tüm araçları sunan; Hytale modlamanın 1 numaralı topluluk kaynağı",
+    "documentation": "Belgeler",
+    "forum": "Forum",
+    "discord": "Topluluğa katıl!",
+    "memberCount": "{count} Üye",
+    "countdown": "Hytale {countdown} içinde çıkıyor",
+    "countdownUnits": {
+      "hours": "h",
+      "minutes": "m",
+      "seconds": "s"
+    },
+    "hytaleReleased": "Hytale çıktı!"
+  },
+  "sponsors": {
+    "title": "Bizi destekleyin",
+    "description": "HytaleModding açık kaynaklı bir topluluk projesidir ve topluluğu yönetmek; bu web sitesini barındırmak gibi hizmetler, sunucular ve altyapı masraflarını karşılamayı da içerir. Projeye destek olmak isterseniz, sponsor olmayı düşünebilirsiniz! Fonların topluluğu desteklemek amacıyla nasıl kullanıldığını görebilmeniz için OpenCollective kullanıyoruz.",
+    "ourSponsors": "Sponsorlarımız"
+  },
+  "misc": {
+    "loading": "Yükleniyor...",
+    "failedToLoad": "Yüklenemedi.",
+    "gitInfoUnavailable": "Git bilgisi bulunamadı",
+    "credit": "Yazan",
+    "supportUs": "Bizi Destekle"
+  },
+  "meta": {
+    "established_information": {
+      "title": "Yerleşik Bilgiler",
+      "separator": "Belirli Kategoriler",
+      "server": {
+        "title": "Sunucu",
+        "content_categories": {
+          "title": "İçerik Kategorileri"
+        },
+        "interface": {
+          "title": "Arayüz"
+        }
+      },
+      "client": {
+        "title": "İstemci"
+      },
+      "gameplay": {
+        "title": "Oynanış"
+      },
+      "misc": {
+        "title": "Çeşitli"
+      }
+    },
+    "guides": {
+      "title": "Kılavuzlar",
+      "java_basics": {
+        "title": "Java Temelleri"
+      }
+    },
+    "community_projects": {
+      "title": "Topluluk Projeleri"
+    }
+  }
+}

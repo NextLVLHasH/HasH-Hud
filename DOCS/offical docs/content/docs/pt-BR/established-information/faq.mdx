@@ -1,0 +1,45 @@
+---
+title: Perguntas frequentes
+description: Perguntas frequentes sobre as possíveis modificações do Hytale.
+---
+
+Nesta página, responderemos algumas das perguntas mais frequentes.
+
+## 1. O cliente pode ser modificado?
+
+Não, não pode ser modificado. No entanto, ele não terá controle sobre a aparência do jogo e da interface do usuário.
+
+Os visuais são definidos pelo servidor, de forma semelhante aos "Pacotes de Recursos" do Minecraft. O servidor decide quais mods serão usados.
+
+## 2. Qual protocolo de rede será usado?
+
+O Hytale usará o protocolo de transporte QUIC.
+
+Para contextualizar, os principais protocolos da internet são UDP e TCP.
+
+* O UDP é rápido, opera com pacotes de envio não garantido e não requer conexão, resultando numa menor confiabilidade, visto que os dados podem ser perdidos.
+* O TCP é baseado em conexão, mais lento que o UDP, mas pode garantir a entrega de pacotes com muito mais confiabilidade.
+  Atualmente, os dois são rápidos e os jogos podem ser executados normalmente em ambos, mas a preferência será o UDP.
+
+O QUIC é um protocolo de **transporte híbrido** que se baseia no UDP para obter os benefícios de baixa latência, enquanto encapsula funcionalidades de confiabilidade e controle de fluxo semelhantes ao TCP.
+Essencialmente, uma escolha sólida para desenvolvimento de jogos que combina velocidade e confiabilidade.
+
+## 3. O que são os pacotes de transferência?
+
+Os pacotes de transferência em Hytale são pequenas cargas de dados *(4kb)* que permitem aos jogadores se moverem de um servidor para outro enquanto carregam informações.
+Eles não equivalem a ferramentas como *BungeeCord* ou *Velocity* e são destinados principalmente a servidores menores.
+
+Diferentemente do BungeeCord, eles não gerenciam funções de rede, como plugins globais.
+A implementação de proteção contra os ataques DDoS seria consideravelmente mais complexa para redes menores devido à utilização de pacotes de transferência.
+
+A transferência de pacotes são eficientes em cenários como pequenas redes de servidores ou hubs onde os jogadores podem alternar entre servidores sem perder o progresso. Por exemplo, um jogador pode finalizar uma masmorra em um servidor e depois ir para um lobby ou modo de jogo diferente com o seu inventário e status intactos. Isso diminui os custos do servidor e permite que os desenvolvedores concentrem seus esforços em melhorar a jogabilidade do que configurações complexas de rede.
+
+## 4. O Hytale suportará servidores dedicados?
+
+Sim, o Hytale suportará servidores dedicados. Isso permite que os donos de servidores aloquem suas instâncias de Hytale em infraestruturas próprias ou por serviços de hospedagem de terceiros.
+
+Os servidores dedicados oferecem mais controle sobre as configurações do servidor, mods e desempenho comparado com o uso de soluções de hospedagem oficiais.
+
+## 5. Os mods de Hytale terão compatibilidade nos consoles?
+
+No momento, os mods para o Hytale estão focados para a plataforma de PC.

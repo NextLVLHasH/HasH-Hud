@@ -1,0 +1,91 @@
+---
+title: Servera Koda Ieskati
+description: Slikey ir dalījies ar dažiem ieskatiem par servera kodu 15/12/2025 Šis dokuments pāriet galvenajiem punktiem un secinājumiem no diskusijas.
+---
+
+<Callout type="info" title="Piezīme">
+  Sekojošā informācija ir balstīta uz ieskatiem, kas nāk no Tehniskā Direktora Slikey 15 Decembrī, 2025 gadā, Hytale Discord Serverī. Tā paver skatu uz servera koda arhitektūru un spraudņu iespējām.
+
+  Lielāka daļa dokumenta ir citēta tieši no Slikey ar minimālu Komentāriju. Šis viss ir vairāk domāts, lai iemūžinātu informāciju, kas nāca dotajā laikā, nekā pārrakstītu to.
+</Callout>
+
+# Servera Avota Kods
+
+Serveris tiks izlaists kā izplatīts avots - mums būs pieejams avota kods bez aizsegtām daļām un ar visiem komentāriem.
+
+### Licenze
+
+Licenze ļauj izmantot visas **hytale saistītās** lietas, līdz kamēr tu neizmanto serveri/avotu, lai veidotu savu spēli, vai pārdotu viņu algoritmus.
+
+# Atļauju Sistēma
+
+Pēc jautājumu uzdošanas iekš Hytale Modding servera, Vadošais Arhitekts Zero atbildēja:
+
+Tā ir diez gan prasta, tāpēc negaidiet daudz no tās, bet, jā, mums ir iebūvēta atļauju sistēma. Tā arī atbalsta atbalsta jūsu pašu backend implementāciju. Piem. ja vēlies glabāt to datubāzē.
+
+![Atļauju Avota Fragments](/assets/premission-system.png)
+
+# Pasaules Ģenerēšanas Implementācija
+
+Sekojošais teksts ir tieši no Galvenā Arhitekta Zero:
+
+Tu ļoti vienkārši vari implementēt pielāgotu pasaules ģenerātoru, kā spraudni. Tātad, ja vēlies pavisam savādāku konfigurāciju vai loģiku relfeja ģenerēšanai, to vari pievienot spraudņa veidā un tad konfigurēt kādai pasaulei to izmantot.
+Mums ir lietas, kas ielādē pirmsfabrikātus un eksistē kods pašreizējā pasaules ģenerātorā, kas iespējams varētu būt atkārtoti izmantojams, bet bez specifiskiem API priekš deteļām kā tiek ģenerētas detaļas.
+
+```java
+public interface IWorldGenProvider {
+    BuilderCodecMapCodec<IWorldGenProvider> CODEC = new BuilderCodecMapCodec<>("Type", true);
+
+    IWorldGen getGenerator() throws WorldGenLoadException;
+}
+```
+
+```java
+public interface IWorldGen {
+    @Nullable
+    WorldGenTimingsCollector getTimings();
+
+    CompletableFuture<GeneratedChunk> generate(int seed, long index, int x, int z, LongPredicate stillNeeded);
+
+    @Deprecated
+    Transform[] getSpawnPoints(int seed);
+
+    @Nonnull
+    default ISpawnProvider getDefaultSpawnProvider(int seed) {
+        return new FitToHeightMapSpawnProvider(new IndividualSpawnProvider(getSpawnPoints(seed)));
+    }
+
+    default void shutdown() {}
+}
+```
+
+# Servera Koda Fragmenti
+
+Daži koda fragmenti no spraudņa, ko parādija autori. Sekojošie fragmenti ir tieši citēti no Tehniskā Direktora Slikey:
+
+## BlockSpawner Spraudnis
+
+Tātad, es iemetīšu pāris koda fragmentus šeit no vienkārša spraudņa "BlockSpawner", kas pārvērtīsies "random" blokā, kad to novieto pasaulē, balstoties uz konfigurācijas noteikumiem.
+
+Pamatā te ir vairāk koda, bet tas parāda Līdzekļu Sistēmu un spraudņa izkārtojumu. Vari redzēt, ka līdzekļu sistēma definē "Kodeksus", kas tiek izmantoti, lai serializētu un atsrealizētu datus. Izmantojot kodeksus, mēs varam ģenerēt shēmas.
+Pieņemsim, ka izveidojat savienojumu ar serveri un atverat līdzekļu redaktoru: serveris nosūtīs šīs shēmas - tātad katrs līdzekļa tips, kas definēts servera pusē, pat jums piederošais, tagad kļūst par klienta līdzekļa redaktora daļu - nekas nav jādara, jūs vienkārši varat izbaudīt redaktora lietotāja interfeisu, lai izveidotu jūsu definētos līdzekļus
+
+![Block Spawner Code 1](/assets/blockspawner-code-1.png)
+![Block Spawner Code 2](/assets/blockspawner-code-2.png)
+![Block Spawner Code 3](/assets/blockspawner-code-3.png)
+![Block Spawner Manifest](/assets/blockspawner-manifest.png)
+
+> Es domāju, ka šī daļa arī mazliet parāda, kā mēs izmantojam konstantes, lai saglabātu dažas valodas atslēgas - Slikey (atsaucoties uz zemāk redzamo attēlu)
+
+![Constants to store Language Keys](/assets/constants.png)
+
+> Tu vari pilnībā pielāgot gabalu krātuves pakalpojumu sniedzēju, mēs, piemēram, izveidojām tādu, kas ir tikai tukšs, kur tas neielādē nekādus gabalus no diska.
+> Tu vari pievienot MySQLChunkStorageProvider, un tas var nolasīt datus no datu bāzes un tas pats attiecas uz WorldGen, tu vari vienkārši ieviest šo saskarni, lai ģenerētu pasaules ģeneratoru - Slikey
+
+![Chunks 1](/assets/chunks-1.png)
+![Chunks 2](/assets/chunks-2.png)
+![Chunks 3](/assets/chunks-3.png)
+
+> Šeit ir definēti visi ieroči, jūs man sakāt, acīmredzot jūs atklāsiet ierobežojumus, bet domāju, ka ir pietiekami vietas veikt izmaiņas - šīs lietas patiesībā ir sarežģītas, te jānotiek daudz Lietošanas Kvalitātei (QoL)
+
+![Weapons 1](/assets/weapons-1.png)

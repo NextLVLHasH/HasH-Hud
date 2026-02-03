@@ -1,0 +1,74 @@
+@ClockTex = PatchStyle(TexturePath: "assets/clock.png");
+Group #ClockContainer {
+    Anchor: (Width: 96, Height: 96, Top: 10, Right: 14);
+
+    Group #ClockFace {
+        Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+
+        Group #ClockBackground {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: @ClockTex;
+        }
+
+        Group #ClockHand00 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_00.png");
+            Visible: false;
+        }
+        Group #ClockHand01 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_01.png");
+            Visible: false;
+        }
+        Group #ClockHand02 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_02.png");
+            Visible: false;
+        }
+        Group #ClockHand03 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_03.png");
+            Visible: false;
+        }
+        Group #ClockHand04 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_04.png");
+            Visible: false;
+        }
+        Group #ClockHand05 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_05.png");
+            Visible: false;
+        }
+        Group #ClockHand06 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_06.png");
+            Visible: false;
+        }
+        Group #ClockHand07 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_07.png");
+            Visible: false;
+        }
+        Group #ClockHand08 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_08.png");
+            Visible: false;
+        }
+        Group #ClockHand09 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_09.png");
+            Visible: false;
+        }
+        Group #ClockHand10 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_10.png");
+            Visible: false;
+        }
+        Group #ClockHand11 {
+            Anchor: (Left: 0, Top: 0, Width: 96, Height: 96);
+            Background: (TexturePath: "assets/clockhand_11.png");
+            Visible: false;
+        }
+    }
+}

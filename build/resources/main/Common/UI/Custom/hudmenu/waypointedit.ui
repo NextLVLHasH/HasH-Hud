@@ -1,0 +1,245 @@
+// Waypoint Edit Page - Painted wood pixel art style
+// Integrates with Hytale's native map waypoint system
+
+@LabelStyle = LabelStyle(
+    FontSize: 15,
+    TextColor: #FFFFFF,
+    HorizontalAlignment: Start,
+    VerticalAlignment: Center,
+    RenderBold: true
+);
+
+@ValueStyle = LabelStyle(
+    FontSize: 15,
+    TextColor: #FFFFFF,
+    HorizontalAlignment: Center,
+    VerticalAlignment: Center
+);
+
+@ButtonLabelStyle = LabelStyle(
+    FontSize: 14,
+    TextColor: #FFFFFF,
+    RenderBold: true,
+    HorizontalAlignment: Center,
+    VerticalAlignment: Center
+);
+
+@InputStyle = InputFieldStyle(
+    FontSize: 14,
+    TextColor: #FFFFFF
+);
+
+Group {
+    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+    LayoutMode: Center;
+
+    Group #EditContainer {
+        Anchor: (Width: 700, Height: 680);
+
+        Group #HeaderImage {
+            Anchor: (Left: 0, Top: 0, Right: 0, Height: 60);
+            Background: #6B4423;
+
+            Label #HeaderTitle {
+                Anchor: (Full: 0);
+                Style: (FontSize: 20, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                Text: "Edit Waypoint";
+            }
+        }
+
+        Group #MenuBackgroundInner {
+            Anchor: (Left: 35, Top: 35, Right: 35, Bottom: 35);
+            Background: #8B5A2B;
+        }
+
+        Group #MenuBackgroundOuter {
+            Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+            Background: #3D2817;
+        }
+
+        Group #EditContent {
+            Anchor: (Left: 12, Top: 72, Right: 12, Bottom: 12);
+
+            // Name Section
+            Label #NameLabel {
+                Anchor: (Top: 20, Left: 60, Width: 70, Height: 32);
+                Style: @LabelStyle;
+                Text: "Name:";
+            }
+
+            Group #NameInputBackground {
+                Anchor: (Top: 20, Left: 135, Right: 60, Height: 52);
+                Background: #D4A574;
+
+                TextField #NameInput {
+                    Anchor: (Left: 50, Top: 8, Right: 10, Bottom: 0);
+                    Style: @InputStyle;
+                    PlaceholderText: "Enter name...";
+                }
+            }
+
+            // Coordinates Section
+            Label #CoordsLabel {
+                Anchor: (Top: 80, Left: 60, Width: 70, Height: 32);
+                Style: @LabelStyle;
+                Text: "Coords:";
+            }
+
+            Group #CoordsBackground {
+                Anchor: (Top: 80, Left: 135, Right: 60, Height: 52);
+                Background: #D4A574;
+
+                Label #CoordsValue {
+                    Anchor: (Left: 0, Top: 8, Right: 0, Bottom: 0);
+                    Style: @ValueStyle;
+                    Text: "X: 0  Y: 0  Z: 0";
+                }
+            }
+
+            // Marker Color/Icon Section
+            Label #MarkerLabel {
+                Anchor: (Top: 140, Left: 60, Width: 70, Height: 32);
+                Style: @LabelStyle;
+                Text: "Marker:";
+            }
+
+            Group #MarkerSection {
+                Anchor: (Top: 140, Left: 135, Right: 60, Height: 70);
+
+                // Current marker icon preview
+                Group #MarkerIconPreview {
+                    Anchor: (Left: 0, Top: 4, Width: 24, Height: 24);
+                    Background: #FFFFFF;
+                }
+
+                // Current marker color name
+                Label #MarkerColorLabel {
+                    Anchor: (Left: 35, Top: 0, Width: 80, Height: 32);
+                    Style: (FontSize: 13, TextColor: #FFFFFF, HorizontalAlignment: Start, VerticalAlignment: Center);
+                    Text: "White";
+                }
+
+                // Change icon button
+                Button #ChangeIconButton {
+                    Anchor: (Left: 0, Top: 38, Width: 100, Height: 28);
+                    Background: #6B4423;
+
+                    Label {
+                        Anchor: (Full: 0);
+                        Style: (FontSize: 11, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                        Text: "CHANGE ICON";
+                    }
+                }
+
+                // Cycle through colors button
+                Button #ChangeColorButton {
+                    Anchor: (Left: 110, Top: 38, Width: 110, Height: 28);
+                    Background: #6B4423;
+
+                    Label {
+                        Anchor: (Full: 0);
+                        Style: (FontSize: 11, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                        Text: "CHANGE COLOR";
+                    }
+                }
+            }
+
+            // Description Section
+            Label #DescLabel {
+                Anchor: (Top: 220, Left: 60, Width: 70, Height: 32);
+                Style: @LabelStyle;
+                Text: "Desc:";
+            }
+
+            Group #DescBackground {
+                Anchor: (Top: 220, Left: 135, Right: 60, Height: 52);
+                Background: #D4A574;
+
+                TextField #DescInput {
+                    Anchor: (Left: 50, Top: 8, Right: 10, Bottom: 0);
+                    Style: @InputStyle;
+                    PlaceholderText: "Enter description...";
+                }
+            }
+
+            // Visibility Toggle
+            Label #VisibilityLabel {
+                Anchor: (Top: 280, Left: 60, Width: 70, Height: 32);
+                Style: @LabelStyle;
+                Text: "Visible:";
+            }
+
+            Button #ToggleVisibilityButton {
+                Anchor: (Top: 280, Left: 135, Width: 70, Height: 28);
+                Background: #6B4423;
+
+                Label #ToggleVisibilityLabel {
+                    Anchor: (Full: 0);
+                    Style: (FontSize: 12, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "";
+                }
+            }
+
+            // Teleport input (replaces teleport button) - Full width textbox
+            Group #TeleportBackground {
+                Anchor: (Left: 60, Top: 320, Right: 60, Height: 40);
+                Background: #D4A574;
+                Visible: false;
+
+                TextField #TeleportInput {
+                    Anchor: (Left: 50, Top: 8, Right: 10, Bottom: 0);
+                    Style: @InputStyle;
+                    PlaceholderText: "Teleport target...";
+                }
+            }
+
+            // Teleport button (operator-only)
+            Button #TeleportButton {
+                Anchor: (Right: 60, Top: 320, Width: 90, Height: 36);
+                Background: #6B4423;
+                Visible: false;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: (FontSize: 12, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "TELEPORT";
+                }
+            }
+
+            // Action Buttons Row
+            Button #SaveButton {
+                Anchor: (Left: 120, Bottom: 55, Width: 140, Height: 36);
+                Background: #5A8C3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "SAVE";
+                }
+            }
+
+            Button #DeleteButton {
+                Anchor: (Right: 120, Bottom: 55, Width: 140, Height: 36);
+                Background: #6B4423;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "DELETE";
+                }
+            }
+
+            // Back Button
+            Button #BackButton {
+                Anchor: (Left: 250, Bottom: 12, Width: 200, Height: 36);
+                Background: #8C3A3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "BACK";
+                }
+            }
+        }
+    }
+}

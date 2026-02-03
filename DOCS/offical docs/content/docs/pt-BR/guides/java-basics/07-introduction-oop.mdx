@@ -1,0 +1,377 @@
+---
+title: 07 — Introdução à programação orientada a objetos
+description: Aprenda os fundamentos de classes e objetos em Java.
+---
+
+A programação orientada a objetos (POO) é a base do Java e dos mods de Hytale. Em vez de manter variáveis e métodos dispersos pelo código, os estruturamos em **classes** e **objetos**.
+
+## O que é uma classe?
+
+Uma classe é um molde para criar objetos. Pense nisso como uma receita ou um modelo.
+
+```java
+public class Player {
+    // Propriedades (dados)
+    String name;
+    int health;
+    int level;
+    
+    // Comportamento (métodos)
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " recebeu " + damage + " de dano!");
+    }
+}
+```
+
+## O que é um objeto?
+
+Um objeto é uma instância criada a partir de uma classe. Se uma classe é um molde, um objeto é o resultado criado a partir desse molde ou modelo.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Cria objetos para a classe Player
+        Player player1 = new Player();
+        player1.name = "Alice";
+        player1.health = 100;
+        player1.level = 5;
+        
+        Player player2 = new Player();
+        player2.name = "Bob";
+        player2.health = 80;
+        player2.level = 3;
+        
+        // Usa os objetos
+        player1.takeDamage(20);  // Alice recebeu 20 de dano!
+        player2.takeDamage(15);  // Bob recebeu 15 de dano!
+    }
+}
+```
+
+<Callout type="info" title="Classe vs. Objeto ">
+  **Classe** = Diagrama (a ideia de um jogador)
+  **Objeto** = Coisa real (Alice, Bob, jogadores específicos)
+
+  Uma classe pode criar vários objetos, assim como uma receita pode fazer vários bolos!
+</Callout>
+
+## Criando uma classe simples
+
+Vamos criar uma classe `Sword` para o Hytale:
+
+```java
+public class Sword {
+    // Propriedades
+    String name;
+    int damage;
+    int durability;
+    
+    // Método para usar a espada
+    public void attack(String target) {
+        System.out.println(target + " recebeu " + damage + " de dano!");
+        durability -= 1;
+        
+        if (durability <= 0) {
+            System.out.println(name + " quebrou!");
+        }
+    }
+    
+    // Método para mostrar a informação
+    public void displayInfo() {
+        System.out.println("Arma: " + name);
+        System.out.println("Dano: " + damage);
+        System.out.println("Durabilidade: " + durability);
+    }
+}
+```
+
+Usando a classe:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Sword sword = new Sword();
+        sword.name = "Espada de Ferro";
+        sword.damage = 15;
+        sword.durability = 3;
+        
+        sword.displayInfo();
+        sword.attack("Zumbi");
+        sword.attack("Esqueleto");
+        sword.attack("Aranha");  // Isso desgastará ou quebrará a espada
+    }
+}
+```
+
+## Construtores
+
+Ao invés de configurar as propriedades uma por uma, use um **construtor**  para inicializar objetos:
+
+```java
+public class Sword {
+    String name;
+    int damage;
+    int durability;
+    
+    // Construtor
+    public Sword(String weaponName, int weaponDamage, int weaponDurability) {
+        name = weaponName;
+        damage = weaponDamage;
+        durability = weaponDurability;
+    }
+    
+    public void attack(String target) {
+        System.out.println(target + " recebeu " + damage + " de dano!");
+        durability--;
+    }
+}
+```
+
+Criar espadas se tornou mais fácil:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Com mais clareza!
+        Sword ironSword = new Sword("Espada de Ferro", 15, 100);
+        Sword diamondSword = new Sword("Espada de Diamante", 25, 200);
+        
+        ironSword.attack("Zumbi");
+        diamondSword.attack("Chefe");
+    }
+}
+```
+
+<Callout type="info" title="Regras do construtor">
+  * O mesmo nome que a classe
+  * Nenhum tipo de retorno, nem mesmo `void`
+  * Chamado automático ao usar `new`
+  * Pode ter vários construtores (sobrecarregamento)
+
+  ```java
+  public class Item {
+      String name;
+      int value;
+      
+      // Construtor com todos os parâmetros
+      public Item(String name, int value) {
+          this.name = name;
+          this.value = value;
+      }
+      
+      // Construtor com apenas o nome
+      public Item(String name) {
+          this.name = name;
+          this.value = 0;  // Valor padrão
+      }
+  }
+  ```
+</Callout>
+
+## A palavra-chave `this`
+
+A `this` refere-se ao objeto atual. Use-a para esclarecer quando os nomes dos parâmetros coincidirem com os nomes das propriedades:
+
+```java
+public class Player {
+    String name;
+    int health;
+    
+    public Player(String name, int health) {
+        this.name = name;      // this.name = a propriedade
+        this.health = health;  // name = o parâmetro
+    }
+}
+```
+
+Sem a `this`, o Java fica confuso:
+
+```java
+public Player(String name, int health) {
+    name = name;      // // ❌ Qual nome? Não especificado!
+    health = health;  // ❌ Qual vida? Não especificada!
+```
+
+## Exemplos práticos
+
+### Classe "item"
+
+```java
+public class Item {
+    String name;
+    String type;
+    int quantity;
+    double weight;
+    
+    public Item(String name, String type, int quantity, double weight) {
+        this.name = name;
+        this.type = type;
+        this.quantity = quantity;
+        this.weight = weight;
+    }
+    
+    public void use() {
+        if (quantity > 0) {
+            quantity--;
+            System.out.println(name + " usado(a). " + quantidade + " restante(s)");
+        } else {
+            System.out.println("Nenhum(a) " + nome + " restante!");
+        }
+    }
+    
+    public double getTotalWeight() {
+        return weight * quantity;
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Item potion = new Item("Poção de Cura", "Consumível", 5, 0.5);
+        
+        potion.use();  // Poção de Cura usado(a). 4 restante(s)
+        System.out.println("Peso total: " + potion.getTotalWeight()); // 2.0
+    }
+}
+```
+
+### Classe "monstro"
+
+```java
+public class Monster {
+    String name;
+    int health;
+    int attack;
+    boolean isHostile;
+    
+    public Monster(String name, int health, int attack, boolean isHostile) {
+        this.name = name;
+        this.health = health;
+        this.attack = attack;
+        this.isHostile = isHostile;
+    }
+    
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " recebeu " + damage + " de dano!");
+        
+        if (health <= 0) {
+            System.out.println(name + " foi derrotado(a)!");
+        } else {
+            System.out.println(name + " tem " + health + " de vida restante.");
+        }
+    }
+    
+    public int attackPlayer() {
+        if (isHostile && health > 0) {
+            System.out.println(attack + " de dano causado por" + name);
+            return attack;
+        }
+        return 0;
+    }
+    
+    public boolean isAlive() {
+        return health > 0;
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Monster zombie = new Monster("Zumbi", 50, 10, true);
+        Monster chicken = new Monster("Galinha", 10, 0, false);
+        
+        zombie.takeDamage(20);        // Zumbi recebeu 20 de dano!
+        int damage = zombie.attackPlayer();  // 10 de dano causado por Zumbi!
+        
+        if (zombie.isAlive()) {
+            System.out.println("O monstro ainda está vivo!");
+        }
+    }
+}
+```
+
+### Classe "bloco"
+
+```java
+public class Block {
+    String type;
+    int x, y, z;
+    boolean isSolid;
+    int hardness;
+    
+    public Block(String type, int x, int y, int z, boolean isSolid, int hardness) {
+        this.type = type;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.isSolid = isSolid;
+        this.hardness = hardness;
+    }
+    
+    public void breakBlock() {
+        System.out.println("Quebrando o bloco " + type + " em " + x + ", " + y + ", " + z + "");
+        System.out.println("Dureza: " + hardness);
+    }
+    
+    public String getPosition() {
+        return "(" + x + ", " + y + ", " + z + ")";
+    }
+    
+    public boolean canWalkThrough() {
+        return !isSolid;
+    }
+}
+```
+
+## Modificadores de acesso (prévia)
+
+Chegou a ver o `public`? Significa que "qualquer um pode acessar isso". Em breve, aprenderemos mais sobre o controle de acesso. Veja uma prévia:
+
+```java
+public class Example {
+    public String publicVar;      // Qualquer um pode acessar
+    private String privateVar;    // Apenas essa classe pode acessar essa variável 
+    /* (nenhum modificador) */ String defaultVar; // Pacote de acesso
+}
+```
+
+Por enquanto, use o `public` para tudo. No próximo artigo, aprenderemos quando usar o `private`.
+
+<Callout type="info" title="Por que usar classes?">
+  Classes ajudam a:
+
+  * **Organizar** os dados e métodos relacionados em conjunto
+  * **Reutilizar** o código facilmente (crie vários objetos a partir de uma classe)
+  * **Modelar** coisas reais (jogadores, itens, monstros)
+  * **Preservar** o código (alterações em um local afetam todos os objetos)
+
+  Sem classes, gerenciar 100 jogadores exigiria 100 variáveis separadas para cada propriedade. Com classes, são apenas 100 objetos `Player`!
+</Callout>
+
+## Exercícios práticos
+
+1. **Crie uma classe `Poção`**
+   * Propriedades: name, healAmount, uses
+   * Construtor para definir todas as propriedades
+   * Método `drink()` que cura e diminui os usos
+   * Método `isEmpty()` que retorna verdadeiro se usar menos ou igual a 0
+
+2. **Crie uma classe `Baú`**:
+   * Propriedades: isLocked, itemCount, capacity
+   * Construtor
+   * Método `addItem()` que verifica a capacidade
+   * Método `unlock()` que define a propriedade `isLocked()` para falsa
+   * Método `isFull()` que verifica se a propriedade `itemCount` >= `capacity`
+
+3. **Crie uma classe `Aldeão`**
+   * Propriedades: `name`, `profession`, `tradeCount`
+   * Construtor
+   * Método `greet()` mostra uma saudação
+   * Método `trade()` aumenta `tradeCount`
+   * Método `getInfo()` mostra todas as propriedades
+
+4. **Crie múltiplos objetos**: usando qualquer classe feita, crie 3 objetos diferentes e teste todos os seus métodos.

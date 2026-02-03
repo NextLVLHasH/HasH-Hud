@@ -1,0 +1,629 @@
+---
+title: 13 - Ereditarietà
+description: Scopri come creare gerarchie di classi e riutilizzare il codice in modo efficace.
+---
+
+L'ereditarietà consente di creare nuove classi basate su quelle esistenti. La nuova classe eredita tutte le proprietà e i metodi della classe padre e può aggiungere i propri o modificare quelli ereditati.
+
+## Che cos'è l'ereditarietà?
+
+Pensa all'ereditarietà come a un albero genealogico. Un figlio eredita tratti dal genitore, ma può anche avere i propri tratti unici.
+
+```java
+// Classe padre (superclasse)
+public class Entity {
+    protected String name;
+    protected int health;
+    
+    public Entity(String name, int health) {
+        this.name = name;
+        this.health = health;
+    }
+    
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println(name + " ha preso " + damage + " di danno!");
+    }
+}
+
+// Classe figlia (sottoclasse)
+public class Player extends Entity {
+    private int level;
+    
+    public Player(String name, int health, int level) {
+        super(name, health);  // Chiamata al costruttore padre
+        this.level = level;
+    }
+    
+    public void levelUp() {
+        level++;
+        System.out.println(name + " e' salito al livello " + level + "!");
+    }
+}
+```
+
+<Callout type="info" title="Terminologia nell'Ereditarietà">
+  - **Superclasse/Genitore**: La classe ereditata da (Entity)
+  - **Sottoclasse/Figlio**: La classe che eredita (Player)
+  - **extends**: keyword per ereditare da una classe
+  - **super**: keyword per accedere ai membri della classe padre
+
+  ```java
+  public class Monster extends Entity {
+      // Monster È UN'Entità
+      // Monster eredita da Entity
+      // Entity è il genitore, Monster è il figlio
+  }
+  ```
+</Callout>
+
+## La keyword extends
+
+Usa `extends` per ereditare una classe:
+
+```java
+public class Animal {
+    protected String name;
+    
+    public void makeSound() {
+        System.out.println(name + " fa un suono");
+    }
+}
+
+public class Dog extends Animal {
+    public void wagTail() {
+        System.out.println(name + " scodinzola");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.name = "Buddy";
+        dog.makeSound();  // Ereditato da Animal
+        dog.wagTail();    // Metodo proprio di Dog
+    }
+}
+```
+
+## La keyword super
+
+`super` si riferisce alla classe padre:
+
+### Chiamare il costruttore padre
+
+```java
+public class Entity {
+    protected String name;
+    
+    public Entity(String name) {
+        this.name = name;
+    }
+}
+
+public class Player extends Entity {
+    private int level;
+    
+    public Player(String name, int level) {
+        super(name);  // Chiama PRIMA il costruttore padre
+        this.level = level;
+    }
+}
+```
+
+<Callout type="warning" title="Regole del Costruttore">
+  - `super()` deve essere la **prima** istruzione nel costruttore figlio.
+  - Se non si chiama `super()`, Java chiama automaticamente il costruttore padre senza argomento
+  - Se il padre non ha un costruttore senza argomenti, è NECESSARIO chiamare `super()` con gli argomenti.
+
+  ```java
+  // Sbagliato - super() non è il primo
+  public Player(String name, int level) {
+      this.level = level;
+      super(name);  // Errore!
+  }
+
+  // Corretto
+  public Player(String name, int level) {
+      super(name);  // Prima istruzione
+      this.level = level;
+  }
+  ```
+</Callout>
+
+### Chiamata dei metodi del padre
+
+```java
+public class Entity {
+    protected int health;
+    
+    public void takeDamage(int damage) {
+        health -= damage;
+        System.out.println("Entity ha preso danno!");
+    }
+}
+
+public class Player extends Entity {
+    @Override
+    public void takeDamage(int damage) {
+        super.takeDamage(damage);  // Chiama la versione del padre
+        if (health < 20) {
+            System.out.println("Attenzione: bassa salute!");
+        }
+    }
+}
+```
+
+## Overriding dei Metodi
+
+Le classi figli possono sostituire i metodi del padre:
+
+```java
+public class Entity {
+    public void attack() {
+        System.out.println("Entity attacca!");
+    }
+}
+
+public class Player extends Entity {
+    @Override  // Buona pratica usare questa annotazione
+    public void attack() {
+        System.out.println("Player sfodera la spada!");
+    }
+}
+
+public class Monster extends Entity {
+    @Override
+    public void attack() {
+        System.out.println("Monster morde!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Player player = new Player();
+        Monster monster = new Monster();
+        
+        player.attack();   // "Player sfodera la spada!"
+        monster.attack();  // "Monster morde!"
+    }
+}
+```
+
+<Callout type="info" title="Annotazione @Override">
+  Usa sempre `@Override` quando si sovrascrivono dei metodi:
+
+  - Aiuta a catturare errori di battitura (se il metodo non esiste nel padre, si ottiene un errore)
+  - Rende il codice più chiaro
+  - È una buona documentazione.
+
+  ```java
+  // Senza @Override - errore di battitura (typo) non rilevato
+  public void attac() {  // Typo! Crea un nuovo metodo
+      // ...
+  }
+
+  // With @Override - errore rilevato immediatamente
+  @Override
+  public void attac() {  //  Errore: il metodo non esiste nel padre
+      // ...
+  }
+  ```
+</Callout>
+
+## Modificatori di accesso nell'ereditarietà
+
+- `public` - Accessibile ovunque
+- `protected` - Accessibile in classe e sottoclasse
+- `private` - Solo nella classe (non ereditata)
+
+```java
+public class Parent {
+    public int publicVar;      // Il figlio può accedere
+    protected int protectedVar; // Il figlio può accedere
+    private int privateVar;     // Il figlio NON può accedere
+    
+    private void privateMethod() {
+        // Il figlio non può chiamare questo
+    }
+    
+    protected void protectedMethod() {
+        // Il figlio può chiamare questo
+    }
+}
+
+public class Child extends Parent {
+    public void test() {
+        publicVar = 10;      // OK
+        protectedVar = 20;   // OK
+        privateVar = 30;     // Errore!
+        
+        protectedMethod();   // OK
+        privateMethod();     // Errore!
+    }
+}
+```
+
+## Esempi Pratici
+
+### Gerarchia delle entità di gioco
+
+```java
+// Classe base per ogni entita'
+public class Entity {
+    protected String name;
+    protected int health;
+    protected int maxHealth;
+    protected double x, y, z;
+    
+    public Entity(String name, int maxHealth) {
+        this.name = name;
+        this.health = maxHealth;
+        this.maxHealth = maxHealth;
+    }
+    
+    public void takeDamage(int damage) {
+        health -= damage;
+        if (health < 0) health = 0;
+        System.out.println(name + " ha ricevuto " + damage + " di danno. Salute: " + health);
+    }
+    
+    public boolean isAlive() {
+        return health > 0;
+    }
+    
+    public void moveTo(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        System.out.println(name + " mosso a (" + x + ", " + y + ", " + z + ")");
+    }
+}
+
+// Player extends Entity
+public class Player extends Entity {
+    private int level;
+    private int experience;
+    private int mana;
+    
+    public Player(String name) {
+        super(name, 100);
+        this.level = 1;
+        this.experience = 0;
+        this.mana = 50;
+    }
+    
+    public void gainExperience(int amount) {
+        experience += amount;
+        System.out.println("Hai guadagnato " + amount + " XP");
+        
+        if (experience >= level * 100) {
+            levelUp();
+        }
+    }
+    
+    private void levelUp() {
+        level++;
+        maxHealth += 10;
+        health = maxHealth;
+        mana += 5;
+        System.out.println("Sali di livello! Ora sei al livello " + level);
+    }
+    
+    @Override
+    public void takeDamage(int damage) {
+        super.takeDamage(damage);
+        if (health < maxHealth * 0.25) {
+            System.out.println("⚠ PERICOLO: Salute bassa!");
+        }
+    }
+}
+
+// Monster estende Entity
+public class Monster extends Entity {
+    private int attackPower;
+    private String type;
+    
+    public Monster(String name, int health, int attackPower, String type) {
+        super(name, health);
+        this.attackPower = attackPower;
+        this.type = type;
+    }
+    
+    public int attack() {
+        System.out.println(name + " attacca!");
+        return attackPower;
+    }
+    
+    @Override
+    public void takeDamage(int damage) {
+        super.takeDamage(damage);
+        if (!isAlive()) {
+            System.out.println(name + " è stato sconfitto!");
+        }
+    }
+}
+
+// Boss extends Monster (multi-level inheritance)
+public class Boss extends Monster {
+    private int phase;
+    
+    public Boss(String name, int health, int attackPower) {
+        super(name, health, attackPower, "Boss");
+        this.phase = 1;
+    }
+    
+    @Override
+    public void takeDamage(int damage) {
+        super.takeDamage(damage);
+        
+        // Change phase at 50% health
+        if (phase == 1 && health < maxHealth / 2) {
+            phase = 2;
+            System.out.println(name + " entra in FASE 2!");
+        }
+    }
+    
+    @Override
+    public int attack() {
+        int damage = super.attack();
+        if (phase == 2) {
+            damage *= 2;
+            System.out.println("ATTACCO FURIOSO!");
+        }
+        return damage;
+    }
+}
+```
+
+### Gerarchia degli Item
+
+```java
+// Classe Item base
+public class Item {
+    protected String name;
+    protected int value;
+    protected double weight;
+    
+    public Item(String name, int value, double weight) {
+        this.name = name;
+        this.value = value;
+        this.weight = weight;
+    }
+    
+    public void use() {
+        System.out.println("Usando " + name);
+    }
+    
+    public String getInfo() {
+        return name + " ($" + value + ", " + weight + " kg)";
+    }
+}
+
+// Weapon estende Item
+public class Weapon extends Item {
+    private int damage;
+    private int durability;
+    
+    public Weapon(String name, int value, double weight, int damage, int durability) {
+        super(name, value, weight);
+        this.damage = damage;
+        this.durability = durability;
+    }
+    
+    @Override
+    public void use() {
+        if (durability > 0) {
+            System.out.println("Attaccando con " + name + " per " + damage + " di danno!");
+            durability--;
+        } else {
+            System.out.println(name + " e' rotto!");
+        }
+    }
+    
+    @Override
+    public String getInfo() {
+        return super.getInfo() + ", Danno: " + damage + ", Durabilita': " + durability;
+    }
+}
+
+// Consumable estende Item
+public class Consumable extends Item {
+    private int healAmount;
+    private int uses;
+    
+    public Consumable(String name, int value, double weight, int healAmount, int uses) {
+        super(name, value, weight);
+        this.healAmount = healAmount;
+        this.uses = uses;
+    }
+    
+    @Override
+    public void use() {
+        if (uses > 0) {
+            System.out.println("Usato " + name + ", ripristinato " + healAmount + " di salute!");
+            uses--;
+        } else {
+            System.out.println("Nessun " + name + " rimasto!");
+        }
+    }
+    
+    @Override
+    public String getInfo() {
+        return super.getInfo() + ", Cura di: " + healAmount + ", Utilizza: " + uses;
+    }
+}
+
+// Armor extends Item
+public class Armor extends Item {
+    private int defense;
+    private String slot;
+    
+    public Armor(String name, int value, double weight, int defense, String slot) {
+        super(name, value, weight);
+        this.defense = defense;
+        this.slot = slot;
+    }
+    
+    @Override
+    public void use() {
+        System.out.println("Equipaggiato " + name + " (+" + defense + " difesa)");
+    }
+    
+    @Override
+    public String getInfo() {
+        return super.getInfo() + ", Difesa: " + defense + ", Slot: " + slot;
+    }
+}
+```
+
+## Polimorfismo
+
+Gli oggetti figli possono essere trattati come oggetti padre:
+
+```java
+Entity entity1 = new Player("Alice");
+Entity entity2 = new Monster("Goblin", 50, 10, "Ostile");
+Entity entity3 = new Boss("Drago", 500, 50);
+
+// Tutti possono utilizzare i metodi di Entity
+entity1.takeDamage(10);
+entity2.takeDamage(10);
+entity3.takeDamage(10);
+
+// Array di tipi diversi
+Entity[] entities = {
+    new Player("Bob"),
+    new Monster("Zombie", 30, 8, "Ostile"),
+    new Monster("Ragno", 20, 5, "Ostile")
+};
+
+// Elabora tutte le entità allo stesso modo
+for (Entity entity : entities) {
+    entity.takeDamage(5);
+}
+```
+
+<Callout type="info" title="Benefici Del Polimorfismo">
+  Il polimorfismo consente di scrivere codice che funziona con i tipi padre ma gestisce correttamente i tipi figlio:
+
+  ```java
+  public void damageEntity(Entity entity, int damage) {
+      entity.takeDamage(damage);
+      // Funziona per Player, Monster, Boss, ecc.
+      // Ciascuno utilizza la propria versione di takeDamage()
+  }
+
+  // È possibile chiamare con qualsiasi tipo di Entity
+  damageEntity(new Player("Alice"), 10);
+  damageEntity(new Monster("Goblin", 50, 10, "Ostile"), 10);
+  damageEntity(new Boss("Drago", 500, 50), 10);
+  ```
+</Callout>
+
+## La Classe Object
+
+Tutte le classi in Java ereditano automaticamente da `Object`:
+
+```java
+public class MyClass {
+    // Estende automaticamente Object
+    // Ha metodi come toString(), equals(), ecc.
+}
+```
+
+Metodi comuni di Object da sovrascrivere:
+
+```java
+public class Player {
+    private String name;
+    private int level;
+    
+    @Override
+    public String toString() {
+        return "Giocatore: " + name + " (Lv. " + level + ")";
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Player) {
+            Player other = (Player) obj;
+            return this.name.equals(other.name);
+        }
+        return false;
+    }
+}
+```
+
+## Classi e metodi final
+
+`final` impedisce l'ereditarietà o la sovrascrittura:
+
+```java
+// Classe final - non può essere estesa
+public final class SpecialItem {
+    // Nessuna classe può estendere questa
+}
+
+// Metodo final - non può essere sovrascritto
+public class Entity {
+    public final void printName() {
+        System.out.println(name);
+    }
+}
+
+public class Player extends Entity {
+    @Override
+    public void printName() {  // Errore! Il metodo è final
+        // Non sovrascrivibile
+    }
+}
+```
+
+## Errori Comuni
+
+```java
+// Sbagliato - Dimencato super()
+public class Player extends Entity {
+    public Player(String name) {
+        // Errore! Entity non ha un costruttore senza argomenti
+    }
+}
+
+// Corretto
+public class Player extends Entity {
+    public Player(String name) {
+        super(name, 100);  // Chiama il costruttore del padre
+    }
+}
+
+// Errato - Accedendo a membri privati
+public class Child extends Parent {
+    public void test() {
+        privateVar = 10;  // Errore! i membri privati non sono ereditati
+    }
+}
+
+// Corretto - Usa protected
+public class Parent {
+    protected int protectedVar;  // Il figlio puo' accedervi
+}
+
+// Errato - Ereditarieta' molteplice (non consentita in Java)
+public class Child extends Parent1, Parent2 {  // Errore!
+}
+
+// Corretto - Ereditarieta' singola
+public class Child extends Parent {
+}
+```
+
+## Esercizi Pratici
+
+1. **Gerarchia dei veicoli**: crea una classe `Vehicle` con proprietà quali velocità e carburante. Crea sottoclassi `Car` e `Motorcycle` con le loro caratteristiche uniche.
+
+2. **Calcolatore di forme**: crea una classe `Shape` con un metodo `calculateArea()`. Crea `Circle`, `Rectangle`, e `Triangle` sottoclassi che sovrascrivono quel metodo.
+
+3. **Personaggi RPG**: Crea una classe `Character`. Estendila per creare le classi `Warrior`, `Mage`, and `Archer` con abilità uniche.
+
+4. **Suoni degli animali**: crea una classe `Animal` con un metodo `makeSound()`. Crea varie sottoclassi di animali che sovrascrivono questo metodo.

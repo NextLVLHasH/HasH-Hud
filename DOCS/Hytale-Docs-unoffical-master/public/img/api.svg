@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="apiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Code brackets < /> -->
+  <g fill="none" stroke="url(#apiGradient)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left bracket < -->
+    <polyline points="16,12 6,24 16,36"/>
+    <!-- Right bracket > -->
+    <polyline points="32,12 42,24 32,36"/>
+    <!-- Slash / -->
+    <line x1="28" y1="10" x2="20" y2="38"/>
+  </g>
+
+  <!-- Decorative dots -->
+  <g fill="#f4d03f" opacity="0.6">
+    <circle cx="24" cy="6" r="1.5"/>
+    <circle cx="24" cy="42" r="1.5"/>
+  </g>
+
+  <!-- Connection nodes -->
+  <g fill="#eab308" opacity="0.4">
+    <circle cx="4" cy="24" r="2"/>
+    <circle cx="44" cy="24" r="2"/>
+  </g>
+</svg>

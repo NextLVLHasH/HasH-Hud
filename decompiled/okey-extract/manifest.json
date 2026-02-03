@@ -1,0 +1,20 @@
+{
+  "Group": "works.jox",
+  "Name": "Okey",
+  "Version": "1.1.1",
+  "Description": "Okey Hytale Mod - Repurpose the O-key gamemode swap to run configurable commands.",
+  "Authors": [
+    {
+      "Name": "jox.works",
+      "Email": "contact@jox.works"
+    }
+  ],
+  "Website": "https://jox.works/",
+  "Main": "net.hytale.okeymenu.OKeyMenuPlugin",
+  "ServerVersion": "*",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": true,
+  "License": "All rights reserved"
+}

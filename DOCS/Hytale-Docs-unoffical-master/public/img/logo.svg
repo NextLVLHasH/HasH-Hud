@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="hytaleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00a8cc"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="cubeTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00d4ff"/>
+      <stop offset="100%" stop-color="#00a8cc"/>
+    </linearGradient>
+    <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="cubeRight" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00a8cc"/>
+      <stop offset="100%" stop-color="#0891b2"/>
+    </linearGradient>
+  </defs>
+  <!-- Isometric cube base -->
+  <polygon points="16,4 28,10 28,22 16,28 4,22 4,10" fill="url(#hytaleGradient)" opacity="0.2"/>
+  <!-- Cube top face -->
+  <polygon points="16,4 28,10 16,16 4,10" fill="url(#cubeTop)"/>
+  <!-- Cube left face -->
+  <polygon points="4,10 16,16 16,28 4,22" fill="url(#cubeLeft)"/>
+  <!-- Cube right face -->
+  <polygon points="28,10 28,22 16,28 16,16" fill="url(#cubeRight)"/>
+  <!-- H letter overlay -->
+  <g fill="#ffffff" opacity="0.95">
+    <!-- Left vertical bar of H -->
+    <polygon points="8,11 10,12 10,20 8,19"/>
+    <!-- Right vertical bar of H -->
+    <polygon points="22,12 24,11 24,19 22,20"/>
+    <!-- Horizontal bar of H -->
+    <polygon points="10,15 22,15 22,17 10,17"/>
+  </g>
+</svg>

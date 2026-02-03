@@ -1,0 +1,530 @@
+---
+title: 10 — ArrayList e coleções
+description: Aprenda a usar coleções flexíveis e responsivas em Java.
+---
+
+Os Arrays têm um tamanho fixo. E se você precisar adicionar ou remover itens? Para resolver isso, utilizamos o `ArrayList`, uma estrutura de dados dinâmica que ajusta seu tamanho de forma automática e responsiva.
+
+## Noções básicas de ArrayList
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Cria um ArrayList de Strings
+        ArrayList<String> players = new ArrayList<>();
+        
+        // Adiciona elementos
+        players.add("Alice");
+        players.add("Bob");
+        players.add("Charlie");
+        
+        System.out.println(players);  // [Alice, Bob, Charlie]
+    }
+}
+```
+
+<Callout type="info" title="ArrayList vs. Array">
+  | **Array**                                  | **ArrayList**                                          |
+  | ------------------------------------------ | ------------------------------------------------------ |
+  | Tamanho fixo                               | Redimensionável (aumenta/diminui)                      |
+  | Pode conter primitivos (int, double, etc.) | Só pode conter objetos (Integer, Double, String, etc.) |
+  | Acesso rápido                              | Mais recursos (add, remove, etc.)                      |
+  | `int[] numbers = new int[10];`             | `ArrayList<Integer> numbers = new ArrayList<>();`      |
+</Callout>
+
+## Criando ArrayLists
+
+```java
+import java.util.ArrayList;
+
+// ArrayList vazia
+ArrayList<String> items = new ArrayList<>();
+
+// Com valores iniciais (Java 9+)
+ArrayList<String> colors = new ArrayList<>(List.of("Vermelho", "Verde", "Azul"));
+
+// Tipos diferentes
+ArrayList<Integer> numbers = new ArrayList<>();
+ArrayList<Double> prices = new ArrayList<>();
+ArrayList<Boolean> flags = new ArrayList<>();
+```
+
+<Callout type="warning" title="Primitivos no ArrayList">
+  Você não pode usar tipos primitivos diretamente. Use as classes wrapper:
+
+  ```java
+  // Errado
+  ArrayList<int> numbers = new ArrayList<>();
+
+  // Correto — Use uma classe wrapper
+  ArrayList<Integer> numbers = new ArrayList<>();
+  ```
+
+  Classes wrapper:
+
+  - `int` → `Integer`
+  - `double` → `Double`
+  - `boolean` → `Boolean`
+  - `char` → `Character`
+</Callout>
+
+## Métodos comuns de ArrayList
+
+### Adicionando elementos
+
+```java
+ArrayList<String> items = new ArrayList<>();
+
+items.add("Espada");           // Adiciona para o final
+items.add("Escudo");
+items.add(0, "Capacete");       // Adiciona a um índice específico
+
+System.out.println(items);    // [Capacete, Espada, Escudo]
+```
+
+### Acessando elementos
+
+```java
+ArrayList<String> items = new ArrayList<>();
+items.add("Espada");
+items.add("Escudo");
+
+String first = items.get(0);    // "Espada"
+String second = items.get(1);   // "Escudo"
+
+int size = items.size();        // 2
+```
+
+### Removendo elementos
+
+```java
+ArrayList<String> items = new ArrayList<>();
+items.add("Espada");
+items.add("Escudo");
+items.add("Poção");
+
+items.remove(1);                // Remove por índice (Escudo)
+items.remove("Poção");        // Remove por valor
+
+System.out.println(items);     // [Espada]
+```
+
+### Verificando elementos
+
+```java
+ArrayList<String> items = new ArrayList<>();
+items.add("Espada");
+items.add("Escudo");
+
+boolean hasSword = items.contains("Espada");     // verdadeiro
+boolean hasAxe = items.contains("Machado");         // falso
+
+boolean isEmpty = items.isEmpty();              // falso
+int size = items.size();                        // 2
+```
+
+### Modificando elementos
+
+```java
+ArrayList<String> items = new ArrayList<>();
+items.add("Espada de Madeira");
+
+items.set(0, "Espada de Ferro");    // Substitui no índice 0
+
+System.out.println(items);     // [Espada de Ferro]
+```
+
+### Limpando todos os elementos
+
+```java
+ArrayList<String> items = new ArrayList<>();
+items.add("Espada");
+items.add("Escudo");
+
+items.clear();                 // Remove tudo
+System.out.println(items);     // []
+```
+
+## Repetição por ArrayList
+
+### Usando o loop `For`
+
+```java
+ArrayList<String> players = new ArrayList<>();
+players.add("Alice");
+players.add("Bob");
+players.add("Charlie");
+
+for (int i = 0; i < players.size(); i++) {
+    System.out.println(players.get(i));
+}
+```
+
+### Usando o aprimoramento de loop `For`
+
+```java
+for (String player : players) {
+    System.out.println(player);
+}
+```
+
+### Usando `forEach` (Java 8+)
+
+```java
+players.forEach(player -> System.out.println(player));
+```
+
+## Exemplos práticos
+
+### Sistema de inventário do jogador
+
+```java
+import java.util.ArrayList;
+
+public class Inventory {
+    private ArrayList<String> items;
+    private int maxSize;
+    
+    public Inventory(int maxSize) {
+        this.items = new ArrayList<>();
+        this.maxSize = maxSize;
+    }
+    
+    public boolean addItem(String item) {
+        if (items.size() >= maxSize) {
+            System.out.println("Inventário cheio!");
+            return false;
+        }
+        
+        items.add(item);
+        System.out.println("Item adicionado: " + item);
+        return true;
+    }
+    
+    public boolean removeItem(String item) {
+        if (items.remove(item)) {
+            System.out.println("Item adicionado: " + item);
+            return true;
+        }
+        
+        System.out.println("Item não encontrado!");
+        return false;
+    }
+    
+    public void displayInventory() {
+        System.out.println("=== Inventário (" + items.size() + "/" + maxSize + ") ===");
+        for (int i = 0; i < items.size(); i++) {
+            System.out.println((i + 1) + ". " + items.get(i));
+        }
+    }
+    
+    public int getItemCount() {
+        return items.size();
+    }
+    
+    public boolean isFull() {
+        return items.size() >= maxSize;
+    }
+}
+
+// Uso
+public class Main {
+    public static void main(String[] args) {
+        Inventory inv = new Inventory(5);
+        
+        inv.addItem("Espada");
+        inv.addItem("Escudo");
+        inv.addItem("Poção");
+        inv.displayInventory();
+        
+        inv.removeItem("Escudo");
+        inv.displayInventory();
+    }
+}
+```
+
+### Sistema de missões
+
+```java
+import java.util.ArrayList;
+
+public class QuestManager {
+    private ArrayList<String> activeQuests;
+    private ArrayList<String> completedQuests;
+    
+    public QuestManager() {
+        this.activeQuests = new ArrayList<>();
+        this.completedQuests = new ArrayList<>();
+    }
+    
+    public void startQuest(String questName) {
+        if (!activeQuests.contains(questName)) {
+            activeQuests.add(questName);
+            System.out.println("Missão iniciada: " + questName);
+        } else {
+            System.out.println("Missão já ativada!");
+        }
+    }
+    
+    public void completeQuest(String questName) {
+        if (activeQuests.remove(questName)) {
+            completedQuests.add(questName);
+            System.out.println("Missão completada: " + questName);
+        } else {
+            System.out.println("Missão ativa não encontrada!");
+        }
+    }
+    
+    public void displayQuests() {
+        System.out.println("\n=== Missões ativas ===");
+        if (activeQuests.isEmpty()) {
+            System.out.println("Nenhuma missão ativa");
+        } else {
+            for (String quest : activeQuests) {
+                System.out.println("— " + quest);
+            }
+        }
+        
+        System.out.println("\n=== Missões completadas ===");
+        if (completedQuests.isEmpty()) {
+            System.out.println("Nenhuma missão completada");
+        } else {
+            for (String quest : completedQuests) {
+                System.out.println("" + quest);
+            }
+        }
+    }
+    
+    public int getTotalCompleted() {
+        return completedQuests.size();
+    }
+}
+```
+
+### Sistema de classificação
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Leaderboard {
+    private ArrayList<Integer> scores;
+    private ArrayList<String> players;
+    
+    public Leaderboard() {
+        this.scores = new ArrayList<>();
+        this.players = new ArrayList<>();
+    }
+    
+    public void addScore(String player, int score) {
+        players.add(player);
+        scores.add(score);
+        System.out.println(player + " pontuou " + score + " pontos!");
+    }
+    
+    public void displayTop(int count) {
+        System.out.println("\n=== Top " + count + " Jogadores ===");
+        
+        // Cria cópias para organizar
+        ArrayList<Integer> sortedScores = new ArrayList<>(scores);
+        ArrayList<String> sortedPlayers = new ArrayList<>(players);
+        
+        // Ordenação por bolha (didática simples)
+        for (int i = 0; i < sortedScores.size() - 1; i++) {
+            for (int j = 0; j < sortedScores.size() - i - 1; j++) {
+                if (sortedScores.get(j) < sortedScores.get(j + 1)) {
+                    // Troca as pontuações
+                    int tempScore = sortedScores.get(j);
+                    sortedScores.set(j, sortedScores.get(j + 1));
+                    sortedScores.set(j + 1, tempScore);
+                    
+                    // Troca os jogadores
+                    String tempPlayer = sortedPlayers.get(j);
+                    sortedPlayers.set(j, sortedPlayers.get(j + 1));
+                    sortedPlayers.set(j + 1, tempPlayer);
+                }
+            }
+        }
+        
+        // Mostra as melhores pontuações
+        int limit = Math.min(count, sortedScores.size());
+        for (int i = 0; i < limit; i++) {
+            System.out.println((i + 1) + ". " + sortedPlayers.get(i) + 
+                             " - " + sortedScores.get(i) + " points");
+        }
+    }
+}
+```
+
+### Rastreador de jogadores online
+
+```java
+import java.util.ArrayList;
+
+public class OnlinePlayersTracker {
+    private ArrayList<String> onlinePlayers;
+    
+    public OnlinePlayersTracker() {
+        this.onlinePlayers = new ArrayList<>();
+    }
+    
+    public void playerJoin(String playerName) {
+        if (!onlinePlayers.contains(playerName)) {
+            onlinePlayers.add(playerName);
+            broadcast(playerName + " entrou na partida");
+            updatePlayerCount();
+        }
+    }
+    
+    public void playerLeave(String playerName) {
+        if (onlinePlayers.remove(playerName)) {
+            broadcast(playerName + " saiu da partida");
+            updatePlayerCount();
+        }
+    }
+    
+    public boolean isOnline(String playerName) {
+        return onlinePlayers.contains(playerName);
+    }
+    
+    public int getPlayerCount() {
+        return onlinePlayers.size();
+    }
+    
+    public void listPlayers() {
+        System.out.println("\n=== Jogadores online (" + getPlayerCount() + ") ===");
+        for (String player : onlinePlayers) {
+            System.out.println("• " + player);
+        }
+    }
+    
+    private void broadcast(String message) {
+        System.out.println("[Servidor] " + message);
+    }
+    
+    private void updatePlayerCount() {
+        System.out.println("Jogadores online: " + getPlayerCount());
+    }
+}
+```
+
+## ArrayList de objetos personalizados
+
+Você pode armazenar suas próprias classes em ArrayLists:
+
+```java
+public class Player {
+    private String name;
+    private int level;
+    
+    public Player(String name, int level) {
+        this.name = name;
+        this.level = level;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public int getLevel() {
+        return level;
+    }
+    
+    @Override
+    public String toString() {
+        return name + " (Nv. " + level + ")";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Player> players = new ArrayList<>();
+        
+        players.add(new Player("Alice", 10));
+        players.add(new Player("Bob", 15));
+        players.add(new Player("Charlie", 8));
+        
+        // Mostra todos os jogadores
+        for (Player player : players) {
+            System.out.println(player);
+        }
+        
+        // Encontra o jogador por nome
+        for (Player player : players) {
+            if (player.getName().equals("Bob")) {
+                System.out.println("Encontrado: " + player);
+            }
+        }
+    }
+}
+```
+
+## Operações úteis com ArrayList
+
+### Converter para Array
+
+```java
+ArrayList<String> list = new ArrayList<>();
+list.add("A");
+list.add("B");
+
+String[] array = list.toArray(new String[0]);
+```
+
+### Converter Array para ArrayList
+
+```java
+String[] array = {"A", "B", "C"};
+ArrayList<String> list = new ArrayList<>(Arrays.asList(array));
+```
+
+### Copiar um ArrayList
+
+```java
+ArrayList<String> original = new ArrayList<>();
+original.add("A");
+original.add("B");
+
+// Cópia superficial
+ArrayList<String> copy = new ArrayList<>(original);
+```
+
+### Encontrar o índice do elemento
+
+```java
+ArrayList<String> items = new ArrayList<>();
+items.add("Espada");
+items.add("Escudo");
+
+int index = items.indexOf("Escudo");  // 1
+int notFound = items.indexOf("Machado");  // -1
+```
+
+## Exemplos práticos
+
+1. **Carrinho de compras**: crie um sistema de carrinho de compras:
+   - Adicionar itens
+   - Remover itens
+   - Calcular o total de itens
+   - Esvaziar carrinho
+
+2. **Lista de amigos**: crie um sistema de gerenciamento de amizades:
+   - Adicionar amigo
+   - Remover amigo
+   - Verificar se alguém é amigo
+   - Mostrar todos os amigos
+
+3. **Lista de tarefas**: construa uma lista de tarefas:
+   - Adicionar tarefa
+   - Marcar tarefa como concluída (move para a lista de tarefas concluídas)
+   - Mostrar tarefas ativas
+   - Mostrar tarefas concluídas
+
+4. **Pontuações**: crie um sistema de pontuações:
+   - Adicionar pontuações
+   - Mostrar as 5 melhores pontuações em ordem
+   - Remover a menor pontuação se tiver mais do que 10
+
+---

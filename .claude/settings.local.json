@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:hytale-docs.com)",
+      "Bash(.gradlew.bat build)",
+      "Bash(cmd /c \"cd /d C:\\\\Hytale Mods\\\\HudMod && gradlew.bat build\")",
+      "Bash(cmd /c \"cd /d \"\"C:\\\\Hytale Mods\\\\HudMod\"\" && gradlew.bat build 2>&1\")",
+      "Bash(powershell -Command \"Set-Location ''C:\\\\Hytale Mods\\\\HudMod''; .\\\\gradlew.bat build\")",
+      "Bash(powershell -Command \"jar tf ''C:\\\\Hytale Mods\\\\HudMod\\\\libs\\\\HytaleServer.jar'' | Select-String -Pattern ''Player|Plugin|CustomUI|World'' | Select-Object -First 50\")",
+      "Bash(powershell -Command \"jar tf ''C:\\\\Hytale Mods\\\\HudMod\\\\libs\\\\HytaleServer.jar'' | Select-String -Pattern ''event|Event'' | Select-Object -First 50\")",
+      "Bash(powershell -Command \"jar tf ''C:\\\\Hytale Mods\\\\HudMod\\\\libs\\\\HytaleServer.jar'' | Select-String -Pattern ''entity/entity|Join|Leave|Tick'' | Select-Object -First 50\")",
+      "Bash(powershell -Command \"jar tf ''C:\\\\Hytale Mods\\\\HudMod\\\\libs\\\\HytaleServer.jar'' | Select-String -Pattern ''plugin/'' | Select-Object -First 50\")",
+      "Bash(powershell -Command \"jar tf ''C:\\\\Hytale Mods\\\\HudMod\\\\libs\\\\HytaleServer.jar'' | Select-String -Pattern ''ui/|UI|page|Page'' | Select-Object -First 80\")",
+      "Bash(./gradlew.bat compileJava)",
+      "Bash(./gradlew compileJava:*)",
+      "Bash(./gradlew.bat jar:*)",
+      "Bash(./gradlew.bat clean:*)",
+      "Bash(jar tf:*)",
+      "Bash(dir /s /b \"C:\\\\Hytale Mods\\\\HudMod\\\\decompiled\")",
+      "Bash(findstr:*)",
+      "Bash(dir:*)",
+      "Bash(\"/c/Program Files/JetBrains/IntelliJ IDEA 2025.3.2/jbr/bin/java\" -version)",
+      "Bash(\"/c/Program Files/JetBrains/IntelliJ IDEA 2025.3.2/jbr/bin/java\":*)",
+      "Bash(unzip:*)",
+      "Bash(\"C:\\\\Program Files\\\\JetBrains\\\\IntelliJ IDEA Community Edition 2024.1.4\\\\plugins\\\\java-decompiler\\\\lib\\\\java-decompiler.jar\" -dgs=true HytaleServer.jar \"C:\\\\Hytale Mods\\\\HudMod\\\\decompiled\\\\HytaleServer\")",
+      "Bash(java:*)",
+      "Bash(jar -tf:*)",
+      "Bash(find:*)",
+      "Bash(./gradlew clean build:*)",
+      "Bash(./gradlew build:*)",
+      "Bash(./gradlew.bat build)",
+      "Bash(for file in *.ui)",
+      "Bash(do echo \"=== $file ===\")",
+      "Bash(done)",
+      "Bash(gradlew.bat build:*)",
+      "Bash(cmd.exe /c \"cd /d \"\"C:\\\\Hytale Mods\\\\HudMod\"\" && gradlew.bat build --quiet\")",
+      "Bash(powershell:*)"
+    ]
+  }
+}

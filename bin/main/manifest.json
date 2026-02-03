@@ -1,0 +1,13 @@
+{
+    "Group": "com.nextlvlhash",
+    "Name": "HudMod",
+    "Version": "1.1",
+    "Description": "A clock HUD mod that displays in-game time",
+    "Authors": [
+        {
+            "Name": "NextLVLHasH"
+        }
+    ],
+    "Main": "com.nextlvlhash.hudmodmain",
+    "IncludesAssetPack": true
+}

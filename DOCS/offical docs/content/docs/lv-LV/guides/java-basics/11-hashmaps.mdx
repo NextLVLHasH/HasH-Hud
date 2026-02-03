@@ -1,0 +1,567 @@
+---
+title: 11 - HashMap un atslēgvārdu-vērtības glabāšana
+description: Iemācies glabāt un izvilkt datus, izmantojot atslēgu-vērtību (key-value) pārus.
+---
+
+`HashMap` glabā datus atslēgvārdu-vērtību pāros (key-value pairs), kā vārdnīca realitātē. Tu uzmeklē vārdu (atslēgvārds), lai atrastu tā definīciju (vērtību). Tas ir ideāli piemērots spēlētāju datiem, priekšmetu īpašībām un konfigurācijas iestatījumiem.
+
+## HashMaps Pamati
+
+```java
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        // Izveido HashMap<String, Integer> speletajaLimenis = new HashMap<>();
+        
+        // pievieno atslēgvārdu-vērtības pārus
+        speletajaLimenis.put("Alice", 10);
+        speletajaLimenis.put("Bob", 15);
+        speletajaLimenis.put("Charlie", 8);
+        
+        // saņem vērtību ar atslēgvārdu
+        int aliceLimenis = speletajaLimenis.get("Alice");  // 10
+        
+        System.out.println("Alice līmenis ir " + aliceLimenis);
+    }
+}
+```
+
+<Callout type="info" title="HashMap pret ArrayList">
+  | **HashMap**                            | **ArrayList**                     |
+  | -------------------------------------- | --------------------------------- |
+  | Nekārtots                              | Kārtots pēc indeksa (0, 1, 2....) |
+  | Piekļūst ar atslēgvārdu (jebkura tipa) | piekļūst pēc pozīcijas            |
+  | Labs veids vērtības atrašanai          | Labs veids sarakstu veidošanai    |
+  | Katrs atslēgvārds unikāls              | Var būt dublikāti                 |
+
+  ```java
+  // ArrayList - pieeja ar skaitli
+  ArrayList<String> speletaji = new ArrayList<>();
+  speletaji.add("Alice");
+  String speletajs = speletaji.get(0);  // Atrod pirmo spēlētāju
+
+  // HashMap - pieeja ar vārdu
+  HashMap<String, Integer> limeni = new HashMap<>();
+  limeni.put("Alice", 10);
+  int limenis = limeni.get("Alice");  // Atrod Alice līmeni
+  ```
+</Callout>
+
+## Biežākās HashMap Metodes
+
+### Pielikšana un Atjaunināšana
+
+```java
+HashMap<String, Integer> rezultati = new HashMap<>();
+
+rezultati.put("Alice", 100);     // Pievienoja jaunu rezultātu
+rezultati.put("Bob", 150);
+rezultati.put("Alice", 200);     // Atjaunoja eksistējošo rezultātu (Alice kļust 200)
+```
+
+### Vērtību Saņemšana
+
+```java
+HashMap<String, Integer> rezultati = new HashMap<>();
+rezultati.put("Alice", 100);
+
+int rezultats = rezultati.get("Alice");        // 100
+Integer trukstosaVertiba = rezultati.get("Dave");   // null (neeksistē)
+
+// Pieprasīšana ar noklusējuma vērtību
+int rezultats2 = rezultati.getOrDefault("Dave", 0);  // 0 (vismaz atgriež noklusējumu)
+```
+
+### Atslēgvārdu/Vērtību pārbaudīšana
+
+```java
+HashMap<String, Integer> rezultati = new HashMap<>();
+rezultati.put("Alice", 100);
+
+boolean irAlice = rezultati.containsKey("Alice");    // true
+boolean irDave = rezultati.containsKey("Dave");      // false
+
+boolean ir100 = rezultati.containsValue(100);        // true
+boolean ir200 = rezultati.containsValue(200);        // false
+```
+
+### Izņemšana no saraksta
+
+```java
+HashMap<String, Integer> rezultati = new HashMap<>();
+rezultati.put("Alice", 100);
+rezultati.put("Bob", 150);
+
+rezultati.remove("Alice");           // Izņem pēc atslēgvārda
+System.out.println(rezultati);       // {Bob=150}
+
+rezultati.clear();                   // Iztīra visu
+System.out.println(rezultati);       // {}
+```
+
+### Lieluma un Tukšuma Pārbaudīšana
+
+```java
+HashMap<String, Integer> rezultati = new HashMap<>();
+rezultati.put("Alice", 100);
+
+int lielums = scores.size();         // 1
+boolean tukss = rezultati.isEmpty(); // false
+```
+
+## Ciklēšana cauri HashMaps
+
+### Atslēgvārdu Ciklēšana
+
+```java
+HashMap<String, Integer> rezultati = new HashMap<>();
+rezultati.put("Alice", 100);
+rezultati.put("Bob", 150);
+rezultati.put("Charlie", 75);
+
+for (String vards : rezultati.keySet()) {
+    System.out.println(vards);
+}
+// Izmetīs: Alice, Bob, Charlie (kārtība var atšķirties)
+```
+
+### Vērtību Ciklēšana
+
+```java
+for (Integer rezultats : rezultati.values()) {
+    System.out.println(rezultats);
+}
+// Izmetīs: 100, 150, 75 (kārtība var atšķirties)
+```
+
+### Atslēgvārdu un Vērtību Ciklēšana
+
+```java
+for (String vards : rezultati.keySet()) {
+    int rezultats = rezultati.get(vards);
+    System.out.println(vards + ": " + rezultats);
+}
+
+// Vai izmantojot entrySet (efektīvāk)
+for (var ievaditais : scores.entrySet()) {
+    String vards = ievaditais.getKey();
+    int rezultats = ievaditais.getValue();
+    System.out.println(vards + ": " + rezultats);
+}
+```
+
+<Callout type="info" title="HashMap Kārtība">
+  HashMap **neuztur** ievietošanas kārtību! Ja nepieciešama kārtība, izmanto `LinkedHashMap`:
+
+  ```java
+  import java.util.LinkedHashMap;
+
+  LinkedHashMap<String, Integer> sakartotiRezultati = new LinkedHashMap<>();
+  sakartotiRezultati.put("Alice", 100);
+  sakartotiRezultati.put("Bob", 150);
+  sakartotiRezultati.put("Charlie", 75);
+
+  // Atgriezīs pēc ievietošanas kārtības
+  for (String vards : sakartotiRezultati.keySet()) {
+      System.out.println(vards);
+  }
+  // Izmetīs: Alice, Bob, Charlie (garantēti)
+  ```
+</Callout>
+
+## Praktiskie Piemēri
+
+### Spēlētāju Statistikas Sistēma
+
+```java
+import java.util.HashMap;
+
+public class PlayerStats {
+    private HashMap<String, Integer> stats;
+    
+    public PlayerStats() {
+        this.stats = new HashMap<>();
+        // Initialize default stats
+        stats.put("health", 100);
+        stats.put("mana", 50);
+        stats.put("strength", 10);
+        stats.put("defense", 5);
+        stats.put("speed", 8);
+    }
+    
+    public int getStat(String statName) {
+        return stats.getOrDefault(statName, 0);
+    }
+    
+    public void setStat(String statName, int value) {
+        stats.put(statName, value);
+    }
+    
+    public void modifyStat(String statName, int amount) {
+        int current = getStat(statName);
+        stats.put(statName, current + amount);
+    }
+    
+    public void displayStats() {
+        System.out.println("=== Spēlētāja Stati ===");
+        for (var entry : stats.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+}
+
+// Pielietojums
+public class Main {
+    public static void main(String[] args) {
+        PlayerStats stats = new PlayerStats();
+        stats.displayStats();
+        
+        stats.modifyStat("strength", 5);
+        stats.modifyStat("health", -20);
+        
+        System.out.println("\nPēc modifikācijas:");
+        stats.displayStats();
+    }
+}
+```
+
+### Priekšmetu Īpašību Datubāze
+
+```java
+import java.util.HashMap;
+
+public class ItemDatabase {
+    private HashMap<String, HashMap<String, Object>> items;
+    
+    public ItemDatabase() {
+        this.items = new HashMap<>();
+    }
+    
+    public void addItem(String itemName) {
+        HashMap<String, Object> properties = new HashMap<>();
+        properties.put("damage", 0);
+        properties.put("durability", 100);
+        properties.put("rarity", "Common");
+        properties.put("stackable", true);
+        
+        items.put(itemName, properties);
+    }
+    
+    public void setProperty(String itemName, String property, Object value) {
+        if (items.containsKey(itemName)) {
+            items.get(itemName).put(property, value);
+        }
+    }
+    
+    public Object getProperty(String itemName, String property) {
+        if (items.containsKey(itemName)) {
+            return items.get(itemName).get(property);
+        }
+        return null;
+    }
+    
+    public void displayItem(String itemName) {
+        if (!items.containsKey(itemName)) {
+            System.out.println("Priekšmets nav atrasts!");
+            return;
+        }
+        
+        System.out.println("=== " + itemName + " ===");
+        HashMap<String, Object> props = items.get(itemName);
+        for (var entry : props.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+}
+
+// Pielietojums
+public class Main {
+    public static void main(String[] args) {
+        ItemDatabase db = new ItemDatabase();
+        
+        db.addItem("Iron Sword");
+        db.setProperty("Iron Sword", "damage", 15);
+        db.setProperty("Iron Sword", "rarity", "Uncommon");
+        
+        db.displayItem("Iron Sword");
+    }
+}
+```
+
+### Konfigurācijas Menidžeris
+
+```java
+import java.util.HashMap;
+
+public class GameConfig {
+    private HashMap<String, String> settings;
+    
+    public GameConfig() {
+        this.settings = new HashMap<>();
+        loadDefaults();
+    }
+    
+    private void loadDefaults() {
+        settings.put("difficulty", "normal");
+        settings.put("musicVolume", "50");
+        settings.put("sfxVolume", "50");
+        settings.put("renderDistance", "10");
+        settings.put("showFPS", "false");
+    }
+    
+    public String getSetting(String key) {
+        return settings.getOrDefault(key, "");
+    }
+    
+    public void setSetting(String key, String value) {
+        settings.put(key, value);
+        System.out.println("Set " + key + " to " + value);
+    }
+    
+    public int getIntSetting(String key) {
+        String value = getSetting(key);
+        try {
+            return Integer.parseInt(value);
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+    
+    public boolean getBooleanSetting(String key) {
+        return "true".equalsIgnoreCase(getSetting(key));
+    }
+    
+    public void displaySettings() {
+        System.out.println("=== Spēles Iestatījumi ===");
+        for (var entry : settings.entrySet()) {
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+        }
+    }
+}
+```
+
+### Spēlētāja Inventārs ar Skaitu
+
+```java
+import java.util.HashMap;
+
+public class Inventars {
+    private HashMap<String, Integer> prieksmeti;
+    private int maxVietas;
+    
+    public Inventars(int maxVietas) {
+        this.prieksmeti = new HashMap<>();
+        this.maxVietas = maxVietas;
+    }
+    
+    public boolean pievienotPrieksmetu(String prieksmetaNosaukums, int daudzums) {
+        if (items.size() >= maxVietas && !prieksmeti.containsKey(prieksmetaNosaukums)) {
+            System.out.println("Inventārs pilns!");
+            return false;
+        }
+        
+        int esosais = prieksmeti.getOrDefault(prieksmetaNosaukums, 0);
+        prieksmeti.put(itemName, esosais + daudzums);
+        System.out.println("Pievienoti " + daudzums + "x " + prieksmetaNosaukums);
+        return true;
+    }
+    
+    public boolean atnemtPrieksmetu(String prieksmetaNosaukums, int daudzums) {
+        if (!prieksmeti.containsKey(prieksmetaNosaukums)) {
+            System.out.println("Nav tādu priekšmetu!");
+            return false;
+        }
+        
+        int esosais = prieksmeti.get(prieksmetaNosaukums);
+        if (esosais < daudzums) {
+            System.out.println("Nepietiek " + prieksmetaNosaukums);
+            return false;
+        }
+        
+        if (esosais == daudzums) {
+            prieksmeti.remove(prieksmetaNosaukums);
+        } else {
+            items.put(prieksmetaNosaukums, esosais - daudzums);
+        }
+        
+        System.out.println("Atņemti " + daudzums + "x " + prieksmetaNosaukums);
+        return true;
+    }
+    
+    public int getDaudzums(String prieksmetaNosaukums) {
+        return prieksmeti.getOrDefault(prieksmetaNosaukums, 0);
+    }
+    
+    public boolean irPrieksmeti(String prieksmetaNosaukums) {
+        return prieksmeti.containsKey(prieksmetaNosaukums);
+    }
+    
+    public void paraditInventaru() {
+        System.out.println("\n=== Inventārs (" + prieksmeti.size() + "/" + maxVietas + " vietas) ===");
+        if (prieksmeti.isEmpty()) {
+            System.out.println("Tukšs");
+        } else {
+            for (var ievaditais : prieksmeti.entrySet()) {
+                System.out.println(ievaditais.getKey() + " x" + ievaditais.getValue());
+            }
+        }
+    }
+}
+
+// Pielietojums
+public class Main {
+    public static void main(String[] args) {
+        Inventars inv = new Inventars(10);
+        
+        inv.addItem("Koks", 64);
+        inv.addItem("Akmens", 32);
+        inv.addItem("Koks", 20);  // Pieliek pie esošā
+        
+        inv.paraditInventaru();
+        
+        inv.atnemtPrieksmetu("Koks", 50);
+        inv.paraditInventaru();
+    }
+}
+```
+
+### Cooldown/Atdzišanas Pārvaldīšana
+
+```java
+import java.util.HashMap;
+
+public class CooldownManager {
+    private HashMap<String, Long> cooldowns;
+    
+    public CooldownManager() {
+        this.cooldowns = new HashMap<>();
+    }
+    
+    public void startCooldown(String ability, long durationMs) {
+        long endTime = System.currentTimeMillis() + durationMs;
+        cooldowns.put(ability, endTime);
+        System.out.println(ability + " on cooldown for " + (durationMs / 1000) + " seconds");
+    }
+    
+    public boolean isOnCooldown(String ability) {
+        if (!cooldowns.containsKey(ability)) {
+            return false;
+        }
+        
+        long endTime = cooldowns.get(ability);
+        long now = System.currentTimeMillis();
+        
+        if (now >= endTime) {
+            cooldowns.remove(ability);
+            return false;
+        }
+        
+        return true;
+    }
+    
+    public long getRemainingTime(String ability) {
+        if (!isOnCooldown(ability)) {
+            return 0;
+        }
+        
+        long endTime = cooldowns.get(ability);
+        long now = System.currentTimeMillis();
+        return (endTime - now) / 1000;  // Return seconds
+    }
+    
+    public boolean useAbility(String ability, long cooldownSeconds) {
+        if (isOnCooldown(ability)) {
+            long remaining = getRemainingTime(ability);
+            System.out.println(ability + " is on cooldown (" + remaining + "s atlicis)");
+            return false;
+        }
+        
+        System.out.println("Izmantoja " + ability + "!");
+        startCooldown(ability, cooldownSeconds * 1000);
+        return true;
+    }
+}
+```
+
+## HashMaps ar Pielāgotiem Objektiem
+
+Glabā klases kā vērtības
+
+```java
+public class Player {
+    private String name;
+    private int level;
+    private int health;
+    
+    public Player(String name, int level) {
+        this.name = name;
+        this.level = level;
+        this.health = 100;
+    }
+    
+    // Getters and setters...
+    
+    @Override
+    public String toString() {
+        return name + " (Lv. " + level + ", HP: " + health + ")";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        HashMap<String, Player> players = new HashMap<>();
+        
+        players.put("player1", new Player("Alice", 10));
+        players.put("player2", new Player("Bob", 15));
+        
+        // Get and use player
+        Player alice = players.get("player1");
+        System.out.println(alice);
+    }
+}
+```
+
+## Ievietotas HashMaps
+
+HashMaps var saturēt citus HashMaps
+
+```java
+// Glabā vairākas īpašības katrā spēlētājā
+HashMap<String, HashMap<String, Integer>> playerData = new HashMap<>();
+
+// Pievieno spēlētāju ar statistiku
+HashMap<String, Integer> aliceStats = new HashMap<>();
+aliceStats.put("level", 10);
+aliceStats.put("health", 100);
+aliceStats.put("mana", 50);
+playerData.put("Alice", aliceStats);
+
+// Piekļuve ievietotajiem datiem
+int aliceLevel = playerData.get("Alice").get("level");
+System.out.println("Alice's level: " + aliceLevel);
+```
+
+## Praktiski Piemēri
+
+1. **Tālruņu grāmata**: izveido tālruņu grāmatu, kurā tiek glabāti vārdi un tālruņa numuri. Pievieno metodes, kas:
+   - Pievieno kontaktu
+   - Atrod nummuru pēc vārda
+   - Izdzēš kontaktu
+   - Parāda visus kontaktus
+
+2. **Atzīmju Pārvaldnieks**: Glabā studentu vārdus un atzīmes. Izveido metodes, kas:
+   - Pievieno studentu ar atzīmi
+   - Atjauno atzīmi
+   - Aprēķina klases vidējo
+   - Atrod augstāko atzīmi
+
+3. **Vārdu Skaitītājs**: Izveido programmu, kas skaita cik reizes katrs vārds parādās teikumā, izmantojot HashMap.
+
+4. **Priekšmetu Veikals**: Izveido veikalu, kurā priekšmetiem ir nosaukumi un cenas. Pievieno metodes, kas:
+   - Pievieno priekšmetu ar cenu
+   - Pārdod priekšmetu
+   - Pieliek atlaidi visiem priekšmetiem
+   - Parāda visus priekšmetus ar cenām
+
+---

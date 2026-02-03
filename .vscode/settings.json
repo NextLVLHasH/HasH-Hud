@@ -1,0 +1,9 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd \"c:\\\\Hytale Mods\\\\HudMod\" ; \\.\\\\gradlew build$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    },
+    "java.compile.nullAnalysis.mode": "automatic"
+}

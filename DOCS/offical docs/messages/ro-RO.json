@@ -1,0 +1,75 @@
+{
+  "displayName": "Română",
+  "nav": {
+    "title": "Moduri Hytale",
+    "documentation": "Documentation",
+    "sponsors": "Sponsors",
+    "search": "Search"
+  },
+  "home": {
+    "title": "#1 Resource for Hytale Modding {flipwords}",
+    "flipwords": [
+      "Guides",
+      "Documentation",
+      "Unelte",
+      "Tutorials"
+    ],
+    "description": "Cea mai bună resursă făcută de comunitate pentru a moda Hytale, prezentat cu ghiduri și documentație în detaliu, și unelte esențiale pentru a începe aventura ta cu modarea Hytale.",
+    "documentation": "Docs",
+    "forum": "Forum",
+    "discord": "Join the community!",
+    "memberCount": "{count} Members",
+    "countdown": "Hytale releases in {countdown}",
+    "countdownUnits": {
+      "hours": "h",
+      "minutes": "m",
+      "seconds": "s"
+    },
+    "hytaleReleased": "Hytale is out!"
+  },
+  "sponsors": {
+    "title": "Support Us",
+    "description": "HytaleModding is an open-source community project, and part of managing the community involves paying for services, servers and infrastructure, like hosting this website. If you would like to support the project, consider becoming a sponsor! We use OpenCollective so you can see how funds are being used to support the community.",
+    "ourSponsors": "Our Sponsors"
+  },
+  "misc": {
+    "loading": "Loading...",
+    "failedToLoad": "Failed to load.",
+    "gitInfoUnavailable": "Git info not available",
+    "credit": "Written by",
+    "supportUs": "Support Us"
+  },
+  "meta": {
+    "established_information": {
+      "title": "Established Information",
+      "separator": "Specific Categories",
+      "server": {
+        "title": "Server",
+        "content_categories": {
+          "title": "Content Categories"
+        },
+        "interface": {
+          "title": "Interface"
+        }
+      },
+      "client": {
+        "title": "Client"
+      },
+      "gameplay": {
+        "title": "Gameplay"
+      },
+      "misc": {
+        "title": "Miscellaneous"
+      }
+    },
+    "guides": {
+      "title": "Guides",
+      "java_basics": {
+        "title": "Java Basics"
+      }
+    },
+    "community_projects": {
+      "title": "Community Projects"
+    }
+  }
+}

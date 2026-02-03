@@ -1,0 +1,23 @@
+// HUD Menu Indicator - Wood pixel art style
+// Use /hudmenu command to open the waypoint menu
+
+// Menu indicator panel
+Group #HudMenuButton {
+  Anchor: (Right: 14, Top: 120, Width: 132, Height: 60);
+  Background: #6B4423;
+  Visible: true;
+  
+  // Title text centered inside panel
+  Label #JTitle {
+    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+    Style: (FontSize: 14, RenderBold: true, TextColor: #ffffff, HorizontalAlignment: Center, VerticalAlignment: Center);
+    Text: "HUD Menu";
+  }
+}
+
+// Command text - shows the command to use below panel
+Label #JPressText {
+  Anchor: (Right: 14, Top: 185, Width: 132, Height: 20);
+  Style: (FontSize: 9, TextColor: #CCCCCC, HorizontalAlignment: Center, VerticalAlignment: Center);
+  Text: "Use /hudmenu";
+}

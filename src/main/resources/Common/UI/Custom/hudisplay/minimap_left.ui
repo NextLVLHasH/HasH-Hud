@@ -1,0 +1,666 @@
+@MinimapOutlineTex = PatchStyle(TexturePath: "assets/minimapoutline.png");
+Group #MinimapContainer {
+  Anchor: (Width: 256, Height: 296, Top: 110, Left: 20);
+
+  Group #MinimapMap {
+    Anchor: (Left: 0, Top: 0, Width: 256, Height: 256);
+
+    Group #MapGrid {
+      Anchor: (Left: 23, Top: 17, Width: 220, Height: 222);
+      Group #P0000 { Anchor: (Left: 0, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0100 { Anchor: (Left: 8, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0200 { Anchor: (Left: 17, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0300 { Anchor: (Left: 25, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0400 { Anchor: (Left: 34, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0500 { Anchor: (Left: 42, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0600 { Anchor: (Left: 50, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0700 { Anchor: (Left: 59, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0800 { Anchor: (Left: 67, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0900 { Anchor: (Left: 76, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0a00 { Anchor: (Left: 84, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0b00 { Anchor: (Left: 92, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0c00 { Anchor: (Left: 101, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0d00 { Anchor: (Left: 109, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0e00 { Anchor: (Left: 118, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0f00 { Anchor: (Left: 126, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0g00 { Anchor: (Left: 134, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0h00 { Anchor: (Left: 143, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0i00 { Anchor: (Left: 151, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0j00 { Anchor: (Left: 160, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0k00 { Anchor: (Left: 168, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0l00 { Anchor: (Left: 176, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0m00 { Anchor: (Left: 185, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0n00 { Anchor: (Left: 193, Top: 0, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0o00 { Anchor: (Left: 202, Top: 0, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0001 { Anchor: (Left: 0, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0101 { Anchor: (Left: 8, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0201 { Anchor: (Left: 17, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0301 { Anchor: (Left: 25, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0401 { Anchor: (Left: 34, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0501 { Anchor: (Left: 42, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0601 { Anchor: (Left: 50, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0701 { Anchor: (Left: 59, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0801 { Anchor: (Left: 67, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0901 { Anchor: (Left: 76, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a01 { Anchor: (Left: 84, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b01 { Anchor: (Left: 92, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c01 { Anchor: (Left: 101, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d01 { Anchor: (Left: 109, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e01 { Anchor: (Left: 118, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f01 { Anchor: (Left: 126, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g01 { Anchor: (Left: 134, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h01 { Anchor: (Left: 143, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i01 { Anchor: (Left: 151, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0j01 { Anchor: (Left: 160, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0k01 { Anchor: (Left: 168, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0l01 { Anchor: (Left: 176, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0m01 { Anchor: (Left: 185, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0n01 { Anchor: (Left: 193, Top: 8, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0o01 { Anchor: (Left: 202, Top: 8, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0002 { Anchor: (Left: 0, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0102 { Anchor: (Left: 8, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0202 { Anchor: (Left: 17, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0302 { Anchor: (Left: 25, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0402 { Anchor: (Left: 34, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0502 { Anchor: (Left: 42, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0602 { Anchor: (Left: 50, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0702 { Anchor: (Left: 59, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0802 { Anchor: (Left: 67, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0902 { Anchor: (Left: 76, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a02 { Anchor: (Left: 84, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b02 { Anchor: (Left: 92, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c02 { Anchor: (Left: 101, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d02 { Anchor: (Left: 109, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e02 { Anchor: (Left: 118, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f02 { Anchor: (Left: 126, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g02 { Anchor: (Left: 134, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h02 { Anchor: (Left: 143, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i02 { Anchor: (Left: 151, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j02 { Anchor: (Left: 160, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0k02 { Anchor: (Left: 168, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0l02 { Anchor: (Left: 176, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0m02 { Anchor: (Left: 185, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0n02 { Anchor: (Left: 193, Top: 17, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0o02 { Anchor: (Left: 202, Top: 17, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0003 { Anchor: (Left: 0, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0103 { Anchor: (Left: 8, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0203 { Anchor: (Left: 17, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0303 { Anchor: (Left: 25, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0403 { Anchor: (Left: 34, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0503 { Anchor: (Left: 42, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0603 { Anchor: (Left: 50, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0703 { Anchor: (Left: 59, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0803 { Anchor: (Left: 67, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0903 { Anchor: (Left: 76, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a03 { Anchor: (Left: 84, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b03 { Anchor: (Left: 92, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c03 { Anchor: (Left: 101, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d03 { Anchor: (Left: 109, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e03 { Anchor: (Left: 118, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f03 { Anchor: (Left: 126, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g03 { Anchor: (Left: 134, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h03 { Anchor: (Left: 143, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i03 { Anchor: (Left: 151, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0j03 { Anchor: (Left: 160, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0k03 { Anchor: (Left: 168, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0l03 { Anchor: (Left: 176, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0m03 { Anchor: (Left: 185, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0n03 { Anchor: (Left: 193, Top: 25, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0o03 { Anchor: (Left: 202, Top: 25, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0004 { Anchor: (Left: 0, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0104 { Anchor: (Left: 8, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0204 { Anchor: (Left: 17, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0304 { Anchor: (Left: 25, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0404 { Anchor: (Left: 34, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0504 { Anchor: (Left: 42, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0604 { Anchor: (Left: 50, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0704 { Anchor: (Left: 59, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0804 { Anchor: (Left: 67, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0904 { Anchor: (Left: 76, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a04 { Anchor: (Left: 84, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b04 { Anchor: (Left: 92, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c04 { Anchor: (Left: 101, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d04 { Anchor: (Left: 109, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e04 { Anchor: (Left: 118, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f04 { Anchor: (Left: 126, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g04 { Anchor: (Left: 134, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h04 { Anchor: (Left: 143, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i04 { Anchor: (Left: 151, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j04 { Anchor: (Left: 160, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k04 { Anchor: (Left: 168, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l04 { Anchor: (Left: 176, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m04 { Anchor: (Left: 185, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0n04 { Anchor: (Left: 193, Top: 34, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0o04 { Anchor: (Left: 202, Top: 34, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0005 { Anchor: (Left: 0, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0105 { Anchor: (Left: 8, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0205 { Anchor: (Left: 17, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0305 { Anchor: (Left: 25, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0405 { Anchor: (Left: 34, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0505 { Anchor: (Left: 42, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0605 { Anchor: (Left: 50, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0705 { Anchor: (Left: 59, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0805 { Anchor: (Left: 67, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0905 { Anchor: (Left: 76, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a05 { Anchor: (Left: 84, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b05 { Anchor: (Left: 92, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c05 { Anchor: (Left: 101, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d05 { Anchor: (Left: 109, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e05 { Anchor: (Left: 118, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f05 { Anchor: (Left: 126, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g05 { Anchor: (Left: 134, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h05 { Anchor: (Left: 143, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i05 { Anchor: (Left: 151, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j05 { Anchor: (Left: 160, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k05 { Anchor: (Left: 168, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l05 { Anchor: (Left: 176, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m05 { Anchor: (Left: 185, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0n05 { Anchor: (Left: 193, Top: 42, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0o05 { Anchor: (Left: 202, Top: 42, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0006 { Anchor: (Left: 0, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0106 { Anchor: (Left: 8, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0206 { Anchor: (Left: 17, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0306 { Anchor: (Left: 25, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0406 { Anchor: (Left: 34, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0506 { Anchor: (Left: 42, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0606 { Anchor: (Left: 50, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0706 { Anchor: (Left: 59, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0806 { Anchor: (Left: 67, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0906 { Anchor: (Left: 76, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a06 { Anchor: (Left: 84, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b06 { Anchor: (Left: 92, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c06 { Anchor: (Left: 101, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d06 { Anchor: (Left: 109, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e06 { Anchor: (Left: 118, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f06 { Anchor: (Left: 126, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g06 { Anchor: (Left: 134, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h06 { Anchor: (Left: 143, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i06 { Anchor: (Left: 151, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0j06 { Anchor: (Left: 160, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0k06 { Anchor: (Left: 168, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0l06 { Anchor: (Left: 176, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0m06 { Anchor: (Left: 185, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0n06 { Anchor: (Left: 193, Top: 50, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0o06 { Anchor: (Left: 202, Top: 50, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0007 { Anchor: (Left: 0, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0107 { Anchor: (Left: 8, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0207 { Anchor: (Left: 17, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0307 { Anchor: (Left: 25, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0407 { Anchor: (Left: 34, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0507 { Anchor: (Left: 42, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0607 { Anchor: (Left: 50, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0707 { Anchor: (Left: 59, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0807 { Anchor: (Left: 67, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0907 { Anchor: (Left: 76, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a07 { Anchor: (Left: 84, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b07 { Anchor: (Left: 92, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c07 { Anchor: (Left: 101, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d07 { Anchor: (Left: 109, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e07 { Anchor: (Left: 118, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f07 { Anchor: (Left: 126, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g07 { Anchor: (Left: 134, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h07 { Anchor: (Left: 143, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i07 { Anchor: (Left: 151, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j07 { Anchor: (Left: 160, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k07 { Anchor: (Left: 168, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l07 { Anchor: (Left: 176, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m07 { Anchor: (Left: 185, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0n07 { Anchor: (Left: 193, Top: 59, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0o07 { Anchor: (Left: 202, Top: 59, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0008 { Anchor: (Left: 0, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0108 { Anchor: (Left: 8, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0208 { Anchor: (Left: 17, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0308 { Anchor: (Left: 25, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0408 { Anchor: (Left: 34, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0508 { Anchor: (Left: 42, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0608 { Anchor: (Left: 50, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0708 { Anchor: (Left: 59, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0808 { Anchor: (Left: 67, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0908 { Anchor: (Left: 76, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a08 { Anchor: (Left: 84, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b08 { Anchor: (Left: 92, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c08 { Anchor: (Left: 101, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d08 { Anchor: (Left: 109, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e08 { Anchor: (Left: 118, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f08 { Anchor: (Left: 126, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g08 { Anchor: (Left: 134, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h08 { Anchor: (Left: 143, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i08 { Anchor: (Left: 151, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0j08 { Anchor: (Left: 160, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0k08 { Anchor: (Left: 168, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0l08 { Anchor: (Left: 176, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0m08 { Anchor: (Left: 185, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0n08 { Anchor: (Left: 193, Top: 67, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0o08 { Anchor: (Left: 202, Top: 67, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0009 { Anchor: (Left: 0, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0109 { Anchor: (Left: 8, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0209 { Anchor: (Left: 17, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0309 { Anchor: (Left: 25, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0409 { Anchor: (Left: 34, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0509 { Anchor: (Left: 42, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0609 { Anchor: (Left: 50, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0709 { Anchor: (Left: 59, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0809 { Anchor: (Left: 67, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0909 { Anchor: (Left: 76, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a09 { Anchor: (Left: 84, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b09 { Anchor: (Left: 92, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c09 { Anchor: (Left: 101, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d09 { Anchor: (Left: 109, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e09 { Anchor: (Left: 118, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f09 { Anchor: (Left: 126, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g09 { Anchor: (Left: 134, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h09 { Anchor: (Left: 143, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i09 { Anchor: (Left: 151, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j09 { Anchor: (Left: 160, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k09 { Anchor: (Left: 168, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l09 { Anchor: (Left: 176, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m09 { Anchor: (Left: 185, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0n09 { Anchor: (Left: 193, Top: 76, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0o09 { Anchor: (Left: 202, Top: 76, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000a { Anchor: (Left: 0, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010a { Anchor: (Left: 8, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P020a { Anchor: (Left: 17, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P030a { Anchor: (Left: 25, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P040a { Anchor: (Left: 34, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P050a { Anchor: (Left: 42, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P060a { Anchor: (Left: 50, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P070a { Anchor: (Left: 59, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P080a { Anchor: (Left: 67, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P090a { Anchor: (Left: 76, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a0a { Anchor: (Left: 84, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b0a { Anchor: (Left: 92, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c0a { Anchor: (Left: 101, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d0a { Anchor: (Left: 109, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e0a { Anchor: (Left: 118, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f0a { Anchor: (Left: 126, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g0a { Anchor: (Left: 134, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h0a { Anchor: (Left: 143, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i0a { Anchor: (Left: 151, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j0a { Anchor: (Left: 160, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k0a { Anchor: (Left: 168, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l0a { Anchor: (Left: 176, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m0a { Anchor: (Left: 185, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0n0a { Anchor: (Left: 193, Top: 84, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0o0a { Anchor: (Left: 202, Top: 84, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000b { Anchor: (Left: 0, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P010b { Anchor: (Left: 8, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P020b { Anchor: (Left: 17, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P030b { Anchor: (Left: 25, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P040b { Anchor: (Left: 34, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P050b { Anchor: (Left: 42, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P060b { Anchor: (Left: 50, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P070b { Anchor: (Left: 59, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P080b { Anchor: (Left: 67, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P090b { Anchor: (Left: 76, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a0b { Anchor: (Left: 84, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b0b { Anchor: (Left: 92, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c0b { Anchor: (Left: 101, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d0b { Anchor: (Left: 109, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e0b { Anchor: (Left: 118, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f0b { Anchor: (Left: 126, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g0b { Anchor: (Left: 134, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h0b { Anchor: (Left: 143, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i0b { Anchor: (Left: 151, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0j0b { Anchor: (Left: 160, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0k0b { Anchor: (Left: 168, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0l0b { Anchor: (Left: 176, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0m0b { Anchor: (Left: 185, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0n0b { Anchor: (Left: 193, Top: 92, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0o0b { Anchor: (Left: 202, Top: 92, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P000c { Anchor: (Left: 0, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010c { Anchor: (Left: 8, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P020c { Anchor: (Left: 17, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P030c { Anchor: (Left: 25, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P040c { Anchor: (Left: 34, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P050c { Anchor: (Left: 42, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P060c { Anchor: (Left: 50, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P070c { Anchor: (Left: 59, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P080c { Anchor: (Left: 67, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P090c { Anchor: (Left: 76, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a0c { Anchor: (Left: 84, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b0c { Anchor: (Left: 92, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c0c { Anchor: (Left: 101, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d0c { Anchor: (Left: 109, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e0c { Anchor: (Left: 118, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f0c { Anchor: (Left: 126, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g0c { Anchor: (Left: 134, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h0c { Anchor: (Left: 143, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i0c { Anchor: (Left: 151, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j0c { Anchor: (Left: 160, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k0c { Anchor: (Left: 168, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l0c { Anchor: (Left: 176, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m0c { Anchor: (Left: 185, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0n0c { Anchor: (Left: 193, Top: 101, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0o0c { Anchor: (Left: 202, Top: 101, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000d { Anchor: (Left: 0, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P010d { Anchor: (Left: 8, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P020d { Anchor: (Left: 17, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P030d { Anchor: (Left: 25, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P040d { Anchor: (Left: 34, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P050d { Anchor: (Left: 42, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P060d { Anchor: (Left: 50, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P070d { Anchor: (Left: 59, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P080d { Anchor: (Left: 67, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P090d { Anchor: (Left: 76, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a0d { Anchor: (Left: 84, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b0d { Anchor: (Left: 92, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c0d { Anchor: (Left: 101, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d0d { Anchor: (Left: 109, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e0d { Anchor: (Left: 118, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f0d { Anchor: (Left: 126, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g0d { Anchor: (Left: 134, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h0d { Anchor: (Left: 143, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i0d { Anchor: (Left: 151, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0j0d { Anchor: (Left: 160, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0k0d { Anchor: (Left: 168, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0l0d { Anchor: (Left: 176, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0m0d { Anchor: (Left: 185, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0n0d { Anchor: (Left: 193, Top: 109, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0o0d { Anchor: (Left: 202, Top: 109, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P000e { Anchor: (Left: 0, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010e { Anchor: (Left: 8, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P020e { Anchor: (Left: 17, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P030e { Anchor: (Left: 25, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P040e { Anchor: (Left: 34, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P050e { Anchor: (Left: 42, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P060e { Anchor: (Left: 50, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P070e { Anchor: (Left: 59, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P080e { Anchor: (Left: 67, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P090e { Anchor: (Left: 76, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a0e { Anchor: (Left: 84, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b0e { Anchor: (Left: 92, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c0e { Anchor: (Left: 101, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d0e { Anchor: (Left: 109, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e0e { Anchor: (Left: 118, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f0e { Anchor: (Left: 126, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g0e { Anchor: (Left: 134, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h0e { Anchor: (Left: 143, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i0e { Anchor: (Left: 151, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j0e { Anchor: (Left: 160, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k0e { Anchor: (Left: 168, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l0e { Anchor: (Left: 176, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m0e { Anchor: (Left: 185, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0n0e { Anchor: (Left: 193, Top: 118, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0o0e { Anchor: (Left: 202, Top: 118, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000f { Anchor: (Left: 0, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010f { Anchor: (Left: 8, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P020f { Anchor: (Left: 17, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P030f { Anchor: (Left: 25, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P040f { Anchor: (Left: 34, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P050f { Anchor: (Left: 42, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P060f { Anchor: (Left: 50, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P070f { Anchor: (Left: 59, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P080f { Anchor: (Left: 67, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P090f { Anchor: (Left: 76, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a0f { Anchor: (Left: 84, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b0f { Anchor: (Left: 92, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c0f { Anchor: (Left: 101, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d0f { Anchor: (Left: 109, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e0f { Anchor: (Left: 118, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f0f { Anchor: (Left: 126, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g0f { Anchor: (Left: 134, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h0f { Anchor: (Left: 143, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i0f { Anchor: (Left: 151, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j0f { Anchor: (Left: 160, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k0f { Anchor: (Left: 168, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l0f { Anchor: (Left: 176, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m0f { Anchor: (Left: 185, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0n0f { Anchor: (Left: 193, Top: 126, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0o0f { Anchor: (Left: 202, Top: 126, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000g { Anchor: (Left: 0, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P010g { Anchor: (Left: 8, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P020g { Anchor: (Left: 17, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P030g { Anchor: (Left: 25, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P040g { Anchor: (Left: 34, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P050g { Anchor: (Left: 42, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P060g { Anchor: (Left: 50, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P070g { Anchor: (Left: 59, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P080g { Anchor: (Left: 67, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P090g { Anchor: (Left: 76, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a0g { Anchor: (Left: 84, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b0g { Anchor: (Left: 92, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c0g { Anchor: (Left: 101, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d0g { Anchor: (Left: 109, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e0g { Anchor: (Left: 118, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f0g { Anchor: (Left: 126, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g0g { Anchor: (Left: 134, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h0g { Anchor: (Left: 143, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i0g { Anchor: (Left: 151, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0j0g { Anchor: (Left: 160, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0k0g { Anchor: (Left: 168, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0l0g { Anchor: (Left: 176, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0m0g { Anchor: (Left: 185, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0n0g { Anchor: (Left: 193, Top: 134, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0o0g { Anchor: (Left: 202, Top: 134, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P000h { Anchor: (Left: 0, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010h { Anchor: (Left: 8, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P020h { Anchor: (Left: 17, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P030h { Anchor: (Left: 25, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P040h { Anchor: (Left: 34, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P050h { Anchor: (Left: 42, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P060h { Anchor: (Left: 50, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P070h { Anchor: (Left: 59, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P080h { Anchor: (Left: 67, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P090h { Anchor: (Left: 76, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a0h { Anchor: (Left: 84, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b0h { Anchor: (Left: 92, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c0h { Anchor: (Left: 101, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d0h { Anchor: (Left: 109, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e0h { Anchor: (Left: 118, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f0h { Anchor: (Left: 126, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g0h { Anchor: (Left: 134, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h0h { Anchor: (Left: 143, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i0h { Anchor: (Left: 151, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j0h { Anchor: (Left: 160, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k0h { Anchor: (Left: 168, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l0h { Anchor: (Left: 176, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m0h { Anchor: (Left: 185, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0n0h { Anchor: (Left: 193, Top: 143, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0o0h { Anchor: (Left: 202, Top: 143, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000i { Anchor: (Left: 0, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P010i { Anchor: (Left: 8, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P020i { Anchor: (Left: 17, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P030i { Anchor: (Left: 25, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P040i { Anchor: (Left: 34, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P050i { Anchor: (Left: 42, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P060i { Anchor: (Left: 50, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P070i { Anchor: (Left: 59, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P080i { Anchor: (Left: 67, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P090i { Anchor: (Left: 76, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a0i { Anchor: (Left: 84, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b0i { Anchor: (Left: 92, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c0i { Anchor: (Left: 101, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d0i { Anchor: (Left: 109, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e0i { Anchor: (Left: 118, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f0i { Anchor: (Left: 126, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g0i { Anchor: (Left: 134, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h0i { Anchor: (Left: 143, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i0i { Anchor: (Left: 151, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0j0i { Anchor: (Left: 160, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0k0i { Anchor: (Left: 168, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0l0i { Anchor: (Left: 176, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0m0i { Anchor: (Left: 185, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0n0i { Anchor: (Left: 193, Top: 151, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0o0i { Anchor: (Left: 202, Top: 151, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P000j { Anchor: (Left: 0, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010j { Anchor: (Left: 8, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P020j { Anchor: (Left: 17, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P030j { Anchor: (Left: 25, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P040j { Anchor: (Left: 34, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P050j { Anchor: (Left: 42, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P060j { Anchor: (Left: 50, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P070j { Anchor: (Left: 59, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P080j { Anchor: (Left: 67, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P090j { Anchor: (Left: 76, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a0j { Anchor: (Left: 84, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b0j { Anchor: (Left: 92, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c0j { Anchor: (Left: 101, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d0j { Anchor: (Left: 109, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e0j { Anchor: (Left: 118, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f0j { Anchor: (Left: 126, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g0j { Anchor: (Left: 134, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h0j { Anchor: (Left: 143, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i0j { Anchor: (Left: 151, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j0j { Anchor: (Left: 160, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k0j { Anchor: (Left: 168, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l0j { Anchor: (Left: 176, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m0j { Anchor: (Left: 185, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0n0j { Anchor: (Left: 193, Top: 160, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0o0j { Anchor: (Left: 202, Top: 160, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000k { Anchor: (Left: 0, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010k { Anchor: (Left: 8, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P020k { Anchor: (Left: 17, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P030k { Anchor: (Left: 25, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P040k { Anchor: (Left: 34, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P050k { Anchor: (Left: 42, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P060k { Anchor: (Left: 50, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P070k { Anchor: (Left: 59, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P080k { Anchor: (Left: 67, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P090k { Anchor: (Left: 76, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a0k { Anchor: (Left: 84, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b0k { Anchor: (Left: 92, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c0k { Anchor: (Left: 101, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d0k { Anchor: (Left: 109, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e0k { Anchor: (Left: 118, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f0k { Anchor: (Left: 126, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g0k { Anchor: (Left: 134, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h0k { Anchor: (Left: 143, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i0k { Anchor: (Left: 151, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j0k { Anchor: (Left: 160, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0k0k { Anchor: (Left: 168, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0l0k { Anchor: (Left: 176, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0m0k { Anchor: (Left: 185, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0n0k { Anchor: (Left: 193, Top: 168, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0o0k { Anchor: (Left: 202, Top: 168, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000l { Anchor: (Left: 0, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P010l { Anchor: (Left: 8, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P020l { Anchor: (Left: 17, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P030l { Anchor: (Left: 25, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P040l { Anchor: (Left: 34, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P050l { Anchor: (Left: 42, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P060l { Anchor: (Left: 50, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P070l { Anchor: (Left: 59, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P080l { Anchor: (Left: 67, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P090l { Anchor: (Left: 76, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a0l { Anchor: (Left: 84, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b0l { Anchor: (Left: 92, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c0l { Anchor: (Left: 101, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d0l { Anchor: (Left: 109, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e0l { Anchor: (Left: 118, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f0l { Anchor: (Left: 126, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g0l { Anchor: (Left: 134, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h0l { Anchor: (Left: 143, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i0l { Anchor: (Left: 151, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0j0l { Anchor: (Left: 160, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0k0l { Anchor: (Left: 168, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0l0l { Anchor: (Left: 176, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0m0l { Anchor: (Left: 185, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0n0l { Anchor: (Left: 193, Top: 176, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0o0l { Anchor: (Left: 202, Top: 176, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P000m { Anchor: (Left: 0, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010m { Anchor: (Left: 8, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P020m { Anchor: (Left: 17, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P030m { Anchor: (Left: 25, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P040m { Anchor: (Left: 34, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P050m { Anchor: (Left: 42, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P060m { Anchor: (Left: 50, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P070m { Anchor: (Left: 59, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P080m { Anchor: (Left: 67, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P090m { Anchor: (Left: 76, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0a0m { Anchor: (Left: 84, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0b0m { Anchor: (Left: 92, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0c0m { Anchor: (Left: 101, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0d0m { Anchor: (Left: 109, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0e0m { Anchor: (Left: 118, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0f0m { Anchor: (Left: 126, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0g0m { Anchor: (Left: 134, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0h0m { Anchor: (Left: 143, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; }
+      Group #P0i0m { Anchor: (Left: 151, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; }
+      Group #P0j0m { Anchor: (Left: 160, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0k0m { Anchor: (Left: 168, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0l0m { Anchor: (Left: 176, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0m0m { Anchor: (Left: 185, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0n0m { Anchor: (Left: 193, Top: 185, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0o0m { Anchor: (Left: 202, Top: 185, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P000n { Anchor: (Left: 0, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P010n { Anchor: (Left: 8, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P020n { Anchor: (Left: 17, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P030n { Anchor: (Left: 25, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P040n { Anchor: (Left: 34, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P050n { Anchor: (Left: 42, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P060n { Anchor: (Left: 50, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P070n { Anchor: (Left: 59, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P080n { Anchor: (Left: 67, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P090n { Anchor: (Left: 76, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0a0n { Anchor: (Left: 84, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0b0n { Anchor: (Left: 92, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0c0n { Anchor: (Left: 101, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0d0n { Anchor: (Left: 109, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0e0n { Anchor: (Left: 118, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0f0n { Anchor: (Left: 126, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0g0n { Anchor: (Left: 134, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; }
+      Group #P0h0n { Anchor: (Left: 143, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; }
+      Group #P0i0n { Anchor: (Left: 151, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0j0n { Anchor: (Left: 160, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0k0n { Anchor: (Left: 168, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0l0n { Anchor: (Left: 176, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0m0n { Anchor: (Left: 185, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0n0n { Anchor: (Left: 193, Top: 193, Width: 9, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P0o0n { Anchor: (Left: 202, Top: 193, Width: 8, Height: 9); Background: #2a4a2a; Visible: false; }
+      Group #P000o { Anchor: (Left: 0, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P010o { Anchor: (Left: 8, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P020o { Anchor: (Left: 17, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P030o { Anchor: (Left: 25, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P040o { Anchor: (Left: 34, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P050o { Anchor: (Left: 42, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P060o { Anchor: (Left: 50, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P070o { Anchor: (Left: 59, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P080o { Anchor: (Left: 67, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P090o { Anchor: (Left: 76, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0a0o { Anchor: (Left: 84, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0b0o { Anchor: (Left: 92, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0c0o { Anchor: (Left: 101, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0d0o { Anchor: (Left: 109, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0e0o { Anchor: (Left: 118, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0f0o { Anchor: (Left: 126, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0g0o { Anchor: (Left: 134, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0h0o { Anchor: (Left: 143, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0i0o { Anchor: (Left: 151, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0j0o { Anchor: (Left: 160, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0k0o { Anchor: (Left: 168, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0l0o { Anchor: (Left: 176, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0m0o { Anchor: (Left: 185, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0n0o { Anchor: (Left: 193, Top: 202, Width: 9, Height: 8); Background: #2a4a2a; Visible: false; }
+      Group #P0o0o { Anchor: (Left: 202, Top: 202, Width: 8, Height: 8); Background: #2a4a2a; Visible: false; }
+    }
+  }
+
+  Group #MinimapOutline {
+    Anchor: (Left: 0, Top: 1, Width: 256, Height: 256);
+    Background: @MinimapOutlineTex;
+  }
+
+  Group #MinimapCompassRing {
+    Anchor: (Left: 0, Top: 1, Width: 256, Height: 256);
+
+    Group #CompassMarker0 { Anchor: (Left: 0, Top: 0, Width: 6, Height: 6); Background: #ffffff; Visible: false; }
+    Group #CompassMarker1 { Anchor: (Left: 0, Top: 0, Width: 6, Height: 6); Background: #ffffff; Visible: false; }
+    Group #CompassMarker2 { Anchor: (Left: 0, Top: 0, Width: 6, Height: 6); Background: #ffffff; Visible: false; }
+    Group #CompassMarker3 { Anchor: (Left: 0, Top: 0, Width: 6, Height: 6); Background: #ffffff; Visible: false; }
+    Group #CompassMarker4 { Anchor: (Left: 0, Top: 0, Width: 6, Height: 6); Background: #ffffff; Visible: false; }
+    Group #CompassMarker5 { Anchor: (Left: 0, Top: 0, Width: 6, Height: 6); Background: #ffffff; Visible: false; }
+  }
+
+  Label #MinimapDate {
+    Anchor: (Left: 0, Top: 260, Width: 256, Height: 16);
+    Style: (FontSize: 12, Alignment: Center);
+    Text: "Day 1";
+  }
+
+  Label #MinimapCoords {
+    Anchor: (Left: 0, Top: 276, Width: 256, Height: 16);
+    Style: (FontSize: 11, Alignment: Center);
+    Text: "X: 0  Y: 0  Z: 0";
+  }
+}
+

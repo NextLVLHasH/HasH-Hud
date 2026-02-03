@@ -1,0 +1,75 @@
+{
+  "displayName": "日本語",
+  "nav": {
+    "title": "Hytale Mod開発",
+    "documentation": "ドキュメント",
+    "sponsors": "支援者",
+    "search": "検索"
+  },
+  "home": {
+    "title": "#1 Hytale MOD開発リソース {flipwords}",
+    "flipwords": [
+      "ガイド",
+      "ドキュメント",
+      "ツール",
+      "チュートリアル"
+    ],
+    "description": "HytaleのModdingに関する最大のコミュニティによるリソース。包括的なガイド、詳細なドキュメント、Moddingの度を始めるために必要なツールが揃っています。",
+    "documentation": "ドキュメント",
+    "forum": "フォーラム",
+    "discord": "コミュニティに参加する",
+    "memberCount": "{count}人のメンバー",
+    "countdown": "Hytale releases in {countdown}",
+    "countdownUnits": {
+      "hours": "h",
+      "minutes": "m",
+      "seconds": "s"
+    },
+    "hytaleReleased": "Hytale is out!"
+  },
+  "sponsors": {
+    "title": "支援する",
+    "description": "HytaleModdingはオープンソースのコミュニティプロジェクトです。コミュニティ管理の一環で、サイトのホスティング、サーバーやインフラストラクチャに費用を投じています。\nプロジェクトを支援したい方は支援者になってみませんか？Open Collectiveサービスを利用しているため、資金の透明性が高く、支出の詳細を確認することができます。",
+    "ourSponsors": "支援者一覧"
+  },
+  "misc": {
+    "loading": "ロード中...",
+    "failedToLoad": "ロードに失敗しました",
+    "gitInfoUnavailable": "Gitリポジトリの情報が見つかりません",
+    "credit": "著者",
+    "supportUs": "支援する"
+  },
+  "meta": {
+    "established_information": {
+      "title": "Established Information",
+      "separator": "Specific Categories",
+      "server": {
+        "title": "サーバー",
+        "content_categories": {
+          "title": "Content Categories"
+        },
+        "interface": {
+          "title": "インターフェイス"
+        }
+      },
+      "client": {
+        "title": "クライアント"
+      },
+      "gameplay": {
+        "title": "ゲームプレイ"
+      },
+      "misc": {
+        "title": "その他"
+      }
+    },
+    "guides": {
+      "title": "ガイド",
+      "java_basics": {
+        "title": "Javaの基本"
+      }
+    },
+    "community_projects": {
+      "title": "コミュニティプロジェクト"
+    }
+  }
+}

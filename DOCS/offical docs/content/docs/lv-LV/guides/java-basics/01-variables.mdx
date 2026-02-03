@@ -1,0 +1,77 @@
+---
+title: 01 - Mainīgie un Datu Tipi
+description: Ievads Java programmēšanas mainīgajos un datu tipos.
+---
+
+Mainīgie ir konteineri, kas glabā datus Jūsu programmā. Iedomājaties, ka tās ir apzīmētas kastes kur ievietot dažādu informāciju.
+
+## Kas ir Mainīgais?
+
+Mainīgajam ir trīs galvenie komponenti:
+
+1. **Tips**: Kāda tipa datus tas tur (vesels skaitlis, virkne, pareiza, vai nepareiza īpašība)
+2. **Nosaukums**: Apzīmējums, ko izmantojat atsaucei
+3. **Vērtība**: Iekšā glabātie dati
+
+## Mainīgā Deklarēšana/Izveide
+
+Pirms mainīgā lietošanas tas ir jādeklarē. Piemēram kaste ir jāizveido pirms tajā var kaut ko ielikt. Sintakse ir šāda:
+
+```java
+int age; // A declaration
+age = 18; // An assignment
+
+int age = 18; // Declaration and assignment in one line, also considered an initialization
+```
+
+## Datu Tipu Primitīvi:
+
+Jums varētu rasties jautājums, kas ir "int". Tas ir Primitīvs Datu Tips iekš Java. Javā ir 8 primitīvi datu tipi. Šeit ir paši svarīgākie:
+
+| Datu Tips | Apraksts                      | Piemērs                    |
+| --------- | ----------------------------- | -------------------------- |
+| int       | Skaitlis (Vesels skaitlis)    | `int rezultats = 100;`     |
+| double    | Decimālskaitlis               | `double pi = 3.14;`        |
+| boolean   | Patiesa vai Nepatiesa vērtība | `boolean irAktivs = true;` |
+| char      | Viens burts                   | `char atzime = 'A';`       |
+| String    | Vārdu salikums (teksts)       | `String vards = "Hytale";` |
+
+## Tipa Pārveidošana
+
+Dažkārt tev varētu rasties vēlme pārveidot mainīgā tipu. Iespējamie veidi kā mainīt tipus:
+
+### Automātisks
+
+```java
+int sk = 10;
+double decimalSk = (double) sk; // 10.0 - strādā automātiski
+```
+
+### Manuāli (Apgriežot)
+
+```java
+double decimalSk = 9.78;
+int sk = (int) decimalSk; // 9 - decimālskaitļi tiek nogriezti
+```
+
+## Konstanti
+
+Ja vēlaties mainīgo, kas nedrīkst mainīties, izmantojiet atslēgvārdu 'final':
+
+```java
+final double PI = 3.14159;
+```
+
+**Konvencija**: Konstanti rakstās LIELIEM_BURTIEM_UN_APAKŠSTRĪPĀM
+
+## Prakse
+
+Vislabāk ir praktizēt to, ko tikko iemācījies - neskatoties tagad augšā, mēģini izpildīt soļus pats. Paskaties augstāk tikai, kad iesprūsti!
+
+1. Deklarē integer mainīgo, nosauc to 'dzivibas' un piešķir tam vērtību 3.
+2. Deklarē double mainīgo, nosauc par 'gravitacija' un piešķir tam vērtību 9.81.
+3. Deklarē boolean mainīgo, nosauc par 'vaiSpeleBeigta' un piešķir vērtību false.
+4. Konvertē 'dzivibas' mainīgo uz double mainīgo un nosaki to glabāt iekš mainīgā 'dzivibasKaDecimalskaitli'
+5. Deklarē konstantu 'MAX_LIMENIS' un piešķir tam vērtību 100.
+
+Lieliski! Būsi iemācījies Javas mainīgos un datu tipus. Nākamajā nodarbībā mēs uzzināsim par operatoriem un izteiksmēm.

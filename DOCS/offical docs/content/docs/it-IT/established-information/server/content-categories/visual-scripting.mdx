@@ -1,0 +1,59 @@
+---
+title: Visual Scripting (_Scripting Visivo_)
+description: Un'introduzione a ciò che sappiamo del Visual Scripting in Hytale  al momento di scrivere questo articolo.
+---
+
+# Visual Scripting (*Scripting Visivo*)
+
+Hytale prevede di supportare il Visual Scripting come metodo per rendere accessibili a un pubblico più ampio la logica e il flusso di controllo avanzati. Questo sistema non sarà disponibile al momento del lancio, ma dovrebbe essere disponibile poco dopo.
+
+## Panoramica
+
+Il Visual Scripting in Hytale è progettato per funzionare in modo simile ai Blueprint in Unreal Engine. Consente ai designer di creare comportamenti complessi attraverso un'interfaccia visiva che corrisponde al loro modo di concepire la logica del gioco, senza bisogno di scrivere direttamente il codice.
+
+### Caratteristiche principali
+
+* **Sottoinsieme delle funzionalità di Java**: il Visual Scripting può eseguire un sottoinsieme delle operazioni possibili con i plugin Java.
+* **Facile da usare per i designer**: “I designer hanno a disposizione un linguaggio visivo che rispecchia il loro modo di concepire i comportamenti”.
+* **Estensibile dai programmatori**: i programmatori possono estendere e ottimizzare il sistema aggiungendo nuovi nodi visivi e implementazioni orientate alle prestazioni.
+* **Ambiente di condivisione sicuro**: fornisce un ambiente sandbox sicuro per la condivisione della logica tra i modder.
+
+## Vantaggi rispetto la Programmazione Tradizionale
+
+Il Visual Scripting rende la scrittura di logiche personalizzate più accessibile, eliminando gli ostacoli comuni che si incontrano durante lo sviluppo in Java:
+
+* **Nessuna configurazione complessa dell'ambiente**: Non c'è bisogno di preoccuparsi di installare gli strumenti giusti o di configurare gli ambienti di sviluppo
+* **Sviluppo privo di sintassi**: Rimuove la necessità di imparare e ricordare la sintassi di programmazione
+* **Condivisione più sicura**: costruire del malware tramite Visual Scripting dovrebbe essere praticamente impossibile.
+* **Più inclusivo**: Abbassa la barriera d'ingresso per i non programmatori
+
+## Relazione con Java
+
+Il Visual Scripting e i plugin Java sono progettati per funzionare in tandem:
+
+* **Java estende il Visual Scripting**: i programmatori possono creare nuovi nodi visivi usando Java
+* **Ottimizzazione delle prestazioni**: sebbene il Visual Scripting non sia ottimizzato come Java, i programmatori possono implementare la logica performance-critical in Java ed esporla come nodi visivi.
+* **Il meglio di entrambi i mondi**: consente alla maggior parte della logica di rimanere accessibile nell'ambiente Visual Scripting, mantenendo ottimizzate le operazioni più costose.
+
+Hytale raccomanda vivamente il Visual Scripting in quanto è sia più accessibile che sicuro da condividere e scaricare. Tuttavia, rimanere esclusivamente su Java continuerà a funzionare per coloro che lo preferiscono.
+
+## Visual Scripting 3D
+
+Una delle caratteristiche uniche di Hytale è quella di portare il Visual Scripting direttamente nel mondo 3D:
+
+* **Modifica all'interno del mondo**: collega leve, porte, spawn, trigger e altri elementi direttamente all'interno del gioco.
+* **Creazione di adventure maps**: eccellente per costruire adventure maps e incontri senza uscire da Hytale.
+* **Simile a DOOM SnapMap**: Fornisce un flusso di lavoro familiare per coloro che hanno utilizzato sistemi simili
+* **Completamente integrato**: funziona perfettamente con lo stack di asset e scripting
+
+## Nessun Script Testuale
+
+Hytale ha deciso deliberatamente di non includere i linguaggi di scripting testuali. Il loro ragionamento:
+
+* **Falso compromesso**: Lo script testuale è spesso introdotto per "aiutare i non programmatori", ma richiede ancora concetti di programmazione per apprenderlo
+* **Aumento della complessità**: i programmatori finiscono per destreggiarsi tra due linguaggi, uno dei quali è meno potente.
+* **Richiede ancora la sintassi**: i progettisti devono ancora apprendere la sintassi e i concetti di programmazione.
+* **Meno incluso**: Non risolve veramente il problema di accessibilità
+* **Frammentazione**: evita la “frammentazione della logica in più ‘mezze lingue’”
+
+Hytale ritiene invece che il Visual Scripting sia un approccio migliore che rende la logica di gioco realmente accessibile a un pubblico più ampio, pur mantenendo la potenza e la flessibilità necessarie.

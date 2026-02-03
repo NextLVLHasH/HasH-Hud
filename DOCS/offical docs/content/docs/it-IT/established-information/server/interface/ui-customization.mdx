@@ -1,0 +1,76 @@
+---
+title: Personalizzazione UI
+description: Informazioni sulla personalizzazione dell'UI in Hytale.
+---
+
+L'interfaccia utente può essere personalizzata tramite modding **lato server**. Molte delle pagine dell'UI mostrate ai giocatori possono essere modificate dai proprietari dei server tramite mod.
+
+## Personalizzazione UI ("*interfaccia utente*") in Hytale
+
+Hytale fornisce ampie funzionalità di personalizzazione dell'UI ("*interfaccia utente*")  attraverso il modding lato server, consentendo ai proprietari del server di modificare molte delle pagine dell'UI con cui i giocatori interagiscono.
+
+### Flusso di controllo
+
+L'UI in Hytale segue uno specifico modello di flusso di controllo:
+
+1. Il Server invia i dati dell'interfaccia utente al client
+2. Il Client renderizza l'interfaccia utente
+3. L'utente interagisce con l'interfaccia utente (ad esempio, premendo un pulsante)
+4. Il Client invia l'evento d'interazione al server
+5. Il server esegue la logica di callback per l'evento
+
+Questa architettura significa:
+
+* Il client è responsabile del rendering dell'interfaccia utente e dell'invio delle interazioni dell'utente al server
+* Il server gestisce tutta la logica reale dietro le interazioni dell'utente
+
+<Callout type="warning" title="Possibili Implicazioni sulle Prestazioni">
+  <span>
+    Poiché il server elabora tutta la logica dell'UI, vi è un impatto intrinseco della latenza sulla reattività sull'UI. I clic sui pulsanti e altre interazioni devono raggiungere il server prima di avere effetto, il che significa che il ping di rete influisce direttamente sulla reattività dell'UI.
+  </span>
+
+  <span>
+    Inoltre, dal momento che la modding lato client non è supportato, i valori moddati non persistono sul client.
+  </span>
+</Callout>
+
+### Asset del Layout dell'UI
+
+Il sistema di personalizzazione dell'interfaccia utente di Hytale funziona attraverso la seguente struttura:
+
+* **Layout UI**: Inviato al cliente come asset
+* **Comportamento dell'UI**: Definito nel codice Java
+* **Layout personalizzati**: consente la creazione di layout dell'UI su misura anziché riutilizzare quelli esistenti (a differenza delle modifiche al menu dell'inventario in Minecraft).
+
+### Implementazioni del Framework UI
+
+Hytale attualmente supporta diverse implementazioni dell'UI, con l'intenzione di consolidarsi su NoesisGUI:
+
+#### Implementazione Legacy
+
+* Serve come esempio di funzionalità per modding dei server
+* Utilizza una combinazione di elementi in-game, UI Markup Asset e codice Java per mod
+* Utilizza un linguaggio di markup personalizzato legacy
+* Sarà deprecato a favore di NoesisGUI
+
+#### NoesisGUI (Framework Primario)
+
+* Usa il linguaggio di markup XAML per la definizione dell'interfaccia utente
+* Supporta più lingue per l'internazionalizzazione
+* Funziona con binding C# sul lato client (non C++)
+* Rappresenta la direzione futura del sistema UI di Hytale.
+
+#### Terzo Framework
+
+* Attualmente in fase di rimozione
+* Sarà sostituito da NoesisGUI nell'ambito dell'iniziativa di consolidamento.
+
+### Considerazioni sulle Prestazioni
+
+A causa della natura server-side dell'elaborazione UI, ci sono caratteristiche di prestazione intrinseche da considerare:
+
+* **Impatto sulla latenza**: i clic sui pulsanti e le interazioni con l'interfaccia utente devono essere trasmessi al server prima di avere effetto, il che significa che il ping di rete influisce direttamente sulla reattività dell'interfaccia utente.
+* **Nessuna persistenza lato client**: poiché la modifica lato client non è supportata, nessun valore modificato persiste sul client.
+* **Architettura ottimizzata**: il sistema di Hytale è progettato per ridurre al minimo la latenza attraverso protocolli di comunicazione efficienti e prestazioni del server ottimizzate, garantendo interazioni fluide nonostante i requisiti di elaborazione lato server.
+
+L'architettura dà priorità alla sicurezza e alla coerenza centralizzando la logica dell'interfaccia utente sul server mantenendo al contempo l'esperienza dell'utente reattiva.

@@ -1,0 +1,530 @@
+---
+title: 10 - Masīvu Saraksts un Kolekcijas
+description: Iemācies izmantot elastīgas, maināma izmēra kolekcijas Java.
+---
+
+Masīviem ir fiksēts izmērs, bet ko darīt, ja ir jāpievieno vai jānoņem elementi? Šeit pienāk `ArrayList` - maināma izmēra kolekcija, kas automātiski aug un samazinās.
+
+## ArrayList Pamati
+
+```java
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        // Izveido MasīvuSarakstu no Virknēm
+        ArrayList<String> speletaji = new ArrayList<>();
+        
+        // Pievieno Elementus
+        speletaji.add("Alice");
+        speletaji.add("Bob");
+        speletaji.add("Charlie");
+        
+        System.out.println(speletaji);  // [Alice, Bob, Charlie]
+    }
+}
+```
+
+<Callout type="info" title="ArrayList pret Array">
+  | **Array**                                 | **ArrayList**                                              |
+  | ----------------------------------------- | ---------------------------------------------------------- |
+  | Fiksēta izmēra                            | Maināma izmēra (samazinās/palielinās)                      |
+  | Var turēt primitīvus (int, double u.tml.) | Spēj turēt tikai objektus (Integer, Double, String u.tml.) |
+  | Ātrāka piekļuve                           | Citas funkcijas (pievieno, noņem utt.)                     |
+  | `int[] skaitli = new int[10];`            | `ArrayList<Integer> skaitli = new ArrayList<>();`          |
+</Callout>
+
+## ArrayLists Izveidošana
+
+```java
+import java.util.ArrayList;
+
+// Tukšs ArrayList
+ArrayList<String> prieksmeti = new ArrayList<>();
+
+// Ar sākotnējām vērtībām (Java 9+)
+ArrayList<String> krasas = new ArrayList<>(List.of("Sarkans", "Zaļš", "Zils"));
+
+// Dažādi tipi
+ArrayList<Integer> skaitli = new ArrayList<>();
+ArrayList<Double> cenas = new ArrayList<>();
+ArrayList<Boolean> karogi = new ArrayList<>();
+```
+
+<Callout type="warning" title="ArrayList Primitīvi">
+  Tu nevari izmantot primitīvus tiešā veidā. Izmanto to iesaiņojuma klases:
+
+  ```java
+  // Nepareizi
+  ArrayList<int> skaitli = new ArrayList<>();
+
+  // Pareizi - Ar iekapsulētu/Wrapped klasi
+  ArrayList<Integer> skaitli = new ArrayList<>();
+  ```
+
+  Wrapper klases:
+
+  - `int` → `Integer`
+  - `double` → `Double`
+  - `boolean` → `Boolean`
+  - `char` → `Character`
+</Callout>
+
+## Biežākās ArrayList Metodes:
+
+### Elementu Pievienošana
+
+```java
+ArrayList<String> prieksmeti = new ArrayList<>();
+
+items.add("Zobens");          // Pievieno galā
+items.add("Vairogs");
+items.add(0, "Ķivere");       // Pievieno specifiskajā indeksā
+
+System.out.println(prieksmeti);    // [Ķivere, Zobens, Vairogs]
+```
+
+### Piekļūšana Elementiem
+
+```java
+ArrayList<String> prieksmeti = new ArrayList<>();
+prieksmeti.add("Zobens");
+prieksmeti.add("Vairogs");
+
+String pirmais = prieksmeti.get(0);    // "Zobens"
+String otrais = prieksmeti.get(1);     // "Vairogs"
+
+int lielums = prieksmeti.lielums();        // 2
+```
+
+### Elementu Noņemšana
+
+```java
+ArrayList<String> prieksmeti = new ArrayList<>();
+prieksmeti.add("Zobens");
+prieksmeti.add("Vairogs");
+prieksmeti.add("Dzira");
+
+prieksmeti.remove(1);               // Noņemts ar indeksu (Vairogs)
+prieksmeti.remove("Dzira");         // Noņemts ar vērtību
+
+System.out.println(prieksmeti);     // [Zobens]
+```
+
+### Satura Pārbaude
+
+```java
+ArrayList<String> prieksmeti = new ArrayList<>();
+prieksmeti.add("Zobens");
+prieksmeti.add("Vairogs");
+
+boolean hasSword = prieksmeti.contains("Zobens");       // true
+boolean hasAxe = prieksmeti.contains("Cirvis");         // false
+
+boolean isEmpty = prieksmeti.isEmpty();                 // false
+int lielums = prieksmeti.lielums();                     // 2
+```
+
+### Elementu Modificēšana
+
+```java
+ArrayList<String> prieksmeti = new ArrayList<>();
+prieksmeti.add("Koka Zobens");
+
+prieksmeti.set(0, "Dzels Zobens");    // Aizvietots ar indeksu 0
+
+System.out.println(prieksmeti);     // [Dzels Zobens]
+```
+
+### Visu Elementu Iztīrīšana
+
+```java
+ArrayList<String> items = new ArrayList<>();
+prieksmeti.add("Zobens");
+prieksmeti.add("Vairogs");
+
+prieksmeti.clear();                 // Iztīra visu
+System.out.println(items);     // []
+```
+
+## Ciklēšana cauri ArrayList
+
+### For Loop Izmantošana
+
+```java
+ArrayList<String> speletaji = new ArrayList<>();
+speletaji.add("Alice");
+speletaji.add("Bob");
+speletaji.add("Charlie");
+
+for (int i = 0; i < speletaji.size(); i++) {
+    System.out.println(speletaji.get(i));
+}
+```
+
+### Uzlabotu For Loop Izmantošana
+
+```java
+for (String speletaji : speletaji) {
+    System.out.println(speletaji);
+}
+```
+
+### forEach (Java 8+) Izmantošana
+
+```java
+speletaji.forEach(speletajs -> System.out.println(speletajs));
+```
+
+## Praktiski Piemēri
+
+### Spēlētāja Inventāra Sistēma
+
+```java
+import java.util.ArrayList;
+
+public class Inventars {
+    private ArrayList<String> prieksmeti;
+    private int maxIzmers;
+    
+    public Inventars(int maxIzmers) {
+        this.prieksmets = new ArrayList<>();
+        this.maxIzmers = maxIzmers;
+    }
+    
+    public boolean iedotPrieksmetus(String prieksmets) {
+        if (prieksmeti.size() >= maxIzmers) {
+            System.out.println("Inventārs pilns!");
+            return false;
+        }
+        
+        items.add(prieksmets);
+        System.out.println("Pievienots: " + prieksmets);
+        return true;
+    }
+    
+    public boolean atnemtPrieksmetus(String prieksmets) {
+        if (prieksmeti.remove(prieksmets)) {
+            System.out.println("Noņemti: " + prieksmets);
+            return true;
+        }
+        
+        System.out.println("Priekšmets nav atrasts!");
+        return false;
+    }
+    
+    public void paraditInventaru() {
+        System.out.println("=== Inventārs (" + prieksmeti.size() + "/" + maxIzmers + ") ===");
+        for (int i = 0; i < prieksmeti.size(); i++) {
+            System.out.println((i + 1) + ". " + prieksmeti.get(i));
+        }
+    }
+    
+    public int getPrieksmetuSkaitu() {
+        return prieksmeti.size();
+    }
+    
+    public boolean irPilns() {
+        return prieksmeti.size() >= maxIzmers;
+    }
+}
+
+// Pielietojums
+public class Main {
+    public static void main(String[] args) {
+        Inventars inv = new Inventars(5);
+        
+        inv.addItem("Zobens");
+        inv.addItem("Vairogs");
+        inv.addItem("Dziras");
+        inv.paraditInventaru();
+        
+        inv.atnemtPrieksmetus("Vairogs");
+        inv.paraditInventaru();
+    }
+}
+```
+
+### Quest/Uzdevumu Sistēma
+
+```java
+import java.util.ArrayList;
+
+public class UzdevumuMenidzeris {
+    private ArrayList<String> aktivieUzdevumi;
+    private ArrayList<String> pabeigtieUzdevumi;
+    
+    public UzdevumuMenidzeris() {
+        this.aktivieUzdevumi = new ArrayList<>();
+        this.pabeigtieUzdevumi = new ArrayList<>();
+    }
+    
+    public void saktUzdevumu(String uzdevumaNosaukums) {
+        if (!aktivieUzdevumi.contains(uzdevumaNosaukums)) {
+            aktivieUzdevumi.add(uzdevumaNosaukums);
+            System.out.println("Quests uzsākts: " + uzdevumaNosaukums);
+        } else {
+            System.out.println("Quests jau aktīvs!");
+        }
+    }
+    
+    public void pabeigtUzdevumu(String uzdevumaNosaukums) {
+        if (aktivieUzdevumi.remove(uzdevumaNosaukums)) {
+            pabeigtieUzdevumi.add(uzdevumaNosaukums);
+            System.out.println("Quests pabeigts: " + uzdevumaNosaukums);
+        } else {
+            System.out.println("Quests nav aktīvs!");
+        }
+    }
+    
+    public void paraditUzdevumus() {
+        System.out.println("\n=== Aktīvie Quest ===");
+        if (aktivieUzdevumi.isEmpty()) {
+            System.out.println("Nav aktīvu quest");
+        } else {
+            for (String quest : aktivieUzdevumi) {
+                System.out.println("- " + uzdevums);
+            }
+        }
+        
+        System.out.println("\n=== Pabeigtie Quest ===");
+        if (pabeigtieUzdevumi.isEmpty()) {
+            System.out.println("Nav pabeigtu Quest");
+        } else {
+            for (String quest : pabeigtieQuest) {
+                System.out.println("" + uzdevums);
+            }
+        }
+    }
+    
+    public int getPabeigtoKopsummu() {
+        return pabeigtieQuest.size();
+    }
+}
+```
+
+### Līderu saraksta Sistēma
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Leaderboard {
+    private ArrayList<Integer> scores;
+    private ArrayList<String> players;
+    
+    public Leaderboard() {
+        this.scores = new ArrayList<>();
+        this.players = new ArrayList<>();
+    }
+    
+    public void addScore(String player, int score) {
+        players.add(player);
+        scores.add(score);
+        System.out.println(player + " nopelnīja " + score + " punktus!");
+    }
+    
+    public void displayTop(int count) {
+        System.out.println("\n=== Top " + count + " Spēlētāji ===");
+        
+        // Izveido kopijas, kas jākārto
+        ArrayList<Integer> sortedScores = new ArrayList<>(scores);
+        ArrayList<String> sortedPlayers = new ArrayList<>(players);
+        
+        // Bubble kārtošana (vienkāršākā metode mācoties)
+        for (int i = 0; i < sortedScores.size() - 1; i++) {
+            for (int j = 0; j < sortedScores.size() - i - 1; j++) {
+                if (sortedScores.get(j) < sortedScores.get(j + 1)) {
+                    // Apmaini vietām rezultātus
+                    int tempScore = sortedScores.get(j);
+                    sortedScores.set(j, sortedScores.get(j + 1));
+                    sortedScores.set(j + 1, tempScore);
+                    
+                    // Apmaini vietām spēlētājus
+                    String tempPlayer = sortedPlayers.get(j);
+                    sortedPlayers.set(j, sortedPlayers.get(j + 1));
+                    sortedPlayers.set(j + 1, tempPlayer);
+                }
+            }
+        }
+        
+        // Parādi rezultātu Top
+        int limit = Math.min(count, sortedScores.size());
+        for (int i = 0; i < limit; i++) {
+            System.out.println((i + 1) + ". " + sortedPlayers.get(i) + 
+                             " - " + sortedScores.get(i) + " punkti");
+        }
+    }
+}
+```
+
+### Skaitītājs Spēlētājiem Tiešsaistē
+
+```java
+import java.util.ArrayList;
+
+public class OnlinePlayersTracker {
+    private ArrayList<String> onlinePlayers;
+    
+    public OnlinePlayersTracker() {
+        this.onlinePlayers = new ArrayList<>();
+    }
+    
+    public void playerJoin(String playerName) {
+        if (!onlinePlayers.contains(playerName)) {
+            onlinePlayers.add(playerName);
+            broadcast(playerName + " pievienojās spēlei");
+            updatePlayerCount();
+        }
+    }
+    
+    public void playerLeave(String playerName) {
+        if (onlinePlayers.remove(playerName)) {
+            broadcast(playerName + " pameta spēli");
+            updatePlayerCount();
+        }
+    }
+    
+    public boolean isOnline(String playerName) {
+        return onlinePlayers.contains(playerName);
+    }
+    
+    public int getPlayerCount() {
+        return onlinePlayers.size();
+    }
+    
+    public void listPlayers() {
+        System.out.println("\n=== Online Players (" + getPlayerCount() + ") ===");
+        for (String player : onlinePlayers) {
+            System.out.println("• " + player);
+        }
+    }
+    
+    private void broadcast(String message) {
+        System.out.println("[Server] " + message);
+    }
+    
+    private void updatePlayerCount() {
+        System.out.println("Spēlētāji online: " + getPlayerCount());
+    }
+}
+```
+
+## ArrayList objektu saraksts
+
+Tu vari glabāt ArrayLists:
+
+```java
+public class Speletajs {
+    private String vards;
+    private int limenis;
+    
+    public Speletajs(String vards, int limenis) {
+        this.vards = vards;
+        this.limenis = limenis;
+    }
+    
+    public String getVards() {
+        return vards;
+    }
+    
+    public int getLimenis() {
+        return limenis;
+    }
+    
+    @Override
+    public String uzVirkni() {
+        return vards + " (Lv. " + limenis + ")";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Player> speletaji = new ArrayList<>();
+        
+        speletaji.add(new Speletajs("Alice", 10));
+        speletaji.add(new Speletajs("Bob", 15));
+        speletaji.add(new Speletajs("Charlie", 8));
+        
+        // Parādi visus spēlētājus
+        for (Speletajs speletajs : speletaji) {
+            System.out.println(speletajs);
+        }
+        
+        // Atrodi spēlētāju pēc vārda
+        for (Speletajs speletajs : speletaji) {
+            if (speletajs.getVards().equals("Bob")) {
+                System.out.println("Atradu: " + speletajs);
+            }
+        }
+    }
+}
+```
+
+## Noderīgas ArrayList Operācijas
+
+### Pārvērst par Masīvu
+
+```java
+ArrayList<String> saraksts = new ArrayList<>();
+saraksts.add("A");
+saraksts.add("B");
+
+String[] array = saraksts.toArray(new String[0]);
+```
+
+### Konvertē Array uz ArrayList
+
+```java
+String[] masivs = {"A", "B", "C"};
+ArrayList<String> saraksts = new ArrayList<>(Arrays.asList(masivs));
+```
+
+### Kopē ArrayList
+
+```java
+ArrayList<String> originals = new ArrayList<>();
+originals.add("A");
+originals.add("B");
+
+// Zema kopija
+ArrayList<String> kopija = new ArrayList<>(originals);
+```
+
+### Atrodi Elementa Indeksu
+
+```java
+ArrayList<String> prieksmeti = new ArrayList<>();
+prieksmeti.add("Zobens");
+prieksmeti.add("Vairogs");
+
+int indekss = prieksmeti.indexOf("Vairogs");  // 1
+int navAtrasts = prieksmeti.indexOf("Cirvis");  // -1
+```
+
+## Praktiskie Vingrinājumi
+
+1. **Iepirkumu grozs**: Izveido iepirkumu groza sistēmu:
+   - Pievieno preces
+   - Noņem preces
+   - Aprēķini kopējo preču daudzumu
+   - Iztīri ratiņus
+
+2. **Draugu saraksts**: Izveido draugu pārvaldības sistēmu:
+   - Pievieno draugu
+   - Noņem draugu
+   - Pārbaudi vai ir tāds draugs sarakstā
+   - Parādi visus draugus
+
+3. **Todo saraksts**: Izveidojiet uzdevumu sarakstu:
+   - Pievieno uzdevumu
+   - Iemarķē, kā izdarītu (aiziet uz pabeigto sarakstu)
+   - Parādi aktīvos uzdevumus
+   - Parādi pabeigtos uzdevumus
+
+4. **Augstākie rezultāti**: Izveido rezultātu sistēmu:
+   - Pievieno rezultātus
+   - Parādi Top 5 rezultātus
+   - Noņem zemākos rezultātus, ja vairāk par 10 rezultātiem eksistē
+
+---

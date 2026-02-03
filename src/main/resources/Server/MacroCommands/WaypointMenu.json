@@ -1,0 +1,7 @@
+{
+  "Name": "waypointmenu",
+  "Description": "Open the waypoint menu",
+  "Commands": [
+    "waypoint menu"
+  ]
+}

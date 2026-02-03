@@ -1,0 +1,86 @@
+---
+title: Skrivevejledninger
+---
+
+## Oprettelse af en guidefil
+
+For at begynde at skrive en guide, skal du oprette en fil med filendelsen `.mdx`. Du skal oprette filen i mappen `/content/docs/en`. Det afhænger herefter af, hvilken sektion guiden skal ligge i, så du kan selv vælge, hvilken undermappe den skal placeres i.
+
+Hvis jeg f.eks. vil lave en guide om Java-basics, ville jeg placere den i `/content/docs/en/guides/java-basics`. Du skal muligvis undersøge strukturen lidt, for at finde det rette sted at placere guiden.
+
+<Callout>
+  Hvis der allerede findes en guide i den sektion, du vil skrive om, så kan du blot klikke på "Edit on GitHub" knappen på vores hjemmeside. Det fører dig til den relevante mappe, hvor du kan skrive din guide, så den vises i samme sektion.
+</Callout>
+
+## Frontmatter
+
+Frontmatter er metadata for din guide, som fortæller vores hjemmeside hvordan guiden skal vises. Det skal placeret helt øverst i filen og starter med `---`og slutter med `---`.
+
+Her er et eksempel:
+
+```mdx
+---
+title: "Java Basics"
+description: "Lær det basale af Java programmering." 
+authors:
+    - name: "Dit navn"
+      url: "https://dinhjemmeside.dk"
+---
+```
+
+Som du kan se, er det ret selvforklarende - du skal blot udfylde detaljerne for din specifikke guide. Hvis du ikke har en URL, du vil linke til, så skal du blot undlade at skrive hele den linje. Derudover er forfatter-sektionen valgfri, så hvis du ikke ønsker at tilføje den, kan du blot lade den være tom - dog opfordrer vi dig til at gøre det og kreditere dig selv.
+
+Indrykningen i frontmatter er vigtig, så sørg for at holde den konsekvent i forhold til eksemplet.
+
+## Indholdsstruktur
+
+Du bør strukturere indholdet i din guide på en klar og overskuelig måde. Her er nogle tips til, hvordan du kan gøre det.
+
+- **Introduktion:** Start med en oversigt over emnet og hvad læseren kan forvente at lære.
+- **Forudsætninger:** Angiv eventuelle forudsætninger eller forhåndsviden, som læseren bør have, før vedkommende går i gang med guiden.
+- **Trin-for-trin-instruktioner:** Opdel indholdet i klare og handlingsorienterede trin. Brug overskrifter og underoverskrifter for at strukturere informationen.
+- **Kodeeksempler:** Inkluder kodeeksempler for at illustrere centrale pointer. Sørg for at forklare hvert eksempel grundigt.
+- **Konklusion:** Opsummer de vigtigste pointer, og opfordre læseren til at udforske emnet yderligere eller afprøve det, de har lært.
+
+Hvis du skriver en meget stor sektion, bør du opdele den i flere sider, så det bliver nemmere og overskueligt for læseren. Ingen har lyst til at læse en kæmpe lang sammenhængende tekst.
+
+Når vi skriver guides, bør vi også tænke over, hvordan folk læser dem - mange foretrækker at skimme indhold frem for at læse det i detaljer. Derfor er det bedre at opdele informationen i flere sider, så den fremstår som en mindre mængde indhold for læseren. Derudover burde du overveje at bruge punktopstillinger, nummererede lister og andre formateringsteknikker, for at gøre indholdet mere overskueligt.
+
+## Formatering
+
+Vi bruger [Markdown](https://www.markdownguide.org/) til at formatere vores guides. Her er nogle vigtige punkter, du bør have i mente:
+
+- Brug overskrifter (`#`, `##`, `###`) til at strukturere dit indhold.
+- Brug punktopstillinger og nummererede lister for at skabe klarhed.
+- Brug kodeblokke (\`\`\`) til kodeeksempler.
+- Brug links til at henvise til andre guides eller eksterne ressourcer.
+
+Dette er den samme type formatering, som du ser på de fleste dokumentationshjemmesider samt på sociale medieplatforme som Discord.
+
+Du kan også bruge en Callout til at fremhæve vigtige information eller tips. Brug følgende syntaks:
+
+```mdx
+<Callout>
+    Dette er en callout-besked.
+</Callout>
+```
+
+<Callout>
+  Dette er en callout-besked.
+</Callout>
+
+Du kan ændre farven på callouten, ved at tilføje en `type` attribut. For eksempel:
+
+```mdx
+<Callout type="info">
+    Dette er en info-callout.
+</Callout>
+```
+
+Tilgængelige typer er: `info`, `warning`, `error`, og `success`.
+
+## Konklusion
+
+Det er alt! Du er nu mester i at skrive guides. Husk blot, at du ikke behøver at skrive perfekt engelsk - skriv guiden, som du ville forklare emnet for en anden, og tøv ikke med at bede om feedback eller hjælp, hvis du har brug for det.
+
+God skrivelyst!

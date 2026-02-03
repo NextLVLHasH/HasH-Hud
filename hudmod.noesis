@@ -1,0 +1,4 @@
+<Project>
+  <Assembly>hudmod</Assembly>
+  <DefaultDataNamespace>hudmod</DefaultDataNamespace>
+</Project>

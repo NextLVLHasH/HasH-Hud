@@ -1,0 +1,45 @@
+{
+  "name": "HytaleDocs - Hytale Community Documentation",
+  "short_name": "HytaleDocs",
+  "description": "Community documentation for Hytale. Guides, tutorials, modding and API reference.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#f59e0b",
+  "orientation": "any",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["education", "games", "utilities"],
+  "icons": [
+    {
+      "src": "/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Documentation",
+      "short_name": "Docs",
+      "description": "Browse the documentation",
+      "url": "/en/docs",
+      "icons": [{ "src": "/logo-512.png", "sizes": "512x512" }]
+    },
+    {
+      "name": "API Reference",
+      "short_name": "API",
+      "description": "Explore the API documentation",
+      "url": "/en/docs/api",
+      "icons": [{ "src": "/logo-512.png", "sizes": "512x512" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

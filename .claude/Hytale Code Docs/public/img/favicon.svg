@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="favGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00a8cc"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+  </defs>
+  <!-- Simple isometric cube -->
+  <polygon points="16,2 30,9 30,23 16,30 2,23 2,9" fill="url(#favGradient)"/>
+  <!-- Top highlight -->
+  <polygon points="16,2 30,9 16,16 2,9" fill="#00d4ff" opacity="0.6"/>
+  <!-- H letter -->
+  <g fill="#ffffff">
+    <rect x="7" y="10" width="3" height="12" rx="0.5"/>
+    <rect x="22" y="10" width="3" height="12" rx="0.5"/>
+    <rect x="10" y="14" width="12" height="3" rx="0.5"/>
+  </g>
+</svg>

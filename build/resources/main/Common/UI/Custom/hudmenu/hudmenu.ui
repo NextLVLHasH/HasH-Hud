@@ -1,0 +1,119 @@
+// HUD Menu Page - Painted wood pixel art style
+
+@TitleStyle = LabelStyle(
+    FontSize: 22,
+    TextColor: #FFFFFF,
+    RenderBold: true,
+    HorizontalAlignment: Center,
+    VerticalAlignment: Center,
+    LetterSpacing: 3
+);
+
+@ButtonLabelStyle = LabelStyle(
+    FontSize: 16,
+    TextColor: #FFFFFF,
+    RenderBold: true,
+    HorizontalAlignment: Center,
+    VerticalAlignment: Center
+);
+
+@InputStyle = InputFieldStyle(
+    FontSize: 14,
+    TextColor: #FFFFFF
+);
+
+// Full-screen overlay with centered container
+Group {
+    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+    LayoutMode: Center;
+
+    // Main container panel
+    Group #HudMenuContainer {
+        Anchor: (Width: 400, Height: 320);
+
+        // Wood grain accent border
+        Group #MenuBorderAccent {
+            Anchor: (Left: 4, Top: 4, Right: 4, Bottom: 4);
+            Background: #5D4E37;
+        }
+
+        Group #MenuBackgroundInner {
+            Anchor: (Left: 12, Top: 12, Right: 12, Bottom: 12);
+            Background: #8B6914;
+        }
+
+        Group #MenuBackgroundOuter {
+            Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+            Background: #3D2817;
+        }
+
+        Group #MenuContent {
+            Anchor: (Left: 16, Top: 16, Right: 16, Bottom: 16);
+
+            // Fancy Header with wood border
+            Group #HeaderBorder {
+                Anchor: (Top: 10, Left: 30, Right: 30, Height: 48);
+                Background: #5D4E37;
+            }
+
+            Group #HeaderPanel {
+                Anchor: (Top: 12, Left: 32, Right: 32, Height: 44);
+                Background: #6B4423;
+
+                Label #HeaderIcon {
+                    Anchor: (Left: 8, Top: 0, Bottom: 0, Width: 30);
+                    Style: (FontSize: 22, TextColor: #FFD700, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "◆";
+                }
+
+                Label #MenuTitle {
+                    Anchor: (Left: 38, Top: 0, Right: 38, Bottom: 0);
+                    Style: (FontSize: 20, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center, LetterSpacing: 2);
+                    Text: "HUD MENU";
+                }
+
+                Label #HeaderIconRight {
+                    Anchor: (Right: 8, Top: 0, Bottom: 0, Width: 30);
+                    Style: (FontSize: 22, TextColor: #FFD700, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "◆";
+                }
+            }
+
+            // Waypoints Button - green for waypoint management
+            Button #WaypointsButton {
+                Anchor: (Top: 75, Left: 30, Right: 30, Height: 40);
+                Background: #5A8C3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "WAYPOINTS";
+                }
+            }
+
+            // Settings Button - brown/tan button
+            Button #SettingsButton {
+                Anchor: (Top: 125, Left: 30, Right: 30, Height: 40);
+                Background: #6B4423;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "SETTINGS";
+                }
+            }
+
+            // Close Button - red for close/back
+            Button #CloseButton {
+                Anchor: (Top: 175, Left: 30, Right: 30, Height: 40);
+                Background: #8C3A3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "CLOSE";
+                }
+            }
+        }
+    }
+}

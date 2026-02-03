@@ -1,0 +1,209 @@
+// Waypoint Settings Page - Painted wood pixel art style
+
+@LabelStyle = LabelStyle(
+    FontSize: 15,
+    TextColor: #FFFFFF,
+    HorizontalAlignment: Start,
+    VerticalAlignment: Center,
+    RenderBold: true
+);
+
+@ValueStyle = LabelStyle(
+    FontSize: 15,
+    TextColor: #FFFFFF,
+    HorizontalAlignment: Center,
+    VerticalAlignment: Center
+);
+
+@ButtonLabelStyle = LabelStyle(
+    FontSize: 14,
+    TextColor: #FFFFFF,
+    RenderBold: true,
+    HorizontalAlignment: Center,
+    VerticalAlignment: Center
+);
+
+Group {
+    Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+    LayoutMode: Center;
+
+    Group #SettingsContainer {
+        Anchor: (Width: 550, Height: 580);
+
+        Group #MenuBackgroundInner {
+            Anchor: (Left: 28, Top: 29, Right: 28, Bottom: 29);
+            Background: #8B5A2B;
+        }
+
+        Group #MenuBackgroundOuter {
+            Anchor: (Left: 0, Top: 0, Right: 0, Bottom: 0);
+            Background: #3D2817;
+        }
+
+        Group #SettingsContent {
+            Anchor: (Left: 50, Top: 50, Right: 50, Bottom: 50);
+
+            // Fancy Header with wood border
+            Group #HeaderBorder {
+                Anchor: (Top: 10, Left: 40, Right: 40, Height: 44);
+                Background: #5D4E37;
+            }
+
+            Group #HeaderPanel {
+                Anchor: (Top: 12, Left: 42, Right: 42, Height: 40);
+                Background: #6B4423;
+
+                Label #HeaderIcon {
+                    Anchor: (Left: 8, Top: 0, Bottom: 0, Width: 30);
+                    Style: (FontSize: 22, TextColor: #FFD700, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "◆";
+                }
+
+                Label #SettingsTitle {
+                    Anchor: (Left: 38, Top: 0, Right: 38, Bottom: 0);
+                    Style: (FontSize: 18, TextColor: #FFFFFF, RenderBold: true, HorizontalAlignment: Center, VerticalAlignment: Center, LetterSpacing: 2);
+                    Text: "SETTINGS";
+                }
+
+                Label #HeaderIconRight {
+                    Anchor: (Right: 8, Top: 0, Bottom: 0, Width: 30);
+                    Style: (FontSize: 22, TextColor: #FFD700, HorizontalAlignment: Center, VerticalAlignment: Center);
+                    Text: "◆";
+                }
+            }
+
+            // Zoom Control Section
+            Label #ZoomLabel {
+                Anchor: (Top: 70, Left: 0, Width: 150, Height: 29);
+                Style: @LabelStyle;
+                Text: "Minimap Zoom:";
+            }
+
+            Slider #ZoomSlider {
+                Anchor: (Top: 70, Left: 160, Width: 200, Height: 29);
+                Value: 2;
+                Min: 1;
+                Max: 5;
+            }
+
+            Label #ZoomValue {
+                Anchor: (Top: 70, Right: 0, Width: 80, Height: 29);
+                Style: @ValueStyle;
+                Text: "2x";
+            }
+
+            // HUD Position Section
+            Label #HudPositionLabel {
+                Anchor: (Top: 120, Left: 0, Width: 117, Height: 29);
+                Style: @LabelStyle;
+                Text: "Position:";
+            }
+
+            Group #HudPositionSection {
+                Anchor: (Top: 120, Left: 117, Right: 0, Height: 29);
+
+                Label #HudPositionValue {
+                    Anchor: (Left: 0, Top: 0, Width: 117, Height: 29);
+                    Style: @ValueStyle;
+                    Text: "3 - Top Right";
+                }
+
+                Button #TogglePositionButton {
+                    Anchor: (Right: 0, Top: 0, Width: 63, Height: 29);
+                    Background: #6B4423;
+
+                    Label {
+                        Anchor: (Full: 0);
+                        Style: @ButtonLabelStyle;
+                        Text: "NEXT";
+                    }
+                }
+            }
+
+            // Auto Death Waypoint Section
+            Label #DeathWaypointLabel {
+                Anchor: (Top: 160, Left: 0, Width: 140, Height: 29);
+                Style: @LabelStyle;
+                Text: "Death Waypoint:";
+            }
+
+            Group #DeathWaypointSection {
+                Anchor: (Top: 160, Left: 140, Right: 0, Height: 29);
+
+                Label #DeathWaypointValue {
+                    Anchor: (Left: 0, Top: 0, Width: 60, Height: 29);
+                    Style: @ValueStyle;
+                    Text: "ON";
+                }
+
+                Button #ToggleDeathWaypointButton {
+                    Anchor: (Right: 0, Top: 0, Width: 80, Height: 29);
+                    Background: #6B4423;
+
+                    Label #ToggleDeathLabel {
+                        Anchor: (Full: 0);
+                        Style: @ButtonLabelStyle;
+                        Text: "TOGGLE";
+                    }
+                }
+            }
+
+            // Max Waypoints Info
+            Label #MaxWaypointsLabel {
+                Anchor: (Top: 200, Left: 0, Width: 140, Height: 29);
+                Style: @LabelStyle;
+                Text: "Max Waypoints:";
+            }
+
+            Label #MaxWaypointsValue {
+                Anchor: (Top: 200, Left: 140, Width: 60, Height: 29);
+                Style: @ValueStyle;
+                Text: "12";
+            }
+
+            // Current Waypoints Count
+            Label #CurrentWaypointsLabel {
+                Anchor: (Top: 240, Left: 0, Width: 140, Height: 29);
+                Style: @LabelStyle;
+                Text: "Current Count:";
+            }
+
+            Label #CurrentWaypointsValue {
+                Anchor: (Top: 240, Left: 140, Width: 60, Height: 29);
+                Style: @ValueStyle;
+                Text: "0";
+            }
+
+            // Info Text
+            Label #InfoText {
+                Anchor: (Top: 280, Left: 0, Right: 0, Height: 50);
+                Style: (FontSize: 10, TextColor: #CCCCCC, HorizontalAlignment: Center, VerticalAlignment: Start, Wrap: true);
+                Text: "Waypoints sync with native M-key world map!";
+            }
+
+            // Save Button
+            Button #SaveButton {
+                Anchor: (Left: 0, Bottom: 55, Width: 200, Height: 40);
+                Background: #5A8C3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "SAVE";
+                }
+            }
+
+            // Back Button
+            Button #BackButton {
+                Anchor: (Right: 0, Bottom: 55, Width: 200, Height: 40);
+                Background: #8C3A3A;
+
+                Label {
+                    Anchor: (Full: 0);
+                    Style: @ButtonLabelStyle;
+                    Text: "BACK";
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,75 @@
+{
+  "displayName": "Magyar",
+  "nav": {
+    "title": "Hytale Modding",
+    "documentation": "Dokumentáció",
+    "sponsors": "Támogatók",
+    "search": "Keresés"
+  },
+  "home": {
+    "title": "A Top 1 oldal Hytale modoláshoz {flipwords}",
+    "flipwords": [
+      "Útmutatók",
+      "Dokumentáció",
+      "Eszközök",
+      "Tutorialok"
+    ],
+    "description": "Az első számú közösségi oldal Hytale modoláshoz: teljes útmutatók, részletes dokumentáció, és elengedhetetlen eszközök amikkel azonnal elkezdhetsz modolni!",
+    "documentation": "Dokumentáció",
+    "forum": "Fórum",
+    "discord": "Csatlakozz a közösséghez!",
+    "memberCount": "{count} tag",
+    "countdown": "Hytale megjelenésig {countdown}",
+    "countdownUnits": {
+      "hours": "ó",
+      "minutes": "p",
+      "seconds": "mp\n"
+    },
+    "hytaleReleased": "Megjelent a Hytale!"
+  },
+  "sponsors": {
+    "title": "Támogatás",
+    "description": "A HytaleModding egy nyílt forráskódú, közösség által finanszírozott projekt. A fenntartásba beletartozik a szolgáltatások, szerverek és infrastuktúra bérlése is, aminek ez a weboldal is része. Támogass minket! OpenCollective-et használunk a támogatások nyilvántartásához, ahol bárki megnézheti miként használjuk fel a bejövő összegeket. ",
+    "ourSponsors": "Támogatóink"
+  },
+  "misc": {
+    "loading": "Betöltés...",
+    "failedToLoad": "Sikertelen betöltés.",
+    "gitInfoUnavailable": "Git adatok nem elérhetőek.",
+    "credit": "Készítette",
+    "supportUs": "Támogatás"
+  },
+  "meta": {
+    "established_information": {
+      "title": "Tényleges információk",
+      "separator": "Konkrét kategóriák",
+      "server": {
+        "title": "Szerver",
+        "content_categories": {
+          "title": "Tartalom"
+        },
+        "interface": {
+          "title": "Interfész"
+        }
+      },
+      "client": {
+        "title": "Kliens"
+      },
+      "gameplay": {
+        "title": "Játékmenet"
+      },
+      "misc": {
+        "title": "Egyéb"
+      }
+    },
+    "guides": {
+      "title": "Útmutatók",
+      "java_basics": {
+        "title": "Java alapok"
+      }
+    },
+    "community_projects": {
+      "title": "Közösségi projektek"
+    }
+  }
+}

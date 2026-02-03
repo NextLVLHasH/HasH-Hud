@@ -1,0 +1,75 @@
+{
+  "displayName": "Français",
+  "nav": {
+    "title": "Modding d'Hytale",
+    "documentation": "Documentation",
+    "sponsors": "Sponsors",
+    "search": "Recherche"
+  },
+  "home": {
+    "title": "Ressource #1 pour le modding Hytale {flipwords}",
+    "flipwords": [
+      "Guides",
+      "Documentation",
+      "Outils",
+      "Tutoriels"
+    ],
+    "description": "La ressource communautaire numéro une, comprenant des guides complets, de la documentation détaillée et les outils essentiels pour démarrer votre aventure du modding.",
+    "documentation": "Docs",
+    "forum": "Forum",
+    "discord": "Rejoignez la communauté !",
+    "memberCount": "{count} Membres",
+    "countdown": "Hytale est disponible dans {countdown}",
+    "countdownUnits": {
+      "hours": "h",
+      "minutes": "m",
+      "seconds": "s"
+    },
+    "hytaleReleased": "Hytale est disponible !"
+  },
+  "sponsors": {
+    "title": "Soutenez-nous",
+    "description": "HytaleModding est un projet communautaire open-source, et gérer la communauté implique en partie de financer des services, serveurs et infrastructure, comme héberger ce site web. Si vous voulez soutenir le projet, devenez un sponsor ! Nous utilisons OpenCollective pour que vous puissiez voir comment les fonds sont utilisés pour soutenir la communauté.",
+    "ourSponsors": "Nos Sponsors"
+  },
+  "misc": {
+    "loading": "Chargement...",
+    "failedToLoad": "Échec du chargement.",
+    "gitInfoUnavailable": "Informations de git indisponibles",
+    "credit": "Écrit par",
+    "supportUs": "Soutenez-nous"
+  },
+  "meta": {
+    "established_information": {
+      "title": "Information vérifiée",
+      "separator": "Catégories spécifiques",
+      "server": {
+        "title": "Serveur",
+        "content_categories": {
+          "title": "Catégories de contenu"
+        },
+        "interface": {
+          "title": "Interface"
+        }
+      },
+      "client": {
+        "title": "Client"
+      },
+      "gameplay": {
+        "title": "Gameplay"
+      },
+      "misc": {
+        "title": "Divers"
+      }
+    },
+    "guides": {
+      "title": "Guides",
+      "java_basics": {
+        "title": "Bases de Java"
+      }
+    },
+    "community_projects": {
+      "title": "Projets de la communauté"
+    }
+  }
+}

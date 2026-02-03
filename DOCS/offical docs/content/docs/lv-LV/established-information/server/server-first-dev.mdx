@@ -1,0 +1,28 @@
+---
+title: Serveris-Pirmais Izstrāde
+description: Informācija par Servera-Pirmā Izstrādes nozīmi un vairāk.
+---
+
+Hytale tiek izstrādāts ar "Serveris-Pirmais" pieeju. Tas nozīmē, ka serveris tiek pieņemts par autoratīvo avotu spēles stadijai un loģikai, kamēr klients atbild par renderēšanu un lietotāja ievadi.
+
+## Ko tas nozīmē "Serveris-Pirmais"?
+
+Servera-pirmā arhitektūrā pats serveris atbild par spēles pasaules pārvaldīšanu, noteikumu ieviešanu un spēlētāja ievada apstrādi. Klients savienojas ar serveri, lai saņemtu spēles stadijas izmaiņas un nosūta ievadītos taustiņus. Šī pieeja ļauj nodrošināt konsistenci un godīgumu daudzpēlētāju vidēs, jo serverim ir kontrole pāri spēles loģikai.
+
+## Servera-Pirmā izstrādes ieguvumi
+
+* **Konsistence**: Tā kā serveris ir atoratīvs avots, visi spēlētāji pieredz to pašu spēles stadiju, mazinot atšķirības un šmaukšanos.
+* **Mērogojamība**: Servera-pirmā arhitektūra var būt vieglāk mērogojama, lai pielāgotos lielam spēlētāju daudzumam, jo serveris var pārvaldīt resursus un izdalīt slodzi efektīvi.
+* **Drošība**: Centralizējot spēles loģiku uz servera, kļūst arvien grūtāk spēlētājam negodīgi manipulēt spēles stadiju.
+* **Vieglāki Jauninājumi**: Atjauninājumi un izmaiņas var veidot uz servera bez nepieciešamības spēlētājiem lejuplādēt jaunas klienta versijas.
+* **Tikai Viena Versija**: Spēles versijas izvēle nepastāvēs Hytale Klientā. Tas nozīmē, ka servera īpašniekam nevajadzēs atbalstīt vairākas versijas un varēs paļauties uz to, ka klients būs uz jaunākās versijas. Tas palīdzēs servera īpašniekiem un modificētājiem.
+
+## Sekas Modificētājiem
+
+Modificētāji primāri darbosies ar servera puses Hytale komponentiem. Tas nozīmē, ka modifikācijas bieži koncentrēsies uz spēles loģikas, noteikumu un uzvedības izmaiņām, ko pārvaldīs serveris. Klienta-puses modifikācijas nav atļautas (pēc dotās informācijas).
+
+Kopumā Hytale servera-pirmā pieejas mērķis ir radīt spēcīgu un godīgu daudzspēlētāju pieredzi, vienlaikus nodrošinot modificētājiem rīkus spēles pielāgošanai un uzlabošanai.
+
+## Secinājumi
+
+Servera-pirmā izstrādes modelis ir galvenais Hytale arhitektūras aspekts, nodrošinot konsekventu un drošu vairāku spēlētāju pieredzi. Modificētājiem jākoncentrējas uz servera puses modifikācijām, lai pilnībā izmantotu šīs pieejas iespējas un radītu spēlētājiem saistošu saturu.

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <defs>
+    <linearGradient id="guidesGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="pageGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Book spine -->
+  <rect x="6" y="8" width="6" height="32" rx="1" fill="url(#guidesGradient)"/>
+
+  <!-- Book back cover -->
+  <path d="M12,8 L40,8 C41,8 42,9 42,10 L42,38 C42,39 41,40 40,40 L12,40 Z" fill="#7c3aed"/>
+
+  <!-- Book pages (left page) -->
+  <path d="M12,10 L12,38 C16,36 20,35 24,36 L24,12 C20,10 16,10 12,10 Z" fill="url(#pageGradient)"/>
+
+  <!-- Book pages (right page) -->
+  <path d="M24,12 L24,36 C28,35 32,36 38,38 L38,10 C32,10 28,10 24,12 Z" fill="url(#pageGradient)" opacity="0.9"/>
+
+  <!-- Page lines (left) -->
+  <g stroke="#c4b5fd" stroke-width="1" opacity="0.5">
+    <line x1="14" y1="16" x2="22" y2="18"/>
+    <line x1="14" y1="20" x2="22" y2="22"/>
+    <line x1="14" y1="24" x2="22" y2="26"/>
+    <line x1="14" y1="28" x2="20" y2="30"/>
+  </g>
+
+  <!-- Page lines (right) -->
+  <g stroke="#c4b5fd" stroke-width="1" opacity="0.5">
+    <line x1="26" y1="18" x2="36" y2="16"/>
+    <line x1="26" y1="22" x2="36" y2="20"/>
+    <line x1="26" y1="26" x2="36" y2="24"/>
+    <line x1="26" y1="30" x2="34" y2="28"/>
+  </g>
+
+  <!-- Book binding center -->
+  <line x1="24" y1="12" x2="24" y2="36" stroke="#8b5cf6" stroke-width="1" opacity="0.3"/>
+
+  <!-- Bookmark ribbon -->
+  <path d="M32,8 L32,14 L34,12 L36,14 L36,8" fill="#f43f5e"/>
+
+  <!-- Spine decoration -->
+  <g fill="#a78bfa" opacity="0.5">
+    <rect x="7" y="12" width="4" height="1" rx="0.5"/>
+    <rect x="7" y="15" width="4" height="1" rx="0.5"/>
+    <rect x="7" y="32" width="4" height="1" rx="0.5"/>
+    <rect x="7" y="35" width="4" height="1" rx="0.5"/>
+  </g>
+</svg>

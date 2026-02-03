@@ -1,0 +1,75 @@
+{
+  "displayName": "Nederlands",
+  "nav": {
+    "title": "Hytale Modding",
+    "documentation": "Documentatie",
+    "sponsors": "Sponsoren",
+    "search": "Zoeken"
+  },
+  "home": {
+    "title": "Hytale Modding",
+    "flipwords": [
+      "Handleidingen",
+      "Documentatie",
+      "Resources",
+      "Tutorials"
+    ],
+    "description": "De nummer een bron voor het modden van Hytale gemaakt door de community, met uitgebreide handleiding, gedetailleerde documentatie, en essentiële hulpmiddelen om te beginnen met jouw modding avontuur.",
+    "documentation": "Documentatie",
+    "forum": "Forum",
+    "discord": "Word lid van de community!",
+    "memberCount": "{count} Leden",
+    "countdown": "Hytale komt uit over {countdown}",
+    "countdownUnits": {
+      "hours": "u",
+      "minutes": "m",
+      "seconds": "s"
+    },
+    "hytaleReleased": "Hytale is uit!"
+  },
+  "sponsors": {
+    "title": "Steun ons",
+    "description": "HytaleModding is een open-source gemeenschapsproject en een deel van het beheer van de gemeenschap betreft het betalen voor diensten, servers en infrastructuur, zoals het hosten van deze website. Als je het project wilt steunen, kun je overwegen een sponsor te worden! We gebruiken OpenCollective zodat je kunt zien hoe fondsen worden gebruikt om de gemeenschap te ondersteunen.",
+    "ourSponsors": "Onze sponsoren"
+  },
+  "misc": {
+    "loading": "Aan het laden...",
+    "failedToLoad": "Laden is mislukt.",
+    "gitInfoUnavailable": "Git informatie niet beschikbaar",
+    "credit": "Geschreven door",
+    "supportUs": "Steun ons"
+  },
+  "meta": {
+    "established_information": {
+      "title": "Vastgestelde informatie",
+      "separator": "Specifieke categorieën",
+      "server": {
+        "title": "Server",
+        "content_categories": {
+          "title": "Content Categorieën"
+        },
+        "interface": {
+          "title": "Uiterlijk"
+        }
+      },
+      "client": {
+        "title": "Client"
+      },
+      "gameplay": {
+        "title": "Gameplay"
+      },
+      "misc": {
+        "title": "Overige"
+      }
+    },
+    "guides": {
+      "title": "Handleidingen",
+      "java_basics": {
+        "title": ""
+      }
+    },
+    "community_projects": {
+      "title": "Community projecten"
+    }
+  }
+}

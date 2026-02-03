@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" preserveAspectRatio="none">
+  <defs>
+    <pattern id="hexPattern" x="0" y="0" width="28" height="49" patternUnits="userSpaceOnUse">
+      <!-- Hexagonal grid pattern -->
+      <g stroke="#00a8cc" stroke-width="0.3" fill="none" opacity="0.15">
+        <!-- First hexagon -->
+        <path d="M14,0 L28,8 L28,24 L14,32 L0,24 L0,8 Z"/>
+        <!-- Offset hexagon -->
+        <path d="M14,33 L28,41 L28,57 L14,65 L0,57 L0,41 Z" transform="translate(14, -16.5)"/>
+      </g>
+    </pattern>
+
+    <pattern id="isometricGrid" x="0" y="0" width="40" height="46" patternUnits="userSpaceOnUse">
+      <!-- Isometric cube grid -->
+      <g stroke="#6366f1" stroke-width="0.2" fill="none" opacity="0.1">
+        <!-- Cube outlines -->
+        <path d="M20,0 L40,11.5 L40,34.5 L20,46 L0,34.5 L0,11.5 Z"/>
+        <path d="M20,0 L20,23"/>
+        <path d="M0,11.5 L20,23 L40,11.5"/>
+      </g>
+    </pattern>
+
+    <linearGradient id="fadeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.02"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base pattern layer -->
+  <rect width="100%" height="100%" fill="url(#hexPattern)"/>
+
+  <!-- Overlay isometric grid -->
+  <rect width="100%" height="100%" fill="url(#isometricGrid)"/>
+
+  <!-- Gradient fade overlay -->
+  <rect width="100%" height="100%" fill="url(#fadeGradient)"/>
+
+  <!-- Scattered dots for depth -->
+  <g fill="#00a8cc" opacity="0.08">
+    <circle cx="15" cy="25" r="0.5"/>
+    <circle cx="45" cy="15" r="0.3"/>
+    <circle cx="75" cy="35" r="0.4"/>
+    <circle cx="25" cy="65" r="0.3"/>
+    <circle cx="85" cy="75" r="0.5"/>
+    <circle cx="55" cy="85" r="0.4"/>
+  </g>
+
+  <g fill="#6366f1" opacity="0.06">
+    <circle cx="35" cy="45" r="0.4"/>
+    <circle cx="65" cy="55" r="0.3"/>
+    <circle cx="5" cy="85" r="0.5"/>
+    <circle cx="95" cy="25" r="0.3"/>
+  </g>
+</svg>

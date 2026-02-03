@@ -1,0 +1,128 @@
+---
+title: 02 - Operātori un Izteiksmes
+description: Ievads par operātoriem un izteiksmēm Java programmēšanā.
+---
+
+Operātori ir simboli, kas veic darbības ar mainīgajiem un vērtībām. Tie ir programmēšanas darbības vārdi - tie liek lietām notikt!
+
+## Aritmētikas Operātori
+
+Izmanto matemātiskiem aprēķiniem:
+
+```java
+int a = 10;
+int b = 5;
+
+int sum = a + b;        // Saskaitīšana: 15
+int difference = a - b; // Atņemšana: 5
+int product = a * b;    // Reizināšana: 50
+int quotient = a / b;   // Dalīšana: 2
+int remainder = a % b;  // Starpība (atlikums): 0
+```
+
+<Callout type="info" title="Dalīšanas Piezīme">
+  Dalot veselus skaitļus, Java veic veselu skaitļu dalīšanu, kas nozīmē, ka tā atmet jebkuru decimāldaļu. Piemēram `7 / 2` rezultātā būs `3`, nevis `3.5`
+
+  ```java
+  int x = 7 / 2;       // 3 (nevis 3.5!) - Integer dalīšana
+  double y = 7.0 / 2;  // 3.5 - Vismaz 1 decimālskaitlis aprēķinā rezultātā izdos decimālskaitli
+  double z = (double) 7 / 2;  // 3.5 - Pārveidošana arī strādā
+  ```
+</Callout>
+
+### Modulus (%) - Atlikuma operātors
+
+Moduļa operātors atgriež sadalīšanas operācijas atlikušo daļu:
+
+```java
+int atlikums = 10 % 3; // 1 (jo 10 dalīts ar 3 ir 3 ar atlikumu 1)
+```
+
+## Saliktie Piešķiršanas Operatori
+
+Šie operātori apvieno aritmētisko operāciju ar piešķiršanu:
+
+```java
+int a = 10;
+
+a = a + 5;  // Pa vecam
+
+a += 5;     // a = a + 5
+a -= 3;     // a = a - 3
+a *= 2;     // a = a * 2
+a /= 4;     // a = a / 4
+a %= 3;     // a = a % 3
+```
+
+## Palielinājuma un samazināšanas operātori
+
+Izmanto, lai palielinātu vai samazinātu mainīgā vērtību par 1:
+
+```java
+int a = 5;
+a++; // Palielina: klūst par 6
+a--; // Samazina: kļust atkal par 5
+```
+
+<Callout type="info" title="Prefikss vs Postfix">
+  ```java
+  int a = 5;
+  int b = a++; // b ir 5, a tagad ir 6
+  int c = ++a; // a ir 7, c tagad ir 7
+  ```
+</Callout>
+
+## Salīdzināšanas Operātori
+
+Izmanto, lai salīdzinātu divas vērtības, atgriežot boolean rezultātu ("true" vai "false"):
+
+```java
+int a = 10;
+int b = 5;
+
+a == b // false - Vienāds ar
+a != b // true  - Nav vienāds
+a > b  // true  - Lielāks par
+a < b  // false - Mazāks par
+a >= b // true  - Lielāks vai vienāds
+a <= b // false - Mazāks vai vienāds
+```
+
+## Loģiskie Operātori
+
+Izmanto, lai apvienotu vairākas boolean izteiksmes:
+
+```java
+boolean x = true;
+boolean y = false;
+
+x && y // false - Loģiskais UN
+x || y // true  - Loģiskais VAI
+!x     // false - Loģiskais NE
+```
+
+### Loģisko Operātoru Apvienošana
+
+```java
+boolean rezultats = (a > b) && (b < 10); // true tikai ja abi nosacījumi ir vienādi 
+```
+
+## Virknes Savienošana
+
+Operatoru '+' var izmantot arī, lai savienotu virknes:
+
+```java
+String sveiciens = "Hello, " + "world!"; // "Hello, world!"
+String vards = "Alice";
+String svieciensArVardu = "Hello, " + name + "!"; // "Hello, Alice!"
+```
+
+## Operātora Prioritāte
+
+Operātora prioritāte nozīmē, kurš operātors tiek novērtēts pirmais koda rindā. Domā par to kā darbības secību BODMAS/PEMDAS matemātikā!
+
+```java
+int rezultats = 10 + 5 * 2; // rezultātā ir 20, nevis 30
+```
+
+{/* uzdevumi praksei tiks pievienoti */}

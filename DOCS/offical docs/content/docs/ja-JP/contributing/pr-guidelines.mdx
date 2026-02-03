@@ -1,0 +1,39 @@
+---
+title: プルリクエストのガイドライン
+description: プルリクエストの提出時とレビュー時に、コントリビューターとレビュアーが従うべき指針
+---
+
+# プルリクエストのガイドライン
+
+スムーズで効率的なレビューを行うために、コントリビューターとレビュアーは、プルリクエスト（以下、PRという）を提出・レビューする際に次のガイドラインに従う必要があります。
+
+## コントリビューター
+
+1. **明瞭なタイトルと説明**
+   - Use clear and concise titles that summarize the changes.
+   - PRで行うこと、変更が必要な理由、および関連する情報を詳しく説明してください。
+2. **Issueへのリンク**
+   - 関連するIssueとPRをリンクさせるために、PRのタイトルに GH-ISSUE-NUMBER を追加してください。 これはすべてのPRに適用されます。
+3. **Small, Focused Changes**
+   - Aim to keep PRs small and focused on a single issue or feature. This makes it easier for reviewers to understand and provide feedback.
+4. **コードの品質**
+   - Ensure your code follows the project's coding standards and best practices.
+   - 複雑なロジックの説明が必要な箇所にはコメントを付けてください。
+5. **テスト**
+   - Test your changes thoroughly before submitting the PR.
+   - If applicable, include unit tests or integration tests to verify your changes.
+6. レビュアー
+   - Update or add documentation as needed to reflect your changes.
+7. **Commit Messages**
+   - Use clear and descriptive commit messages that follow the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) format.
+8. **Check for Conflicts**
+   - Before submitting your PR, ensure that your branch is up to date with the base branch to minimize merge conflicts.
+
+## For Reviewers
+
+- You are supposed to review PRs thoroughly, and request changes if needed.
+- Provide constructive feedback and suggestions for improvement.
+- Verify that the changes meet the project's coding standards and best practices.
+- Deploy the PR using the dokploy integration to ensure the changes work as expected.
+- Ensure that documentation is updated as necessary.
+- Approve the PR only when you are satisfied with the changes and all checks have passed.

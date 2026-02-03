@@ -1,0 +1,36 @@
+::view-transition-group(.blur-scale-transition) {
+}
+::view-transition-old(.blur-scale-transition) {
+  animation: blur-scale-fade-out 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation-fill-mode: forwards;
+}
+::view-transition-new(.blur-scale-transition) {
+  animation: blur-scale-fade-in 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation-fill-mode: forwards;
+}
+
+@keyframes blur-scale-fade-out {
+  from {
+    filter: blur(0);
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    filter: blur(4px);
+    transform: scale(1.05);
+    opacity: 0;
+  }
+}
+
+@keyframes blur-scale-fade-in {
+  from {
+    filter: blur(4px);
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    transform: scale(1);
+    opacity: 1;
+  }
+}

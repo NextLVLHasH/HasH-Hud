@@ -1,0 +1,45 @@
+---
+title: Biežāk Uzdotie Jautājumi
+description: Biežāk Uzdotie Jautājumi par Hytale modificēšanu.
+---
+
+Šajā lapā atbildēsim uz pāris Jūsu Biežāk Uzdotajiem Jautājumiem.
+
+## 1. Vai klients var būt modificēts?
+
+Nē, klientu nevar modificēt, lai gan Klientam nebūs kontrole pāri spēles un LI izskatam.
+
+Serveris atbild par vizuālajiem elementiem, drīzāk kā "Resursu Pakas" pieejamas iekš Minecraft. Serveris pieņem kādas modifikācijas tiks izmantotas
+
+## 2. Kādu Tīkla Protokolu izmantos?
+
+Hytale izmantos QUIC transporta protokolu.
+
+Kontekstam, galvenie divi Interneta protokoli ir UDP un TCP.
+
+* UDP ir bezsavienojuma, ātra, izsūti-un-aizmirsti pakešu protokola, kas ir mazāk uzticama, jo paketes var tikt pazaudētas.
+* TCP ir savienojuma-bāzēta, lēnāka par UDP protokola, kas var garantēt paketes piegādi ar lielāku uzticamību.
+  Abas protokolas ir diezgan ātras modernajā laikā un spēles var normāli ar tām strādāt (vairāk dodot priekšroku UDP).
+
+QUIC ir **hibrīda protokola**, kas balstās uz UDP, lai gūtu to pašu ātruma priekšrocību, bet pievienojot slāņus konsistencei, kā piemēram TCP.
+Būtība, stabila izvēle spēļu izstrādei, kas apvieno ātrumu un uzticamību.
+
+## 3. Kas ir Pārsūtīšanas Paketes?
+
+Hytale Pārsūtīšanas paketes ir mazas datu piegādes *(4kb)*, kas ļauj spēlētājiem pārvietoties no viena servera uz otru, pārvadājot informāciju.
+Tie nav līdzvērtīgi kaut kam līdzīgam BungeeCord vai Velocity un galvenokārt ir paredzēti mazākiem serveriem.
+
+Atšķirībā no Bungeecord, viņi nepārvalda tīkla mēroga funkcijas, piemēram, globālos spraudņus.
+DDOS aizsardzības ieviešana būtu ļoti grūta arī mazākiem tīkliem, izmantojot pārsūtīšanas paketes.
+
+Pārsūtīšanas paketes darbojas diezgan labi tādos scenārijos kā mazi serveru tīkli vai centrmezgli, kur spēlētāji lēkā starp serveriem, nezaudējot progresu. Piemēram, spēlētājs var pabeigt dungeon vienā serverī un pēc tam pāriet uz vestibilu vai citu spēles režīmu ar savu inventāru un statistiku neskartu. Tas samazina servera izmaksas un ļauj izstrādātājiem pielikt vairāk pūļu spēles uzlabošanai, nevis sarežģītiem tīkla iestatījumiem.
+
+## 4. Vai Hytale atbalstīs dedicated serverus?
+
+Jā, Hytale atbalstīs dedicated/izdalītos serverus. Tas ļauj serveru īpašniekiem mitināt savus Hytale serverus savā aparatūrā vai izmantojot trešās partijas hostina pakalpojumus.
+
+Izdalītie serveri nodrošina lielāku kontroli pār servera iestatījumiem, modifikācijām un veiktspēju, salīdzinot ar oficiālo hostinga risinājumu izmantošanu.
+
+## 5. Vai Hytale atbalstīs modificēšanu uz konsolēm?
+
+Šobrīd Hytale modifikācija galvenokārt ir vērsta uz datoru platformām.

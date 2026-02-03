@@ -1,0 +1,1487 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+@custom-variant reading (&:is(.reading *));
+@custom-variant reading-dark (&:is(.reading-dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* shadcn/ui colors */
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Official Hytale Brand Colors */
+  --color-hytale-gold: #e8a849;
+  --color-hytale-gold-light: #f0bc6a;
+  --color-hytale-gold-dark: #d4952e;
+  --color-hytale-blue: #4a90a8;
+  --color-hytale-blue-light: #5ba8c4;
+  --color-hytale-blue-dark: #3a7a92;
+  --color-hytale-slate: #1a2332;
+  --color-hytale-slate-light: #253649;
+  --color-hytale-slate-dark: #131a26;
+  --color-hytale-green: #4a9e6e;
+  --color-hytale-green-light: #5cb87f;
+  --color-hytale-red: #c45c5c;
+  --color-hytale-cyan: #4a90a8;
+  --color-hytale-violet: #8b5cf6;
+}
+
+/* Light mode */
+:root {
+  --radius: 0.5rem;
+  --background: #f5f7fa;
+  --foreground: #1a2332;
+  --card: #ffffff;
+  --card-foreground: #1a2332;
+  --popover: #ffffff;
+  --popover-foreground: #1a2332;
+  --primary: #e8a849;
+  --primary-foreground: #1a2332;
+  --secondary: #4a90a8;
+  --secondary-foreground: #ffffff;
+  --muted: #e8ecf2;
+  --muted-foreground: #64748b;
+  --accent: #253649;
+  --accent-foreground: #ffffff;
+  --destructive: #c45c5c;
+  --border: #d1d9e6;
+  --input: #d1d9e6;
+  --ring: #e8a849;
+  --chart-1: #e8a849;
+  --chart-2: #4a90a8;
+  --chart-3: #4a9e6e;
+  --chart-4: #8b5cf6;
+  --chart-5: #c45c5c;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a2332;
+  --sidebar-primary: #e8a849;
+  --sidebar-primary-foreground: #1a2332;
+  --sidebar-accent: #f0f4f8;
+  --sidebar-accent-foreground: #1a2332;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #e8a849;
+}
+
+/* Reading mode - Kindle-inspired sepia paper effect */
+.reading {
+  --background: #f7f3e9;
+  --foreground: #433422;
+  --card: #faf6ed;
+  --card-foreground: #433422;
+  --popover: #faf6ed;
+  --popover-foreground: #433422;
+  --primary: #e8a849;
+  --primary-foreground: #433422;
+  --secondary: #6b5a3e;
+  --secondary-foreground: #faf6ed;
+  --muted: #ebe5d6;
+  --muted-foreground: #6b5a3e;
+  --accent: #e8a849;
+  --accent-foreground: #433422;
+  --destructive: #a04040;
+  --border: #d4c9b0;
+  --input: #d4c9b0;
+  --ring: #e8a849;
+  --chart-1: #e8a849;
+  --chart-2: #6b5a3e;
+  --chart-3: #5a7a5a;
+  --chart-4: #7a5a7a;
+  --chart-5: #a04040;
+  --sidebar: #f2ebdd;
+  --sidebar-foreground: #433422;
+  --sidebar-primary: #e8a849;
+  --sidebar-primary-foreground: #433422;
+  --sidebar-accent: #e8e0ce;
+  --sidebar-accent-foreground: #433422;
+  --sidebar-border: #d4c9b0;
+  --sidebar-ring: #e8a849;
+}
+
+/* Reading mode dark - Warm sepia dark theme */
+.reading-dark {
+  --background: #1a1612;
+  --foreground: #d4c4a8;
+  --card: #241f1a;
+  --card-foreground: #d4c4a8;
+  --popover: #241f1a;
+  --popover-foreground: #d4c4a8;
+  --primary: #e8a849;
+  --primary-foreground: #1a1612;
+  --secondary: #c9a86c;
+  --secondary-foreground: #1a1612;
+  --muted: #2e2620;
+  --muted-foreground: #a89880;
+  --accent: #e8a849;
+  --accent-foreground: #1a1612;
+  --destructive: #c45c5c;
+  --border: #3d332a;
+  --input: #3d332a;
+  --ring: #e8a849;
+  --chart-1: #e8a849;
+  --chart-2: #c9a86c;
+  --chart-3: #5a8a5a;
+  --chart-4: #8a5a8a;
+  --chart-5: #c45c5c;
+  --sidebar: #151210;
+  --sidebar-foreground: #d4c4a8;
+  --sidebar-primary: #e8a849;
+  --sidebar-primary-foreground: #1a1612;
+  --sidebar-accent: #2e2620;
+  --sidebar-accent-foreground: #d4c4a8;
+  --sidebar-border: #3d332a;
+  --sidebar-ring: #e8a849;
+}
+
+/* Dark mode - GitHub-inspired with Hytale accent */
+.dark {
+  --background: #0d1117;
+  --foreground: #e6edf3;
+  --card: #161b22;
+  --card-foreground: #e6edf3;
+  --popover: #161b22;
+  --popover-foreground: #e6edf3;
+  --primary: #e8a849;
+  --primary-foreground: #0d1117;
+  --secondary: #58a6ff;
+  --secondary-foreground: #0d1117;
+  --muted: #21262d;
+  --muted-foreground: #8b949e;
+  --accent: #e8a849;
+  --accent-foreground: #0d1117;
+  --destructive: #f85149;
+  --border: #30363d;
+  --input: #21262d;
+  --ring: #e8a849;
+  --chart-1: #e8a849;
+  --chart-2: #58a6ff;
+  --chart-3: #3fb950;
+  --chart-4: #a371f7;
+  --chart-5: #f85149;
+  --sidebar: #010409;
+  --sidebar-foreground: #e6edf3;
+  --sidebar-primary: #e8a849;
+  --sidebar-primary-foreground: #0d1117;
+  --sidebar-accent: #21262d;
+  --sidebar-accent-foreground: #e6edf3;
+  --sidebar-border: #21262d;
+  --sidebar-ring: #e8a849;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* ============================================
+     Smooth Transitions System
+     ============================================ */
+
+  /* CSS Custom Properties for consistent timing */
+  :root {
+    --transition-fast: 150ms;
+    --transition-normal: 250ms;
+    --transition-slow: 400ms;
+    --transition-theme: 500ms;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Smooth theme transitions */
+  html {
+    transition:
+      background-color var(--transition-theme) var(--ease-in-out),
+      color var(--transition-theme) var(--ease-in-out);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    transition:
+      background-color var(--transition-theme) var(--ease-in-out),
+      color var(--transition-theme) var(--ease-in-out);
+  }
+
+  /* Transition for all themed elements (colors) */
+  *:not(pre):not(code):not(.no-transition) {
+    transition:
+      background-color var(--transition-theme) var(--ease-in-out),
+      border-color var(--transition-theme) var(--ease-in-out),
+      color var(--transition-normal) var(--ease-in-out),
+      fill var(--transition-theme) var(--ease-in-out),
+      stroke var(--transition-theme) var(--ease-in-out);
+  }
+
+  /* Interactive elements - faster hover response */
+  a, button, [role="button"],
+  input, select, textarea,
+  [class*="hover:"], [class*="focus:"] {
+    transition:
+      background-color var(--transition-normal) var(--ease-out),
+      border-color var(--transition-normal) var(--ease-out),
+      color var(--transition-fast) var(--ease-out),
+      opacity var(--transition-fast) var(--ease-out),
+      transform var(--transition-normal) var(--ease-spring),
+      box-shadow var(--transition-normal) var(--ease-out),
+      filter var(--transition-normal) var(--ease-out) !important;
+  }
+
+  /* Specific transition for SVG icons */
+  svg, svg path, svg circle, svg rect {
+    transition:
+      fill var(--transition-normal) var(--ease-out),
+      stroke var(--transition-normal) var(--ease-out),
+      opacity var(--transition-fast) var(--ease-out),
+      transform var(--transition-normal) var(--ease-spring);
+  }
+
+  /* Container styling */
+  .container {
+    width: 100%;
+    max-width: 1400px !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  /* Large screens (xl+) - use percentage for better scaling */
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 95% !important;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  /* Safe area support for iOS notch/home indicator */
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0);
+  }
+
+  /* Hytale gold gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, #d4952e, #e8a849, #f0bc6a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #3a7a92, #4a90a8, #5ba8c4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glow effects */
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(232, 168, 73, 0.4), 0 0 40px rgba(232, 168, 73, 0.2);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(74, 144, 168, 0.4), 0 0 40px rgba(74, 144, 168, 0.2);
+  }
+
+  .glow-green {
+    box-shadow: 0 0 20px rgba(74, 158, 110, 0.4), 0 0 40px rgba(74, 158, 110, 0.2);
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: rgba(37, 54, 73, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Card hover effect */
+  .card-hover {
+    transition:
+      transform var(--transition-normal) var(--ease-spring),
+      box-shadow var(--transition-normal) var(--ease-out),
+      background-color var(--transition-normal) var(--ease-out),
+      border-color var(--transition-normal) var(--ease-out);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Smooth transition utilities */
+  .transition-smooth {
+    transition:
+      all var(--transition-normal) var(--ease-out);
+  }
+
+  .transition-smooth-slow {
+    transition:
+      all var(--transition-slow) var(--ease-in-out);
+  }
+
+  .transition-spring {
+    transition:
+      transform var(--transition-normal) var(--ease-spring),
+      opacity var(--transition-fast) var(--ease-out);
+  }
+
+  /* Hover scale effect */
+  .hover-scale {
+    transition: transform var(--transition-normal) var(--ease-spring);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    transition:
+      transform var(--transition-normal) var(--ease-spring),
+      box-shadow var(--transition-normal) var(--ease-out);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Focus ring animation */
+  .focus-ring-animated:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px var(--background),
+      0 0 0 4px var(--primary);
+    transition: box-shadow var(--transition-fast) var(--ease-out);
+  }
+}
+
+/* Animations */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 5s ease infinite;
+  background-size: 200% 200%;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background-size: 200% 100%;
+}
+
+/* Prose styling for documentation */
+.prose {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-links: var(--primary);
+  --tw-prose-code: var(--secondary);
+}
+
+.prose a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+  text-underline-offset: 2px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+.prose a:hover {
+  color: var(--primary);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+}
+
+/* Light themes: darken link text for accessibility while keeping orange underline */
+:root:not(.dark):not(.reading-dark) .prose a {
+  color: #8b5a10;
+  text-decoration-color: var(--primary);
+}
+
+:root:not(.dark):not(.reading-dark) .prose a:hover {
+  color: var(--primary);
+}
+
+.prose code {
+  background: var(--muted);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+
+.prose pre {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+}
+
+.prose pre code {
+  background: transparent;
+  padding: 0;
+}
+
+/* Doc card grid - applied to the MDX content */
+.prose .doc-card-grid,
+.doc-card-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .prose .doc-card-grid,
+  .doc-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+/* Better spacing in prose content */
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+.prose h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid var(--border);
+}
+
+.prose h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.prose p {
+  line-height: 1.75;
+}
+
+.prose ul, .prose ol {
+  padding-left: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.prose li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose li::marker {
+  color: var(--primary);
+}
+
+/* Tables */
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 2px solid var(--border);
+  background: var(--card);
+}
+
+.prose thead tr {
+  border-bottom: 2px solid var(--primary) !important;
+}
+
+.prose tbody tr:nth-child(odd) {
+  background: var(--muted);
+}
+
+.prose tbody tr:nth-child(even) {
+  background: var(--card);
+}
+
+.prose tbody tr:last-child {
+  border-bottom: none;
+}
+
+.prose code {
+  color: var(--primary);
+  background: var(--muted);
+  padding: 0.15em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+  border: 1px solid var(--border);
+}
+
+/* Mermaid diagrams */
+.mermaid-container {
+  min-width: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+.mermaid-container svg {
+  max-width: none !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.mermaid-container svg .node rect,
+.mermaid-container svg .node circle,
+.mermaid-container svg .node ellipse,
+.mermaid-container svg .node polygon,
+.mermaid-container svg .node path {
+  stroke-width: 2px !important;
+}
+
+.mermaid-container svg .cluster rect {
+  rx: 8px !important;
+  ry: 8px !important;
+}
+
+.mermaid-container svg .label {
+  font-family: ui-sans-serif, system-ui, sans-serif !important;
+}
+
+.mermaid-container svg .edgeLabel {
+  background-color: transparent !important;
+}
+
+.mermaid-container svg .flowchart-link {
+  stroke-width: 2px !important;
+}
+
+/* Mermaid node styling overrides - Dark mode */
+.dark .mermaid-container .node rect,
+.dark .mermaid-container .node circle,
+.dark .mermaid-container .node ellipse,
+.dark .mermaid-container .node polygon {
+  fill: #253649 !important;
+  stroke: #e8a849 !important;
+  stroke-width: 2px !important;
+}
+
+.dark .mermaid-container .node .label {
+  color: #e2e8f0 !important;
+}
+
+.dark .mermaid-container .edgePath .path {
+  stroke: #4a90a8 !important;
+  stroke-width: 2px !important;
+}
+
+.dark .mermaid-container .edgeLabel {
+  background-color: #1a2332 !important;
+  color: #94a3b8 !important;
+}
+
+.dark .mermaid-container marker path {
+  fill: #e8a849 !important;
+}
+
+.dark .mermaid-container .cluster rect {
+  fill: #1e2b3d !important;
+  stroke: #3d5168 !important;
+}
+
+.dark .mermaid-container text {
+  fill: #e2e8f0 !important;
+  font-family: ui-sans-serif, system-ui, sans-serif !important;
+}
+
+/* Mermaid node styling overrides - Light mode */
+:root:not(.dark) .mermaid-container .node rect,
+:root:not(.dark) .mermaid-container .node circle,
+:root:not(.dark) .mermaid-container .node ellipse,
+:root:not(.dark) .mermaid-container .node polygon {
+  fill: #f0f4f8 !important;
+  stroke: #e8a849 !important;
+  stroke-width: 2px !important;
+}
+
+:root:not(.dark) .mermaid-container .node .label {
+  color: #1a2332 !important;
+}
+
+:root:not(.dark) .mermaid-container .edgePath .path {
+  stroke: #4a90a8 !important;
+  stroke-width: 2px !important;
+}
+
+:root:not(.dark) .mermaid-container .edgeLabel {
+  background-color: #ffffff !important;
+  color: #64748b !important;
+}
+
+:root:not(.dark) .mermaid-container marker path {
+  fill: #e8a849 !important;
+}
+
+:root:not(.dark) .mermaid-container .cluster rect {
+  fill: #f5f7fa !important;
+  stroke: #d1d9e6 !important;
+}
+
+:root:not(.dark) .mermaid-container text {
+  fill: #1a2332 !important;
+  font-family: ui-sans-serif, system-ui, sans-serif !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Custom Hytale-style title */
+.hytale-title {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   Prism Syntax Highlighting - Hytale Theme
+   ============================================ */
+
+/* Code block container */
+pre[class*="language-"] {
+  background: var(--card) !important;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  tab-size: 2;
+}
+
+code[class*="language-"] {
+  background: transparent !important;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  text-shadow: none;
+}
+
+/* Line numbers */
+.code-line {
+  display: block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  border-left: 3px solid transparent;
+}
+
+.code-line.line-number::before {
+  content: attr(line);
+  display: inline-block;
+  width: 2.5rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: var(--muted-foreground);
+  opacity: 0.5;
+}
+
+/* Highlighted lines */
+.code-line.highlight-line {
+  background: rgba(232, 168, 73, 0.1);
+  border-left-color: var(--primary);
+}
+
+/* ---- Light Mode Tokens ---- */
+:root:not(.dark) {
+  /* Comments */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #6a737d;
+    font-style: italic;
+  }
+
+  /* Punctuation */
+  .token.punctuation {
+    color: #24292e;
+  }
+
+  /* Strings */
+  .token.string,
+  .token.attr-value {
+    color: #22863a;
+  }
+
+  /* Keywords */
+  .token.keyword,
+  .token.selector,
+  .token.important,
+  .token.atrule {
+    color: #d73a49;
+  }
+
+  /* Operators & Entities */
+  .token.operator,
+  .token.entity,
+  .token.url {
+    color: #005cc5;
+  }
+
+  /* Functions */
+  .token.function {
+    color: #6f42c1;
+  }
+
+  /* Classes & Types */
+  .token.class-name,
+  .token.type,
+  .token.builtin {
+    color: #e36209;
+  }
+
+  /* Variables & Properties */
+  .token.variable,
+  .token.property {
+    color: #005cc5;
+  }
+
+  /* Numbers & Booleans */
+  .token.number,
+  .token.boolean {
+    color: #005cc5;
+  }
+
+  /* Tags */
+  .token.tag {
+    color: #22863a;
+  }
+
+  /* Attributes */
+  .token.attr-name {
+    color: #6f42c1;
+  }
+
+  /* Annotations */
+  .token.annotation {
+    color: #6f42c1;
+  }
+
+  /* Namespace */
+  .token.namespace {
+    color: #6a737d;
+  }
+
+  /* Regex */
+  .token.regex {
+    color: #032f62;
+  }
+
+  /* Inserted/Deleted */
+  .token.inserted {
+    color: #22863a;
+    background: rgba(34, 134, 58, 0.1);
+  }
+
+  .token.deleted {
+    color: #d73a49;
+    background: rgba(215, 58, 73, 0.1);
+  }
+}
+
+/* ---- Dark Mode Tokens ---- */
+.dark {
+  /* Comments */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #8b949e;
+    font-style: italic;
+  }
+
+  /* Punctuation */
+  .token.punctuation {
+    color: #c9d1d9;
+  }
+
+  /* Strings */
+  .token.string,
+  .token.attr-value {
+    color: #a5d6ff;
+  }
+
+  /* Keywords */
+  .token.keyword,
+  .token.selector,
+  .token.important,
+  .token.atrule {
+    color: #ff7b72;
+  }
+
+  /* Operators & Entities */
+  .token.operator,
+  .token.entity,
+  .token.url {
+    color: #79c0ff;
+  }
+
+  /* Functions */
+  .token.function {
+    color: #d2a8ff;
+  }
+
+  /* Classes & Types */
+  .token.class-name,
+  .token.type,
+  .token.builtin {
+    color: #ffa657;
+  }
+
+  /* Variables & Properties */
+  .token.variable,
+  .token.property {
+    color: #79c0ff;
+  }
+
+  /* Numbers & Booleans */
+  .token.number,
+  .token.boolean {
+    color: #79c0ff;
+  }
+
+  /* Tags */
+  .token.tag {
+    color: #7ee787;
+  }
+
+  /* Attributes */
+  .token.attr-name {
+    color: #d2a8ff;
+  }
+
+  /* Annotations */
+  .token.annotation {
+    color: #d2a8ff;
+  }
+
+  /* Namespace */
+  .token.namespace {
+    color: #8b949e;
+  }
+
+  /* Regex */
+  .token.regex {
+    color: #a5d6ff;
+  }
+
+  /* Inserted/Deleted */
+  .token.inserted {
+    color: #7ee787;
+    background: rgba(63, 185, 80, 0.15);
+  }
+
+  .token.deleted {
+    color: #ffa198;
+    background: rgba(248, 81, 73, 0.15);
+  }
+}
+
+/* Code block wrapper for positioning */
+pre[class*="language-"] {
+  position: relative;
+}
+
+/* Java-specific styling */
+.language-java .token.annotation {
+  color: #e8a849;
+}
+
+.dark .language-java .token.annotation {
+  color: #e8a849;
+}
+
+/* Diff highlighting */
+.token.coord {
+  color: var(--muted-foreground);
+}
+
+/* Selection */
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: rgba(232, 168, 73, 0.3);
+}
+
+/* Inline code in prose - make sure it doesn't get prism styling */
+.prose :not(pre) > code {
+  background: var(--muted) !important;
+  color: var(--primary) !important;
+  padding: 0.15em 0.4em !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.875em !important;
+  border: 1px solid var(--border) !important;
+}
+
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none !important;
+}
+
+/* ASCII Art / Box Drawing Characters Support */
+pre {
+  font-family: ui-monospace, "SF Mono", "Cascadia Code", "Consolas", "DejaVu Sans Mono", monospace;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure box-drawing characters render properly */
+pre code {
+  font-variant-ligatures: none;
+  text-rendering: optimizeSpeed;
+}
+
+/* Mermaid diagram styles */
+.mermaid-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.mermaid-container .nodeLabel,
+.mermaid-container .edgeLabel,
+.mermaid-container .label,
+.mermaid-container text {
+  fill: #e2e8f0 !important;
+  color: #e2e8f0 !important;
+}
+
+.mermaid-container .node rect,
+.mermaid-container .node circle,
+.mermaid-container .node polygon {
+  fill: #253649 !important;
+  stroke: #e8a849 !important;
+}
+
+.mermaid-container .edgePath path {
+  stroke: #4a90a8 !important;
+}
+
+.mermaid-container marker path {
+  fill: #e8a849 !important;
+}
+
+/* ============================================
+   Reading Mode - Kindle-style Paper Effect
+   ============================================ */
+
+/* Paper texture background effect */
+.reading {
+  background-image:
+    radial-gradient(ellipse at 100% 0%, rgba(139, 105, 20, 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, rgba(107, 90, 62, 0.03) 0%, transparent 50%);
+}
+
+/* Optimize prose typography for reading */
+.reading .prose {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  max-width: 70ch;
+}
+
+.reading .prose p {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.reading .prose h1,
+.reading .prose h2,
+.reading .prose h3,
+.reading .prose h4 {
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
+}
+
+/* Softer borders in reading mode */
+.reading .prose h2 {
+  border-bottom-color: #c9b896;
+  border-bottom-width: 1px;
+}
+
+/* Warmer code blocks */
+.reading pre[class*="language-"] {
+  background: #f0e8d6 !important;
+  border-color: #c9b896;
+  box-shadow: inset 0 1px 3px rgba(107, 90, 62, 0.1);
+}
+
+.reading .prose :not(pre) > code {
+  background: #ebe5d6 !important;
+  border-color: #c9b896 !important;
+  color: #6b4423 !important;
+}
+
+/* Reading mode syntax highlighting */
+.reading {
+  /* Comments */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #8b7355;
+    font-style: italic;
+  }
+
+  /* Punctuation */
+  .token.punctuation {
+    color: #5a4a3a;
+  }
+
+  /* Strings */
+  .token.string,
+  .token.attr-value {
+    color: #2d5a3d;
+  }
+
+  /* Keywords */
+  .token.keyword,
+  .token.selector,
+  .token.important,
+  .token.atrule {
+    color: #8b3a3a;
+  }
+
+  /* Operators & Entities */
+  .token.operator,
+  .token.entity,
+  .token.url {
+    color: #3a5a8b;
+  }
+
+  /* Functions */
+  .token.function {
+    color: #6b3a8b;
+  }
+
+  /* Classes & Types */
+  .token.class-name,
+  .token.type,
+  .token.builtin {
+    color: #8b6914;
+  }
+
+  /* Variables & Properties */
+  .token.variable,
+  .token.property {
+    color: #3a5a8b;
+  }
+
+  /* Numbers & Booleans */
+  .token.number,
+  .token.boolean {
+    color: #3a5a8b;
+  }
+
+  /* Tags */
+  .token.tag {
+    color: #2d5a3d;
+  }
+
+  /* Attributes */
+  .token.attr-name {
+    color: #6b3a8b;
+  }
+
+  /* Annotations */
+  .token.annotation {
+    color: #8b6914;
+  }
+}
+
+/* Tables in reading mode */
+.reading .prose table {
+  background: #faf6ed;
+  border-color: #c9b896;
+}
+
+.reading .prose thead tr {
+  border-bottom-color: #8b6914 !important;
+}
+
+.reading .prose tbody tr:nth-child(odd) {
+  background: #f0e8d6;
+}
+
+.reading .prose tbody tr:nth-child(even) {
+  background: #faf6ed;
+}
+
+/* Mermaid diagrams in reading mode */
+.reading .mermaid-container .node rect,
+.reading .mermaid-container .node circle,
+.reading .mermaid-container .node ellipse,
+.reading .mermaid-container .node polygon {
+  fill: #f0e8d6 !important;
+  stroke: #8b6914 !important;
+}
+
+.reading .mermaid-container text {
+  fill: #433422 !important;
+}
+
+.reading .mermaid-container .edgePath .path {
+  stroke: #6b5a3e !important;
+}
+
+.reading .mermaid-container marker path {
+  fill: #8b6914 !important;
+}
+
+.reading .mermaid-container .cluster rect {
+  fill: #f7f3e9 !important;
+  stroke: #c9b896 !important;
+}
+
+/* Scrollbar in reading mode */
+.reading::-webkit-scrollbar-track {
+  background: #f7f3e9;
+}
+
+.reading::-webkit-scrollbar-thumb {
+  background: #c9b896;
+}
+
+.reading::-webkit-scrollbar-thumb:hover {
+  background: #8b6914;
+}
+
+/* Reduce visual noise in reading mode */
+.reading .glow-gold,
+.reading .glow-blue,
+.reading .glow-green {
+  box-shadow: none;
+}
+
+/* Softer card hover in reading mode */
+.reading .card-hover:hover {
+  box-shadow: 0 8px 24px rgba(107, 90, 62, 0.15);
+}
+
+/* ============================================
+   Reading Mode Dark - Warm Sepia Dark Theme
+   ============================================ */
+
+/* Paper texture background effect - dark */
+.reading-dark {
+  background-image:
+    radial-gradient(ellipse at 100% 0%, rgba(212, 168, 75, 0.02) 0%, transparent 50%),
+    radial-gradient(ellipse at 0% 100%, rgba(139, 115, 85, 0.02) 0%, transparent 50%);
+}
+
+/* Optimize prose typography for reading - dark */
+.reading-dark .prose {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  line-height: 1.85;
+  letter-spacing: 0.01em;
+  max-width: 70ch;
+}
+
+.reading-dark .prose p {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.reading-dark .prose h1,
+.reading-dark .prose h2,
+.reading-dark .prose h3,
+.reading-dark .prose h4 {
+  font-family: var(--font-sans);
+  letter-spacing: 0.02em;
+}
+
+/* Softer borders in reading-dark mode */
+.reading-dark .prose h2 {
+  border-bottom-color: #3d332a;
+  border-bottom-width: 1px;
+}
+
+/* Warmer code blocks - dark */
+.reading-dark pre[class*="language-"] {
+  background: #241f1a !important;
+  border-color: #3d332a;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.reading-dark .prose :not(pre) > code {
+  background: #2e2620 !important;
+  border-color: #3d332a !important;
+  color: #d4a84b !important;
+}
+
+/* Reading-dark mode syntax highlighting */
+.reading-dark {
+  /* Comments */
+  .token.comment,
+  .token.prolog,
+  .token.doctype,
+  .token.cdata {
+    color: #8b7355;
+    font-style: italic;
+  }
+
+  /* Punctuation */
+  .token.punctuation {
+    color: #c4b498;
+  }
+
+  /* Strings */
+  .token.string,
+  .token.attr-value {
+    color: #a8c4a8;
+  }
+
+  /* Keywords */
+  .token.keyword,
+  .token.selector,
+  .token.important,
+  .token.atrule {
+    color: #d49898;
+  }
+
+  /* Operators & Entities */
+  .token.operator,
+  .token.entity,
+  .token.url {
+    color: #98b4d4;
+  }
+
+  /* Functions */
+  .token.function {
+    color: #c4a8d4;
+  }
+
+  /* Classes & Types */
+  .token.class-name,
+  .token.type,
+  .token.builtin {
+    color: #d4a84b;
+  }
+
+  /* Variables & Properties */
+  .token.variable,
+  .token.property {
+    color: #98b4d4;
+  }
+
+  /* Numbers & Booleans */
+  .token.number,
+  .token.boolean {
+    color: #98b4d4;
+  }
+
+  /* Tags */
+  .token.tag {
+    color: #a8c4a8;
+  }
+
+  /* Attributes */
+  .token.attr-name {
+    color: #c4a8d4;
+  }
+
+  /* Annotations */
+  .token.annotation {
+    color: #d4a84b;
+  }
+}
+
+/* Tables in reading-dark mode */
+.reading-dark .prose table {
+  background: #241f1a;
+  border-color: #3d332a;
+}
+
+.reading-dark .prose thead tr {
+  border-bottom-color: #d4a84b !important;
+}
+
+.reading-dark .prose tbody tr:nth-child(odd) {
+  background: #2e2620;
+}
+
+.reading-dark .prose tbody tr:nth-child(even) {
+  background: #241f1a;
+}
+
+/* Mermaid diagrams in reading-dark mode */
+.reading-dark .mermaid-container .node rect,
+.reading-dark .mermaid-container .node circle,
+.reading-dark .mermaid-container .node ellipse,
+.reading-dark .mermaid-container .node polygon {
+  fill: #2e2620 !important;
+  stroke: #d4a84b !important;
+}
+
+.reading-dark .mermaid-container text {
+  fill: #d4c4a8 !important;
+}
+
+.reading-dark .mermaid-container .edgePath .path {
+  stroke: #8b7355 !important;
+}
+
+.reading-dark .mermaid-container marker path {
+  fill: #d4a84b !important;
+}
+
+.reading-dark .mermaid-container .cluster rect {
+  fill: #1a1612 !important;
+  stroke: #3d332a !important;
+}
+
+/* Scrollbar in reading-dark mode */
+.reading-dark::-webkit-scrollbar-track {
+  background: #1a1612;
+}
+
+.reading-dark::-webkit-scrollbar-thumb {
+  background: #3d332a;
+}
+
+.reading-dark::-webkit-scrollbar-thumb:hover {
+  background: #d4a84b;
+}
+
+/* Reduce visual noise in reading-dark mode */
+.reading-dark .glow-gold,
+.reading-dark .glow-blue,
+.reading-dark .glow-green {
+  box-shadow: none;
+}
+
+/* Softer card hover in reading-dark mode */
+.reading-dark .card-hover:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}

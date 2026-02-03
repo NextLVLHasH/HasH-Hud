@@ -1,0 +1,122 @@
+$C = "../Common.ui";
+$Sounds = "../Sounds.ui";
+
+$C.@PageOverlay {
+  LayoutMode: Middle;
+
+  $C.@DecoratedContainer #WindowContainer {
+    Anchor: (Width: 580, Height: 440);
+
+    #Title {
+      $C.@Title #WindowTitle {
+        @Text = "Okey";
+      }
+    }
+
+    #Content {
+      LayoutMode: Top;
+      Padding: (Top: 6, Left: 28, Right: 28, Bottom: 0);
+
+      // === TOP SECTION ===
+      Label #Subtitle {
+        Anchor: (Height: 22, Horizontal: 6);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 15, TextColor: #7ec8e3, HorizontalAlignment: Center);
+        Text: "Okey - Command-based Key Action Mod";
+      }
+
+      Label #Description1 {
+        Anchor: (Top: 2, Height: 44, Horizontal: 6);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 13, Wrap: true, HorizontalAlignment: Center);
+        Text: "A lightweight yet powerful server-side utility that lets you bind any command to a single key press - the O key - using a clean, native-looking HUD that feels like it belongs in the game.";
+      }
+
+      // === GAP before configure text ===
+      Group {
+        Anchor: (Top: 20, Height: 1);
+      }
+
+      Label #Description2 {
+        Anchor: (Top: 0, Height: 16, Horizontal: 6);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 11, TextColor: #aaaaaa, HorizontalAlignment: Center);
+        Text: "Configure in: mods/jox.works_Okey/OkeyConfig.json";
+      }
+
+      // === GAP ===
+      Group {
+        Anchor: (Top: 20, Height: 1);
+      }
+
+      // === CREDIT TEXT (above logo) ===
+      Label #CreditText {
+        Anchor: (Top: 0, Height: 18, Horizontal: 6);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 13, RenderBold: true, TextColor: #e0e0e0, HorizontalAlignment: Center);
+        Text: "Created by jox.works";
+      }
+
+      // === LOGO SECTION ===
+      Group #LogoContainer {
+        LayoutMode: Center;
+        Anchor: (Top: 4, Height: 91, Horizontal: 6);
+
+        Group #Logo {
+          Anchor: (Width: 91, Height: 91);
+          Background: (TexturePath: "jox_logo.png");
+        }
+      }
+
+      // === CONTACT TEXT (golden color) ===
+      Label #ContactText {
+        Anchor: (Top: 26, Height: 16, Horizontal: 6);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 10, RenderBold: true, TextColor: #ffc107, HorizontalAlignment: Center);
+        Text: "I accept custom inquiries for mods, websites, hosting and more! Contact: dev@jox.works";
+      }
+
+      Label #PromoText {
+        Anchor: (Top: 0, Height: 16, Horizontal: 6);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 10, TextColor: #7ec8e3, HorizontalAlignment: Center);
+        Text: "Did you already try my image-based server welcome screen mod? Try it too!";
+      }
+
+      // === GAP ===
+      Group {
+        Anchor: (Top: 12, Height: 1);
+      }
+
+      // === BOTTOM SECTION ===
+      Label #SupportText {
+        Anchor: (Top: 0, Height: 16, Horizontal: 6);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 10, TextColor: #999999, HorizontalAlignment: Center);
+        Text: "If this mod made your life easier, please consider supporting :)";
+      }
+
+      Group #ButtonRow {
+        LayoutMode: Center;
+        Anchor: (Top: 4, Height: 40);
+
+        $C.@SecondaryTextButton #CloseButton {
+          @Sounds = $Sounds.@ButtonsCancel;
+          @Anchor = (Width: 170, Horizontal: 6);
+          Text: "Close";
+          FlexWeight: 1;
+        }
+
+        Group {
+          Anchor: (Width: 10);
+        }
+
+        $C.@TextButton #DonateButton {
+          @Sounds = $Sounds.@ButtonsLight;
+          @Anchor = (Width: 170, Horizontal: 6);
+          Text: "Donate";
+          FlexWeight: 1;
+        }
+      }
+
+      Label #VersionText {
+        Anchor: (Top: 0, Height: 14, Horizontal: 6);
+        Style: (...$C.@DefaultLabelStyle, FontSize: 9, TextColor: #555555, HorizontalAlignment: Center);
+        Text: "v1.1.1";
+      }
+    }
+  }
+}

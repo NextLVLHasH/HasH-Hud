@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="50%" stop-color="#16213e"/>
+      <stop offset="100%" stop-color="#0f0f23"/>
+    </linearGradient>
+    <linearGradient id="titleGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00a8cc"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <linearGradient id="cubeGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00a8cc"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Grid pattern -->
+  <g opacity="0.05" stroke="#00a8cc" stroke-width="1" fill="none">
+    <path d="M0,100 L1200,100 M0,200 L1200,200 M0,300 L1200,300 M0,400 L1200,400 M0,500 L1200,500"/>
+    <path d="M100,0 L100,630 M200,0 L200,630 M300,0 L300,630 M400,0 L400,630 M500,0 L500,630 M600,0 L600,630 M700,0 L700,630 M800,0 L800,630 M900,0 L900,630 M1000,0 L1000,630 M1100,0 L1100,630"/>
+  </g>
+
+  <!-- Decorative cubes - left side -->
+  <g opacity="0.3" filter="url(#glow)">
+    <!-- Cube 1 -->
+    <g transform="translate(80, 120)">
+      <polygon points="30,0 60,15 60,45 30,60 0,45 0,15" fill="#00a8cc"/>
+      <polygon points="30,0 60,15 30,30 0,15" fill="#00d4ff"/>
+    </g>
+    <!-- Cube 2 -->
+    <g transform="translate(150, 450)">
+      <polygon points="25,0 50,12.5 50,37.5 25,50 0,37.5 0,12.5" fill="#6366f1"/>
+      <polygon points="25,0 50,12.5 25,25 0,12.5" fill="#818cf8"/>
+    </g>
+    <!-- Cube 3 -->
+    <g transform="translate(50, 300)">
+      <polygon points="20,0 40,10 40,30 20,40 0,30 0,10" fill="#f4d03f"/>
+      <polygon points="20,0 40,10 20,20 0,10" fill="#fde047"/>
+    </g>
+  </g>
+
+  <!-- Decorative cubes - right side -->
+  <g opacity="0.3" filter="url(#glow)">
+    <!-- Cube 4 -->
+    <g transform="translate(1050, 150)">
+      <polygon points="35,0 70,17.5 70,52.5 35,70 0,52.5 0,17.5" fill="#6366f1"/>
+      <polygon points="35,0 70,17.5 35,35 0,17.5" fill="#818cf8"/>
+    </g>
+    <!-- Cube 5 -->
+    <g transform="translate(1100, 400)">
+      <polygon points="25,0 50,12.5 50,37.5 25,50 0,37.5 0,12.5" fill="#00a8cc"/>
+      <polygon points="25,0 50,12.5 25,25 0,12.5" fill="#00d4ff"/>
+    </g>
+    <!-- Cube 6 -->
+    <g transform="translate(980, 500)">
+      <polygon points="20,0 40,10 40,30 20,40 0,30 0,10" fill="#eab308"/>
+      <polygon points="20,0 40,10 20,20 0,10" fill="#fde047"/>
+    </g>
+  </g>
+
+  <!-- Floating particles -->
+  <g fill="#00a8cc" opacity="0.4">
+    <circle cx="200" cy="200" r="3"/>
+    <circle cx="350" cy="150" r="2"/>
+    <circle cx="900" cy="250" r="3"/>
+    <circle cx="1050" cy="300" r="2"/>
+    <circle cx="250" cy="500" r="2"/>
+    <circle cx="950" cy="450" r="3"/>
+  </g>
+  <g fill="#6366f1" opacity="0.4">
+    <circle cx="300" cy="350" r="2"/>
+    <circle cx="850" cy="180" r="3"/>
+    <circle cx="150" cy="250" r="2"/>
+    <circle cx="1000" cy="550" r="2"/>
+  </g>
+  <g fill="#f4d03f" opacity="0.3">
+    <circle cx="400" cy="480" r="2"/>
+    <circle cx="800" cy="120" r="2"/>
+    <circle cx="750" cy="520" r="2"/>
+  </g>
+
+  <!-- Central logo cube -->
+  <g transform="translate(540, 180)" filter="url(#softGlow)">
+    <polygon points="60,0 120,30 120,90 60,120 0,90 0,30" fill="url(#cubeGrad1)"/>
+    <polygon points="60,0 120,30 60,60 0,30" fill="#00d4ff" opacity="0.8"/>
+    <polygon points="0,30 60,60 60,120 0,90" fill="#4f46e5" opacity="0.8"/>
+    <!-- H on cube -->
+    <g fill="#ffffff" opacity="0.9">
+      <rect x="25" y="35" width="8" height="35" rx="1"/>
+      <rect x="87" y="35" width="8" height="35" rx="1"/>
+      <rect x="33" y="48" width="54" height="8" rx="1"/>
+    </g>
+  </g>
+
+  <!-- Title text -->
+  <text x="600" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="url(#titleGradient)" filter="url(#glow)">
+    Hytale Wiki
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" fill="#94a3b8">
+    The Ultimate Hytale Documentation
+  </text>
+
+  <!-- Bottom accent line -->
+  <rect x="400" y="480" width="400" height="3" rx="1.5" fill="url(#titleGradient)" opacity="0.6"/>
+
+  <!-- Corner accents -->
+  <g stroke="url(#titleGradient)" stroke-width="2" fill="none" opacity="0.3">
+    <path d="M30,30 L30,80 M30,30 L80,30"/>
+    <path d="M1170,30 L1170,80 M1170,30 L1120,30"/>
+    <path d="M30,600 L30,550 M30,600 L80,600"/>
+    <path d="M1170,600 L1170,550 M1170,600 L1120,600"/>
+  </g>
+</svg>

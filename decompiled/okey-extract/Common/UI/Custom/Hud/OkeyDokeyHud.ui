@@ -1,0 +1,223 @@
+// Background image (behind everything) - moved 2 pixels up
+Group #OkeyBackground {
+  Anchor: (Right: 14, Top: 348, Width: 132, Height: 225);
+  Background: (TexturePath: "obutton_bg.png");
+}
+
+// The O-key button image with press text (default)
+Group #OkeyButtonImage {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "obutton_ui_1.png");
+  Visible: true;
+}
+
+// The O-key button image without press text (has built-in O graphic)
+Group #OkeyButtonImage2 {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "obutton_ui_2.png");
+  Visible: false;
+}
+
+// Title text (e.g., "Server Menu") - centered
+Label #OkeyTitle {
+  Anchor: (Right: 15, Top: 384, Width: 112, Height: 35);
+  Style: (FontSize: 15, RenderBold: true, TextColor: #ffffff, HorizontalAlignment: Center, VerticalAlignment: Center);
+  Text: "Server Menu";
+}
+
+// "Press O" text
+Label #OkeyPressText {
+  Anchor: (Right: 43, Top: 499, Width: 56, Height: 21);
+  Style: (FontSize: 12, TextColor: #ffffff, HorizontalAlignment: Center);
+  Text: "Press O";
+}
+
+// ============================================================
+// ICON OVERLAYS - Base layer for each icon (full opacity)
+// ============================================================
+Group #IconJoxWorks {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/jox.works.png");
+  Visible: true;
+}
+Group #IconBanner {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/banner.png");
+  Visible: false;
+}
+Group #IconBook {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/book.png");
+  Visible: false;
+}
+Group #IconChat {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/chat.png");
+  Visible: false;
+}
+Group #IconCompass {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/compass.png");
+  Visible: false;
+}
+Group #IconDiscord {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/discord.png");
+  Visible: false;
+}
+Group #IconFaces {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/faces.png");
+  Visible: false;
+}
+Group #IconHammer {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/hammer.png");
+  Visible: false;
+}
+Group #IconHand {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/hand.png");
+  Visible: false;
+}
+Group #IconHandshake {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/handshake.png");
+  Visible: false;
+}
+Group #IconKweebec {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/kweebec.png");
+  Visible: false;
+}
+Group #IconMenu {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/menu.png");
+  Visible: false;
+}
+Group #IconPerson {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/person.png");
+  Visible: false;
+}
+Group #IconReset {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/reset.png");
+  Visible: false;
+}
+Group #IconStar {
+  Anchor: (Right: 14, Top: 350, Width: 132, Height: 225);
+  Background: (TexturePath: "icons/star.png");
+  Visible: false;
+}
+
+// ============================================================
+// BREATH LAYERS - Using 30% opacity glow_ images (5 layers each)
+// Stack 1-5 of these for breathing glow effect
+// Generated at build time by GlowImageGenerator
+// ============================================================
+
+// jox.works glow breath layers
+Group #BreathJoxWorks1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_jox.works.png"); Visible: false; }
+Group #BreathJoxWorks2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_jox.works.png"); Visible: false; }
+Group #BreathJoxWorks3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_jox.works.png"); Visible: false; }
+Group #BreathJoxWorks4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_jox.works.png"); Visible: false; }
+Group #BreathJoxWorks5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_jox.works.png"); Visible: false; }
+
+// banner glow breath layers
+Group #BreathBanner1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_banner.png"); Visible: false; }
+Group #BreathBanner2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_banner.png"); Visible: false; }
+Group #BreathBanner3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_banner.png"); Visible: false; }
+Group #BreathBanner4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_banner.png"); Visible: false; }
+Group #BreathBanner5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_banner.png"); Visible: false; }
+
+// book glow breath layers
+Group #BreathBook1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_book.png"); Visible: false; }
+Group #BreathBook2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_book.png"); Visible: false; }
+Group #BreathBook3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_book.png"); Visible: false; }
+Group #BreathBook4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_book.png"); Visible: false; }
+Group #BreathBook5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_book.png"); Visible: false; }
+
+// chat glow breath layers
+Group #BreathChat1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_chat.png"); Visible: false; }
+Group #BreathChat2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_chat.png"); Visible: false; }
+Group #BreathChat3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_chat.png"); Visible: false; }
+Group #BreathChat4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_chat.png"); Visible: false; }
+Group #BreathChat5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_chat.png"); Visible: false; }
+
+// compass glow breath layers
+Group #BreathCompass1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_compass.png"); Visible: false; }
+Group #BreathCompass2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_compass.png"); Visible: false; }
+Group #BreathCompass3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_compass.png"); Visible: false; }
+Group #BreathCompass4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_compass.png"); Visible: false; }
+Group #BreathCompass5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_compass.png"); Visible: false; }
+
+// discord glow breath layers
+Group #BreathDiscord1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_discord.png"); Visible: false; }
+Group #BreathDiscord2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_discord.png"); Visible: false; }
+Group #BreathDiscord3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_discord.png"); Visible: false; }
+Group #BreathDiscord4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_discord.png"); Visible: false; }
+Group #BreathDiscord5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_discord.png"); Visible: false; }
+
+// faces glow breath layers
+Group #BreathFaces1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_faces.png"); Visible: false; }
+Group #BreathFaces2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_faces.png"); Visible: false; }
+Group #BreathFaces3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_faces.png"); Visible: false; }
+Group #BreathFaces4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_faces.png"); Visible: false; }
+Group #BreathFaces5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_faces.png"); Visible: false; }
+
+// hammer glow breath layers
+Group #BreathHammer1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hammer.png"); Visible: false; }
+Group #BreathHammer2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hammer.png"); Visible: false; }
+Group #BreathHammer3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hammer.png"); Visible: false; }
+Group #BreathHammer4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hammer.png"); Visible: false; }
+Group #BreathHammer5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hammer.png"); Visible: false; }
+
+// hand glow breath layers
+Group #BreathHand1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hand.png"); Visible: false; }
+Group #BreathHand2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hand.png"); Visible: false; }
+Group #BreathHand3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hand.png"); Visible: false; }
+Group #BreathHand4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hand.png"); Visible: false; }
+Group #BreathHand5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_hand.png"); Visible: false; }
+
+// handshake glow breath layers
+Group #BreathHandshake1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_handshake.png"); Visible: false; }
+Group #BreathHandshake2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_handshake.png"); Visible: false; }
+Group #BreathHandshake3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_handshake.png"); Visible: false; }
+Group #BreathHandshake4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_handshake.png"); Visible: false; }
+Group #BreathHandshake5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_handshake.png"); Visible: false; }
+
+// kweebec glow breath layers
+Group #BreathKweebec1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_kweebec.png"); Visible: false; }
+Group #BreathKweebec2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_kweebec.png"); Visible: false; }
+Group #BreathKweebec3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_kweebec.png"); Visible: false; }
+Group #BreathKweebec4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_kweebec.png"); Visible: false; }
+Group #BreathKweebec5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_kweebec.png"); Visible: false; }
+
+// menu glow breath layers
+Group #BreathMenu1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_menu.png"); Visible: false; }
+Group #BreathMenu2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_menu.png"); Visible: false; }
+Group #BreathMenu3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_menu.png"); Visible: false; }
+Group #BreathMenu4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_menu.png"); Visible: false; }
+Group #BreathMenu5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_menu.png"); Visible: false; }
+
+// person glow breath layers
+Group #BreathPerson1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_person.png"); Visible: false; }
+Group #BreathPerson2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_person.png"); Visible: false; }
+Group #BreathPerson3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_person.png"); Visible: false; }
+Group #BreathPerson4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_person.png"); Visible: false; }
+Group #BreathPerson5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_person.png"); Visible: false; }
+
+// reset glow breath layers
+Group #BreathReset1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_reset.png"); Visible: false; }
+Group #BreathReset2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_reset.png"); Visible: false; }
+Group #BreathReset3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_reset.png"); Visible: false; }
+Group #BreathReset4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_reset.png"); Visible: false; }
+Group #BreathReset5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_reset.png"); Visible: false; }
+
+// star glow breath layers
+Group #BreathStar1 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_star.png"); Visible: false; }
+Group #BreathStar2 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_star.png"); Visible: false; }
+Group #BreathStar3 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_star.png"); Visible: false; }
+Group #BreathStar4 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_star.png"); Visible: false; }
+Group #BreathStar5 { Anchor: (Right: 14, Top: 350, Width: 132, Height: 225); Background: (TexturePath: "icons/glow_star.png"); Visible: false; }

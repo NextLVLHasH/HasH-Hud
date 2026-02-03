@@ -1,0 +1,76 @@
+---
+title: LI pielāgošana
+description: Informācija par LI pielāgošanu iekš Hytale
+---
+
+LI var būt pielāgots ar **severa-puses** modifikācijām. Vairums LI lapu, kas tiek parādītas spēlētājam
+
+## LI Pielāgošana iekš Hytale
+
+Hytale nodrošina plašas LI pielāgošanas iespējas, izmantojot servera puses modifikācijas, kas ļauj īpašniekiem modificēt daudzas LI lapas ar kurām spēlētājs saskarsies.
+
+### Plūsmas Kontrole
+
+LI sistēma iekš Hytale seko specifiskai kontroles plūsmai:
+
+1. Serveris iesūta LI datus klientam
+2. Klients renderē LI
+3. Lietotājs izmanto LI (t.sk. nospiežot pogu)
+4. Klients nosūta mijiedarbības notikumu atpakaļ uz serveri
+5. Serveris izpilda atsauces loģiku priekš notikuma
+
+Šī arhitektūra nozīmē ka:
+
+* Klients ir atbildīgs par LI renderēšanu un sūta mijiedarbību uz serveri
+* Serveris apstrādā visu loģiku aiz lietotāja mijiedarbības
+
+<Callout type="warning" title="Iespējama Veiktspējas Ietekme">
+  <span>
+    Tā kā serveris apstrādā visu LI loģiku, ir noteikta LI veiktspējas ietekme. Pogas spiedienam un citām darbībām jāceļo līdz serverim pirms redzams efekts, kas nozīmē tīkla ping tiešā veidā ietekmēs LI reakciju.
+  </span>
+
+  <span>
+    Turklāt, tā kā klienta puses modifikācijas netiek atbalstītas, modificētās vērtības nepaliek uz klienta.
+  </span>
+</Callout>
+
+### LI Izkārtojuma Līdzekļi
+
+Hytale LI pielāgošanas sistēma darbojas caur sekojošo struktūru:
+
+* **LI Izkārtojums**: Nosūtīts uz klientu kā līdzeklis
+* **LI Uzvedība**: Definēts Java kodā
+* **Pielāgoti Izkārtojumi**: Ļauj izveidot oriģinālus LI izkārtojumus, nevis pārveido esošos (nekā inventāra modifikācijas iekš Minecraft)
+
+### LI Struktūrdarbības Implementācijas
+
+Hytale patlaik atbalsta vairākas LI implementācijas ar plānu apvienot tās NoesisGUI:
+
+#### Iepriekšējā Implementācija
+
+* Kalpo kā piemērs servera modificēšanas spējām
+* Izmanto kombināciju ar iekš-spēles elementiem, LI Marķējuma Līdzekļiem un Java mod kodu
+* Izmanto iepriekšējo pielāgoto marķējuma valodu
+* Tiks izņemta aizvietojot ar NoesisGUI
+
+#### NoesisGUI (Primārā Struktūrdarbība)
+
+* Izmanto XAML Marķējuma Valodu LI definīcijām
+* Atbalsta vairākas valodas priekš internacionalizācijas
+* Darbojas uz C# saistījumiem klienta pusē (nevis C++)
+* Reprezentē Hytale LI nākotnes virzienu
+
+#### Trešā Struktūrdarbība
+
+* Pašlaik pakāpeniski tiek pārtraukta
+* Tiks aizvietota ar NoesisGUI konsolidācijas centienos
+
+### Veiktspējas Apsvērumi
+
+Tā kā lietotāja interfeisa apstrāde ir servera pusē, ir jāņem vērā veiktspējas raksturīgās īpašības:
+
+* **Latentuma ietekme**: pogu klikšķiem jāceļo uz serveri pirms redzams efekts, kas nozīmē, ka tīkla ping tieši ietekmē LI reakciju
+* **Nav Klienta Pastāvīguma**: Tā kā klienta-puses modificēšana nav atbalstīta, klientā nesaglabājas modificētās vērtības
+* **Optimizēta Arhitektūra**: Hytale sistēma ir izstrādāta, lai mazinātu latentumu, izmantojot efektīvus sakaru protokolus un optimizētu servera veiktspēju, kas nodrošina vienmērīgu mijiedarbību, neskatoties uz apstrādes prasībām servera pusē
+
+Arhitektūra piešķir prioritāti drošībai un konsistencei, centralizējot LI loģiku serverī, vienlaikus uzturot lietotāja pieredzi

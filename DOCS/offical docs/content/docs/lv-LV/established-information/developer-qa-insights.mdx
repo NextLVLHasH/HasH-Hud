@@ -1,0 +1,125 @@
+---
+title: Izstrādātāju Q&A Tehniskie Ieskati
+description: Visaptverošs Hytale izstrādātāju tehnisko ieskatu kopsavilkums par arhitektūru, modifikācijām, spēles sistēmām un izstrādes filozofiju.
+---
+
+# Izstrādātāju Q&A Tehniskie Ieskati
+
+Šī visaptverošā jautājumu un atbilžu sesija ar Hytale izstrādātājiem atklāj kritiskas tehniskās detaļas par spēles arhitektūru, modifikācijām, sistēmām un izstrādes pieeju.
+
+## Tehniskā Arhitektūra
+
+### Tīkls un Infrastruktūra
+
+* **Protokols**: Izmanto QUIC (uzticams UDP ar neuzticamiem kanāliem) TCP vietā
+* **Servera saderība**: Darbojas uz jebkuras platformas, kas atbalsta Java 25
+* **Savienojuma Metode**: Tiešais IP sākumā, serveru meklētājs plānots pēc palaišanas
+* **Datu Slānis**: Pašreizējais pielāgotais serializācijas formāts tiks aizstāts pēc palaišanas
+* **Veiktspēja**: Daudzkodolu atbalsts - katrai pasaulei ir galvenais pavediens + paralēlā izpilde
+* **Renderēšana**: OpenGL 3.3 Mac saderībai, potenciāli migrācija uz Vulkan/Metal nākotnē
+* **Tikšķu Modelis**: Servera bāzes tikšķi ir 30 TPS pēc noklusējuma; var būt mainīti ar servera spraudņiem.
+
+### Drošībā un Distribūcija
+
+* \*\*Nav Klienta Puses Koda Palaišanas: Nepieļauj attalināta koda palaišanas ekspluatācijas
+* **Lejuplādes Limitētas Tikai**: Konfigurācijas failiem un līdzekļiem
+* **Mod Izplatīšana** Kopienas platformas (CurseForge, Modrinth), nav tūlītēja spēles tirgus
+* **Servera Hostings**: Pieejams no pirmās dienas, nav nepieciešams biznesa līgums (tikai EULA/TOS)
+
+## Modificēšanas Iespējas
+
+### Servera-Puses Jauda
+
+* **Pilna Java Piekļuve**: Datubāzes savienojumi, web pieprasījumi, jebkāda Java funkcionalitāte
+* **Pielāgotas Bibliotēkas**: Var izveidot Lua skriptus, ML struktūrdarbības vai jebkuru Java bibliotēku
+* **Servera Modifikācijas**: Koplietots avota kods ļauj smagai servera modifikācijai
+* **Karstā pārlāde**: Atbalstīta lielākajai daļai līdzekļu tipiem
+* **Dokumentācija** Publisks GitBlook ieplānots, lai gan sākumā nepilns
+
+### Satura Radīšana (Kodēšana nav nepieciešama)
+
+* **Pasaules Ģenerēšana**: Pielāgotas biomas un kartes bez Javas
+* **NPC un Priekšmeti**: JSON-bāzēta konfigurācija
+* **Krafting Receptes**: Datu-vadīta sistēma
+* **Vizuālais Skripts**: Aizvieto komandu blokus, pilnībā nodalītā vidē
+* **Salikumu Sistēma**: Izsmalcināti būvēšanas bloki rediģējami spēlē
+
+### Advancēta Modificēšana
+
+* **Cīņas Sistēma**: Datu-vadīta mijiedarbības sistēma priekš uzbrukuma ķēdēm un spējām
+* **Iekš-Trāpījuma kastes**: Atbalsts sarežģītai bosu mehānikai (nepieciešami uzlabojumi)
+* **Statusa Efekti**: Pastiprināšanas/Vājināšanas sistēmas ar pielāgotiem efektiem un statusiem
+* **Pielāgots LI**: Pāreja uz NoesisGUI nodrošina spēcīgu interfeisa pielāgošanu
+* **Bloku Fizika**: Selektīva sistēma (koki krīt, bet novietoti bloki nekrīt)
+
+## Spēles Sistēmas
+
+### Kodola Mehānismi
+
+* **Fiziskās piepūles Sistēma**: Nav vajadzības ēst pēc noklusējuma (var būt iemodificēts)
+* **Gravitācija**: Selektīva bloku fizika - koki sabrūk, ēkas paliek gaisā
+* **Gaisma**: Kapitālas izmaiņas, lai labotu modeļu/vokseļu neatbilstības
+* **Pasaules Augstums**: Pašlaik ierobežots, var mainīties līdz ar vokseļu krātuves atjauninājumiem
+* **Automatizācija**: Bez redstone ekvivalenta spēles palaišanas brīdī (modificējams)
+
+### Spēlētāju Sistēmas
+
+* **Tēla Modelis**: Cilvēks pēc noklusējuma, maināms radošajā režīmā
+* **Daudzspēlētāju Avatari**: Servera kontrolēti (nav pielāgotu modeļu daudzspēlētāju režīmā)
+* **Ādas**: Pilnībā pielāgojamas ("pārmodificē sevi par kartupeli")
+* **Formas pārveidošanās**: Pārveidošanās dziras eksistē prieka pēc vai modificēšanai
+
+### Pasaule un NPC
+
+* **Frakciju Sistēma**: Dzīva pasaule ar dinamiskām NPC mijiedarbībām
+* **Ciematu Sistēmas**: Plānoti dinamiski ciemati ar attiecībām un uzvedību
+* **Gabalu Ielāde**: Vienības tiek izlādētās, kad nav visu spēlētāju renderēšanas attālumā
+* **Sēklas**: Tiek atbalstīta pasaules ģenerēšanas sēklu koplietošana
+
+## Izstrādes Filozofija
+
+### Palaišanas Stratēģija
+
+* **Spēles Bāzes Prioritāte**: Piedzīvojumu režīms ir primārais fokuss un modificēšanas arhitektūra to atbalsta
+* **Tehniskais Parāds**: Atzīts par nepieciešamu līdz izlaišanai, apņemts to labot
+* **Atjauninājumu Frekvence**: Plānoti ļoti regulāri atjauninājumi, īpaši pēc palaišanas
+* **Versiju Polise**: Vienmēr jaunākā versija, bet serveri var palaist modificētas versijas
+
+### Kopienas Fokuss
+
+* **Veidotāju Atbalsts**: Kopienas līdzstrādniekiem plānotas izstrādes balvas
+* **Pamācības**: Oficiālas modificēšanas pamācības plānotas ar partneriem
+* **Atsauces Integrācija**: Stingra apņemšanās veikt kopienas virzītus uzlabojumus
+* **Pieejamība**: Paredzēts vājākai aparatūrai, saprātīgām sistēmas prasībām
+
+### Rīki un Dokumentācija
+
+* **Blockbench Integrācija**: Aizvieto pielāgoto "Hytale Model Maker"
+* **Machinima Rīki**: Pilnas kino radīšanas iespējas
+* **Radošie Rīki**: Plānota liela atklāšana būvēšanas/radīšanas funkcijām
+* **Avota Pieeja**: Servera kods netiks aizsegts un saturēs izstrādātāju komentārus
+
+## Platformu Atbalsts
+
+* **Pašlaik**: Windows (primāri)
+* **Plānots**: Mac/Linux atbalsts aktīvi tiek izstrādāts
+* **VR**: Tuvākajā nākotnē nav iespējams
+* **Veiktspēja**: Neierobežots kadru ātrums, kas paredzēts pieejamībai
+* **Bezsaistes Spēlēšana**: Vienspēlētāja režīms darbosies bez interneta savienojuma
+
+## Monetizācija un Juridiskā informācija
+
+* **Nav Pay-to-Win**: Cieša apņemšanās pret P2W mehānismiem
+* **Tikai Kosmētiskas lietas**: Zemu cenu kosmētikas pakas, lai atbalstītu infrastruktūru
+* **Servera GLLL**: Gala lietotāja licenzes līguma nosacījumi tiek finalizēti serveru monetizācijai
+* **QUIC Bloķēšana**: Dažiem reģioniem atzīta problēma, nav alternatīva protokola
+
+## Patreizējās Limitācijas
+
+* **Pielāgoti Shader**: Nav atbalstīti līdz nodalītas vides risinājumi atrasti
+* **LI/Ievades Limitācijas**: Tiek paplašināts, bet patlaik aprobežots
+* **Dokumentācija**: Sākuma nepapildināta, bet ar laiku uzlabosies
+* **Klienta Modi**: Drošībai nepieļauj koda palaišanu klienta pusē
+* **Vārda plates**: Patlaik ierobežota pielāgošana
+
+Šis visaptverošais tehniskais pamats pozicionē Hytale kā drošu, paplašināmu platformu, kas pastiprina satura veidotājus, vienlaikus saglabājot veiktspēju, pieejamību un apņemšanos uzlaboties nepārtraukti.

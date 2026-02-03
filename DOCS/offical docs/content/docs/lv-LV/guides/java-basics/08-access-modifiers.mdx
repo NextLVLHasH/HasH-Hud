@@ -1,0 +1,595 @@
+---
+title: 08 - Iekapsulēšana un Piekļuves Modifikatori
+description: Iemācies aizsargāt un kontrolēt piekļuvi klases datiem.
+---
+
+Iekapsulēšana ir klases iekšējās informācijas slēpšana un tās datu piekļuves un modificēšanas kontrole. Kas novērš kļūdas un padara kodu uzturamāku.
+
+## Problēma bez Iekapsulēšanas
+
+```java
+public class Speletajs {
+    public String vards;
+    public int dzivibas;
+    public int maxDzivibas;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Speletajs speletajs = new Speletajs();
+        speletajs.dzivibas = 100;
+        speletajs.maxDzivibas = 100;
+        
+        // Kāds mierīgi var lauzt noteikumus
+        speletajs.dzivibas = 500;      // Kādam var būt par daudz dzīvības
+        speletajs.dzivibas = -50;      // Kādam negatīvā
+        speletajs.vards = "";         // Kādam var būt tukšs vārds
+    }
+}
+```
+
+Bez aizsardzības, jebkurš var modificēt nederīgas vērtības!
+
+## Pieejas Modifikators
+
+Javā ir atslēgvārdi, kas kontrolē, kam dota piekļuve  klases dalībniekiem:
+
+| Modifikātors | Klase | Pakotne | Apakšklase | Pasaule |
+| ------------ | ----- | ------- | ---------- | ------- |
+| `public`     | ✓     | ✓       | ✓          | ✓       |
+| `protected`  | ✓     | ✓       | ✓          | ✗       |
+| (nekas)      | ✓     | ✓       | ✗          | ✗       |
+| `private`    | ✓     | ✗       | ✗          | ✗       |
+
+**Pagaidām koncentrējies uz:**
+
+* `public` - Piekļuve visiem
+* `private` - Tikai šī klase var piekļūt
+
+## Īpašību privatizēšana
+
+```java
+public class Speletajs {
+    private String vards;
+    private int dzivibas;
+    private int maxDzivibas;
+    
+    public Player(String vards, int maxDzivibas) {
+        this.name = vards;
+        this.health = maxDzivibas;
+        this.maxDzivibas = maxDzivibas;
+    }
+}
+```
+
+Tagad vairs pie īpašībām nevar piekļūt
+
+```java
+Speletajs speletajs = new Speletajs("Alice", 100);
+speletajs.veseliba = 500;  // ❌ Kļūda! veselība ir privāta
+```
+
+## Dabūtāji un Nosacītāji
+
+Lai piekļūtu privātām īpašībām, izveido **getter** un **setter** metodes:
+
+```java
+public class Speletajs {
+    private String vards;
+    private int dzivibas;
+    private int maxDzivibas;
+    
+    public Speletajs(String vards, int maxDzivibas) {
+        this.vards = vards;
+        this.dzivibas = maxDzivibas;
+        this.maxDzivibas = maxDzivibas;
+    }
+    
+    // Getter - atgriež vērtību
+    public int dabutDzivibas() {
+        return dzivibas;
+    }
+    
+    // Setter - uzstāda vērtību ar pārbaudīšanu
+    public void noteiktDzivibas(int dzivibas) {
+        if (dzivibas < 0) {
+            this.dzivibas = 0;
+        } else if (dzivibas > maxDzivibas) {
+            this.dzivibas = maxDzivibas;
+        } else {
+            this.dzivibas = dzivibas;
+        }
+    }
+    
+    public String dabutVardu() {
+        return vards;
+    }
+    
+    public int dabutMaxDzivibas() {
+        return maxDzivibas;
+    }
+}
+```
+
+Tagad vari droši darboties ar objektu:
+
+```java
+Speletajs speletajs = new Speletajs("Alice", 100);
+
+speletajs.noteiktDzivibas(150);  // Automātiski būs 100
+System.out.println(speletajs.dabutDzivibas());  // 100
+
+speletajs.noteiktDzivibas(-20);  // Automātiski būs 0
+System.out.println(speletajs.dabutDzivibas());  // 0
+```
+
+<Callout type="info" title="Dabūšanas un Nostādīšanas nosaukšana">
+  Angļu valodā ar Java seko šādām konvencijām:
+
+  * **Dabūt**: `get` + īpašības nosaukums (lieliem sākumburtiem)
+  * **Noteikt**: `set` + īpašības nosaukums (lieliem sākumburtiem)
+  * **Vai kas ir**: `is` + īpašības nosaukums (lieliem sākumburtiem)
+
+  ```java
+  private int health;
+  public int getHealth() { }
+  public void setHealth(int health) { }
+
+  private boolean alive;
+  public boolean isAlive() { }
+  public void setAlive(boolean alive) { }
+
+  private String name;
+  public String getName() { }
+  public void setName(String name) { }
+  ```
+</Callout>
+
+## Iekapsulēšanas Priekšrocības
+
+### 1. Validācija
+
+```java
+public class Prieksmets {
+    private int izturiba;
+    private int maxIzturiba;
+    
+    public void setIzturibu(int izturiba) {
+        if (izturiba < 0) {
+            this.izturiba = 0;
+        } else if (izturiba > maxIzturiba) {
+            this.izturiba = maxIzturiba;
+        } else {
+            this.izturiba = izturiba;
+        }
+    }
+    
+    public boolean irSalauzts() {
+        return izturiba <= 0;
+    }
+}
+```
+
+### 2. Tikai-lasāmas Īpašības
+
+Dažkārt var negribēt noteikt vērtību:
+
+```java
+public class Nezvers {
+    private String id;  // Nekad nebūtu jāmainās
+    private int dzivibas;
+    
+    public Nezvers(String id, int dzivibas) {
+        this.id = id;
+        this.dzivibas = dzivibas;
+    }
+    
+    // Tikai dabūtājs - nav noteicēju!
+    public String getId() {
+        return id;
+    }
+    
+    public int getDzivibas() {
+        return dzivibas;
+    }
+    
+    public void setDzivibas(int dzivibas) {
+        this.dzivibas = dzivibas;
+    }
+}
+```
+
+### 3. Aprēķinātās Īpašības
+
+Dabūtājiem nav vajadzīgs tiešā veidā atgriezt laukumu:
+
+```java
+public class Speletajs {
+    private int dzivibas;
+    private int maxDzivibas;
+    
+    public int getDzivibas() {
+        return dzivibas;
+    }
+    
+    // Aprēķināta īpašība
+    public double getDzivibasProcentos() {
+        return (dzivibas * 100.0) / maxDzivibas;
+    }
+    
+    // Aprēķināta īpašība
+    public boolean irMazDzivibas() {
+        return getDzivibasProcentos() < 25;
+    }
+}
+```
+
+## Praktiski Piemēri
+
+### Priekšmets ar Izturību
+
+```java
+public class Riks {
+    private String nosaukums;
+    private int izturiba;
+    private int maxIzturiba;
+    private boolean salauzts;
+    
+    public Riks(String nosaukums, int maxIzturiba) {
+        this.nosaukums = nosaukums;
+        this.izturiba = maxIzturiba;
+        this.maxIzturiba = maxIzturiba;
+        this.salauzts = false;
+    }
+    
+    public void izmanto() {
+        if (salauzts) {
+            System.out.println(nosaukums + " ir salauzts!");
+            return;
+        }
+        
+        salauzts--;
+        System.out.println(nosaukums + " Izmantots. Izturība: " + izturiba);
+        
+        if (izturiba <= 0) {
+            salauzts = true;
+            System.out.println(nosaukums + " salūza!");
+        }
+    }
+    
+    public void remontet() {
+        izturiba = maxIzturiba;
+        salauzts = false;
+        System.out.println(nosaukums + " tika saremontēts!");
+    }
+    
+    // Dabūtājs
+    public String getNosaukums() {
+        return nosaukums;
+    }
+    
+    public int getIzturiba() {
+        return izturiba;
+    }
+    
+    public boolean irSalauzts() {
+        return salauzts;
+    }
+    
+    public double getIzturibasProcentu() {
+        return (izturiba * 100.0) / maxIzturiba;
+    }
+}
+```
+
+### Bankas konta piemērs
+
+```java
+public class SpeletajaMaks {
+    private int zelts;
+    private int sudrabs;
+    
+    public SpeletajaMaks() {
+        this.zelts = 0;
+        this.sudrabs = 0;
+    }
+    
+    public void addZelts(int daudzums) {
+        if (daudzums > 0) {
+            zelts += daudzums;
+            System.out.println("Pieskaitīja " + daudzums + " zeltu");
+        }
+    }
+    
+    public boolean spendZelts(int daudzums) {
+        if (daudzums > zelts) {
+            System.out.println("Nepietiek zelta!");
+            return false;
+        }
+        
+        zelts -= daudzums;
+        System.out.println("Iztērēts " + daudzums + " zelta");
+        return true;
+    }
+    
+    public int getZelts() {
+        return zelts;
+    }
+    
+    public int getKopejoVertibu() {
+        // 1 zelts = 100 sudrabi
+        return zelts * 100 + sudrabs;
+    }
+}
+```
+
+### Aizsargāta Bloku Sistēma
+
+```java
+public class AizsargatsBloks {
+    private int x, y, z;
+    private String tips;
+    private String ipasnieks;
+    private boolean slegts;
+    
+    public AizsargatsBloks(int x, int y, int z, String tips, String ipasnieks) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.tips = tips;
+        this.ipasnieks = ipasnieks;
+        this.slegts = true;
+    }
+    
+    public boolean varSagraut(String speletajaVards) {
+        if (!slegts) {
+            return true;
+        }
+        
+        return speletajaVards.equals(ipasnieks);
+    }
+    
+    public void atslegt(String speletajaVards) {
+        if (speletajaVards.equals(ipasnieks)) {
+            slegts = false;
+            System.out.println("Bloks aslēgts");
+        } else {
+            System.out.println("Tev nepieder šis bloks!");
+        }
+    }
+    
+    // Tikai dabūs datus - Pozīcijai un īpašniekam nebūtu jāmainās
+    public int getX() {
+        return x;
+    }
+    
+    public int getY() {
+        return y;
+    }
+    
+    public int getZ() {
+        return z;
+    }
+    
+    public String getIpasnieks() {
+        return owner;
+    }
+    
+    public boolean irSlegts() {
+        return slegts;
+    }
+}
+```
+
+## Kad lietot Privāto un Publisko
+
+<Callout type="info" title="Vispārīgie Noteikumi">
+  **Viedo Privātu pirmajā vietā!** Padari lietas publiskas tikai tad, ja tām ir nepieciešams piekļūt no ārpuses.
+
+  **Privāti:**
+
+  * Iekšējie dati (dzivibas, pozīcija, inventārs)
+  * Palīgmetodes, ko izmanto tikai klasē
+  * Viss, kas jāpārbauda un jāapstiprina
+
+  **Publiskas:**
+
+  * Metodes, kas nosaka klases uzvedību
+  * Konstruktori
+  * Metodes, kas jāizsauc citām klasēm
+
+  ```java
+  public class Piemers {
+      // Privāts - iekšējie dati
+      private int ieksejaisSkaititajs;
+      private String slepenaAtslega;
+      
+      // Publisks - daļa no interfeisa
+      public void daritKautKo() {
+          // Izmanto privāto palīdzētāja metodi
+          apstiprinatDatus();
+      }
+      
+      // Privāts - iekšējais palīdzētājs
+      private void apstiprinatDatus() {
+          // ...
+      }
+  }
+  ```
+</Callout>
+
+## Atslēgvārds `final`
+
+`final` nozīmē, ka variable vairs nevar nomainīt pēc iestatīšanas:
+
+```java
+public class Speletajs {
+    private final String id;  // Nevar mainīt pēc izveides
+    private String vards;      // Var mainīt
+    private int dzivibas;       // Var mainīt
+    
+    public Speletajs(String id, String vards) {
+        this.id = id;
+        this.vards = vards;
+    }
+    
+    public String getId() {
+        return id;
+    }
+    
+    // Nevar setId() - tam jau ir fināla vērtība!
+    
+    public String getVards() {
+        return vards;
+    }
+    
+    public void setVards(String vards) {
+        this.vards = vards;
+    }
+}
+```
+
+## Atslēgvārds `static`
+
+### Static Dalībnieki (Members)
+
+Klase var definēt divus tipa dalībniekus:
+
+* **Instances dalībnieki** — pieder katram objektam (katrai instancei ir sava kopija).
+
+* **Statiski dalībnieki** — pieder klasei (viena kopija izdalīta visam tipam).
+
+Vienkāršāk sakot: instances dalībnieki pieder objektiem; statiski dalībnieki pieder pašai klasei un dalās ar visiem objektiem tajā tipā.
+
+#### Deklarācija
+
+```java
+    /* (pieejas modifikātors) */ static ... memberName; 
+```
+
+#### Piemērs
+
+```java
+class Data {
+    public int x; // Instances dalībnieks
+    public static int y = 1000; // Static dalībnieks
+
+    // Instanced member:
+    // var piekļut abiem - statiskiem un ne statiskiem dalībniekiem
+    public void foo() {
+        x = 100; // OK - tas pats, kas this.x = 100;
+        y = 100; // OK - tas pats, kas Data.y = 200;
+    }
+
+    // Static member:
+    // nevar piekļūt ne-static mainīgajiem
+    public static void bar() {
+        x = 100; // Kļūda: ne-static mainīgais x nevar būt piesaukts no static konteksta
+        y = 100; // OK
+    }
+}
+```
+
+#### static dalībnieku piekļūšana
+
+```java
+Data data = new Data();
+data.x = 1000; // OK
+
+data.y = 1000; // OK-ish - nav ieteikts; labāk lietot Data.y
+Data.y = 1000; // OK - labākā prakse
+
+Data.x = 1000; // Kļūda: nevar piekļūt instances mainīgajam iekš static konteksta
+```
+
+### Static Laukumi
+
+Static laukums pārstāv datu dalībniekus, kas pieder klases tipam, nevis objektam. Static laukumi arī tiek glabāti specifiskā atmiņas lokācijā ar kuru dalās starp visām objektu instancēm, kas tiek izveidotas.
+
+Tas tiek deklarēts sekojoši:
+
+```java
+/* (pieejas modifikātors) (pēc izvēles) */ static /* final/volatile (pēc izvēles) */ fieldName;
+```
+
+Paņemsism to pašu Datu klases piemēru un pievienosim šo konstruktoru:
+
+```java
+public Data() {
+    y++; // atceries tas ir tas pats, kas Data.y++;
+}
+```
+
+```java
+// Katrai Datu instancei būs privāta instancētā dalībnieka x kopija
+// Lai gan tā norādīs uz to pašu lokāciju atmiņā y dalībniekam
+Data d1 = new Data(); // y = 1001
+d1.x = 5;
+Data d2 = new Data(); // y = 1002
+d2.x = 25;
+Data d3 = new Data(); // y = 1003
+// ... un tā tālāk
+```
+
+### Static Metodes
+
+Static metodes pamatā pārstāv noteiktas klases tipa funkcijas dalībnieku
+
+Funkcija no Datu klases dalībnieka (instances metode) `foo` un (static metode) `bar`
+
+Iespējams piekļūt metodēm ar:
+
+```java
+Data d1 = new Data();
+
+d1.foo(); // Instanced method: Piekļūst tikai ar objektu
+
+Data.bar(); // Static method: Piekļūst bez objekta
+```
+
+### Static Inicializators (Initializer)
+
+Izmanto *static initializer* bloku, lai palaistu inicializācijas loģiku, kad pirmo reizi ielādē klasi:
+
+```java
+class OtherData {
+    private static int a = 12;
+    private static int b;
+    private static String msg;
+
+    static {
+        msg = "Initialization..."
+        System.out.println(msg);
+        b = 4;
+        // ... sarežģīta inicializācija, kas nav izpildāma vienā izteiksmē
+    }
+}
+```
+
+## Praktiskie Vingrinājumi
+
+1. **Izveido `BankasKonts` Klasi**:
+   * Privātās īpašības: kontaNumurs, atlikums
+   * Konstruktors, lai iestatītu konta numuru
+   * Metodes: depozet(), iznemt(), getAtlikumu()
+   * Validācija: nevar izņemt vairāk par atlikumu
+   * Konta numuram jābūt tikai lasāmam
+
+2. **Izveido `Durvis` Klasi**:
+   * Privātās īpašības: irSlegts, atslegasKods
+   * Konstruktors, lai iestatītu atslēgas kodu
+   * Metodes: aizslegt(), atslegt(String kods), irSlegts()
+   * Atslegt() darbojas tikai ar pareizu kodu
+   * Kodam jābūt privātam (neatklājiet to!)
+
+3. **Izveido `PlayerStats` Klasi**
+   * Privātās īpašības: spēks, aizsardzība, ātrums
+   * Konstruktors, lai iestatītu visu statistiku
+   * Dabūtāji visai statistikai
+   * Metode: getSpekaLimeni(), kas atgriež spēku + aizsardzību + ātrumu
+   * Statistika nedrīkst būt negatīva vai lielāka par 100
+
+4. **Pārveidojiet klasi**: Paņem vienu no iepriekšējās nodarbības klasēm un pievieno kārtīgu iekapsulējumu:
+   * Pārveido visas īpašības par privātām
+   * Pievieno attiecīgos dabūtājus un nosacītājus
+   * Pievieno pārbaudes, kur tās nepieciešamas

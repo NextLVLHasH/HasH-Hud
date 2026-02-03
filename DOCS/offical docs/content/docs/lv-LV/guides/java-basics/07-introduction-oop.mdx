@@ -1,0 +1,378 @@
+---
+title: 07 - Ievads Objektorientētā Programmēšanā
+description: Apgūstiet klašu un objektu pamatus Java.
+---
+
+Objektorientētā programmēšana (OOP) ir Java un Hytale modifikācijas pamats. Tā vietā, lai tikai mainīgie un metodes peldētu apkārt, mēs tos organizējam **klasēs** un **objektos**.
+
+## Kas ir Klase?
+
+Klase ir objektu izveides plāns. Domā par to kā recepti vai paraugu.
+
+```java
+public class Speletajs {
+    // Dati
+    String vards;
+    int dzivibas;
+    int limenis;
+    
+    // Uzvedība (metode)
+    public void zaudetDzivibas(int bojajumi) {
+        dzivibas -= bojajumi;
+        System.out.println(vards + " saņēma " + bojajumi + " smagu triecienu!");
+    }
+}
+```
+
+## Kas ir Objekts?
+
+Objekts ir instance, kas izveidota no klases. Ja klase ir kā plāns, objekts ir rēalas lietas plānā
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Izveido objektu no Spēlētāja klases
+        Speletajs speletajs1 = new Speletajs();
+        speletajs1.vards = "Alice";
+        speletajs1.dzivibas = 100;
+        speletajs1.limenis = 5;
+        
+        Speletajs speletajs2 = new Speletajs();
+        speletajs2.vards = "Bob";
+        speletajs2.dzivibas = 80;
+        speletajs2.limenis = 3;
+        
+        // Izmanto objektus
+        player1.zaudetDzivibas(20);  // Alice took 20 damage!
+        player2.zaudetDzivibas(15);  // Bob took 15 damage!
+    }
+}
+```
+
+<Callout type="info" title="Klase pret Objektu">
+  **Klase** = Plāns (iedomājies spēlētāju)
+  **Objekts** = Reāla lieta (Alice, Bobs, specifiski spēlētāji)
+
+  Viena klase var izveidot vairākus objektus, tāpat kā viena recepte vairākas kūkas!
+</Callout>
+
+## Vienkāršas Klases izveidošana
+
+Pamēģinam izveidot `Zobens` klasi priekš Hytale:
+
+```java
+public class Zobens {
+    // Īpašības
+    String nosaukums;
+    int sitienaSpeks;
+    int izturiba;
+    
+    // Metode, lai izmantotu zobenu
+    public void sitiens(String merkis) {
+        System.out.println("Sitiens pret" + merkis + " veica " + sitienaSpeks + " bojājumus!");
+        izturiba -= 1;
+        
+        if (izturiba <= 0) {
+            System.out.println(nosaukums + " salūza!");
+        }
+    }
+    
+    // Metode, lai parādītu info
+    public void paraditInfo() {
+        System.out.println("Zobens: " + nosaukums);
+        System.out.println("Spēks: " + sitienaSpeks);
+        System.out.println("Izturība: " + izturiba);
+    }
+}
+```
+
+Klases izmantošana:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Zobens zobens = new Zobens();
+        zobens.nosaukums = "Dzelzs Zobens";
+        zobens.sitienaSpeks = 15;
+        zobens.izturiba = 3;
+        
+        zobens.displayInfo();
+        zobens.uzbruk("Zombijs");
+        zobens.uzbruk("Skelets");
+        zobens.uzbruk("Zirneklis");  // Ar šo zobens salūzīs
+    }
+}
+```
+
+## Konstruktori
+
+Tā vietā, lai ievadītu īpašības vienu pa vienai, izmanto **konstruktoru**, lai inicializētu objektus:
+
+```java
+public class Zobens {
+    String nosaukums;
+    int sitienaSpeks;
+    int izturiba;
+    
+    // Konstruktors
+    public Zobens(String zobenaNosaukums, int zobenaSpeks, int zobenaIzturiba) {
+        nosaukums = zobenaNosaukums;
+        sitienaSpeks = zobenaSpeks;
+        izturiba = zobenaIzturiba;
+    }
+    
+    public void uzbruk(String merkis) {
+        System.out.println("Sitiens pret " + merkis + " veica " + sitienaSpeks + " bojājumus!");
+        izturiba--;
+    }
+}
+```
+
+Tagad zobena izveidošana ir vieglāka:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Daudz vienkāršāk
+        Zobens dzelzsZobens = new Zobens("Dzelzs Zobens", 15, 100);
+        Zobens dimantaZobens = new Zobens("Dimanta Zobens", 25, 200);
+        
+        dzelzsZobens.uzbruk("Zombijs");
+        dimantaZobens.uzbruk("Boss");
+    }
+}
+```
+
+<Callout type="info" title="Konstrukcijas Noteikumi">
+  * Vienāds nosaukums ar klasi
+  * Nav atgriešanas tipa (pat ne `void`)
+  * Izsaukts automātiski, kad izmanto `new`
+  * Var būt vairāki konstruktori (pārlādēšana)
+
+  ```java
+  public class Prieksmets {
+      String nosaukums;
+      int vertiba;
+      
+      // Konstrukcija ar visiem parametriem
+      public Prieksmets(String nosaukums, int vertiba) {
+          this.nosaukums = nosaukums;
+          this.vertiba = vertiba;
+      }
+      
+      // Konstrukcija tikai ar nosaukumu
+      public Prieksmets(String nosaukums) {
+          this.nosaukums = nosaukums;
+          this.vertiba = 0;  // Noklusējuma vērtība
+      }
+  }
+  ```
+</Callout>
+
+## Kas ir `this`
+
+`this` attiecas uz esošo objektu. Izmanto to, lai precizētu kad parametru nosaukumi sakrīt ar īpašības nosaukumu:
+
+```java
+public class Speletajs {
+    String vards;
+    int veseliba;
+    
+    public Speletajs(String vards, int veseliba) {
+        this.vards = vards;      // this.vards = Īpašība
+        this.veseliba = veseliba;  // name = Parametrs
+    }
+}
+```
+
+Bez `this`, Java apmulst:
+
+```java
+public Speletajs(String vards, int veseliba) {
+    vards = vards;      // ❌ Kurš vārds? Par plašu!
+    veseliba = veseliba;  // ❌ Kāda veselība? Par plašu!
+}
+```
+
+## Praktisks Piemērs
+
+### Priekšmeta Klase
+
+```java
+public class Prieksmets {
+    String nosaukums;
+    String tips;
+    int daudzums;
+    double svars;
+    
+    public Prieksmets(String nosaukums, String tips, int daudzums, double svars) {
+        this.nosaukums = nosaukums;
+        this.tips = tips;
+        this.daudzums = daudzums;
+        this.svars = svars;
+    }
+    
+    public void izmantot() {
+        if (daudzums > 0) {
+            daudzums--;
+            System.out.println("Izmantoji " + nosaukums + ". Atlicis: " + daudzums);
+        } else {
+            System.out.println("Vairs " + nosaukums + " nav atlicis!");
+        }
+    }
+    
+    public double dabutKopejoSvaru() {
+        return svars * daudzums;
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Item dzira = new Prieksmets("Veselības Dzira", "Lietojama", 5, 0.5);
+        
+        potion.use();  // Izmantoja Veselības Dzira. Atlicis: 4
+        System.out.println("Kopējais svars " + dzira.dabutKopejoSvaru()); // 2.0
+    }
+}
+```
+
+### Nezvēra Klase
+
+```java
+public class Nezvers {
+    String nosakums;
+    int dzivibas;
+    int speks;
+    boolean irNaidigs;
+    
+    public Nezvers(String vards, int dzivibas, int speks, boolean irNaidigs) {
+        this.vards = vards;
+        this.dzivibas = dzivibas;
+        this.speks = speks;
+        this.irNaidigs = irNaidigs;
+    }
+    
+    public void zaudetDzivibas(int bojajumi) {
+        dzivibas -= bojajumi;
+        System.out.println(vards + " zaudēja " + bojajumi + " dzīvības!");
+        
+        if (dzivibas <= 0) {
+            System.out.println(vards + " tika sakauts!");
+        } else {
+            System.out.println(vards + " vēl ir " + dzivibas + " atlikušas dzīvības.");
+        }
+    }
+    
+    public int uzbrukSpeletajam() {
+        if (irNaidigs && dzivibas > 0) {
+            System.out.println(vards + " uzbruka ar " + speks + " punktiem!");
+            return speks;
+        }
+        return 0;
+    }
+    
+    public boolean irDzivs() {
+        return dzivibas > 0;
+    }
+}
+```
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Nezvers zombijs = new Nezvers("Zombijs", 50, 10, true);
+        Nezvers vista = new Nezvers("Vista", 10, 0, false);
+        
+        zombijs.zaudetDzivibas(20);        // Zombijs saņim 20 punktu triecienu
+        int bojajumi = zombijs.uzbrukSpeletajam();  // Zombijs uzbrūk ar 10 punktu triecienu
+        
+        if (zombijs.irDzivs()) {
+            System.out.println("Nezvērs vēl dzīvs!");
+        }
+    }
+}
+```
+
+### Bloku Klase
+
+```java
+public class Bloks {
+    String tips;
+    int x, y, z;
+    boolean irCiets;
+    int cietiba;
+    
+    public Bloks(String tips, int x, int y, int z, boolean irCiets, int cietiba) {
+        this.tips = tips;
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.irCiets = irCiets;
+        this.cietiba = cietiba;
+    }
+    
+    public void sagrautBloku() {
+        System.out.println("Sagrauj " + tips + " bloku (" + x + ", " + y + ", " + z + ")");
+        System.out.println("Cik Ciets: " + cietiba);
+    }
+    
+    public String dabutPoziciju() {
+        return "(" + x + ", " + y + ", " + z + ")";
+    }
+    
+    public boolean varIzietCauri() {
+        return !irCiets;
+    }
+}
+```
+
+## Piekļuves Modifikatori (priekšskatījums)
+
+Esi redzējis `public` - tas nozīmē "jebkurš var piekļūt pie šī". Mēs noskaidrosim vairāk par piekļuves kontroli vēlāk, bet pagaidām pirmskats:
+
+```java
+public class Example {
+    public String publicVar;      // Anyone can access
+    private String privateVar;    // Only this class can access
+    // (no modifier) String defaultVar; // Package access
+}
+```
+
+Pagaidām izmanto `public` visam. Iemācīsimies lietot  `private` nākamajā sadaļā.
+
+<Callout type="info" title="Kāpēc Izmantot Klases?">
+  Klases palīdz:
+
+  * **Organizēt** saistītos datus un metodes kopā
+  * **Atkārtoti izmantojiet** kodu vienkārši (veido daudzus objektus no vienas klases)
+  * **Modelēt** iekš-pasaules lietas (spēlētāji, priekšmeti, monstri)
+  * **Uzturēt** kodu (izmaiņas vienuviet ietekmē visus objektus)
+
+  Bez klasēm, lai pārvaldītu 100 spēlētājus, katrai īpašībai būtu nepieciešami 100 atsevišķi mainīgie. Ar klasēm tie ir tikai 100 spēlētāju objekti.
+</Callout>
+
+## Praktisks Vingrinājums
+
+1. **Izveido `dziras` Klasi**:
+   * Īpašības: vārds, dziedēšanas daudzums, lietošansa reizes
+   * Konstruktors, lai iestatītu visas īpašības
+   * Metode `dzert()`, kas dziedina un samazina lietojumu
+   * Metode 'irTukss()', kas atgriež true, ja lietošanas reizes mazāk vai vienādi ar 0
+
+2. **Izveido `Lāde` Klasi**:
+   * Īpašības: vai irSlēgta, priekšmetuSkaits, ietilpība
+   * Konstruktors
+   * Metode `pievienotPriekšmetu()` kas arī pārbauda tilpumu
+   * Metode `atslēgt()` kas pārveidos irSlēgta par nepatiesu
+   * Metode `irPilna()` kas pārbauda vai priekšmetuSkaits >= ietilpības
+
+3. **Izveido `Iedzīvotājs` Klasi**:
+   * Īpašības: vārds, profesija, tirgošanāsReizes
+   * Konstruktors
+   * Metode `sveicinat()` kas atbildēs ar sveicienu
+   * Metode `tirgoties()` kas palielinās tirgošanāsReizes
+   * Metode `dabūtInfo()` kas parādīs visas Īpašības
+
+4. **Izveido Vairākus Objektus**: Izmantojot jebkuru no šīm klasēm, tagad izveido 3 dažādus objektus un pārbaudi visas metodes.

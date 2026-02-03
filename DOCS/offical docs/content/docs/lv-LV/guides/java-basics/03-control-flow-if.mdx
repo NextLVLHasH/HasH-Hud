@@ -1,0 +1,126 @@
+---
+title: 03 - Plūsmas Kontrole ar If Nosacījumiem
+description: Iemācies kontrolēt Java programmas plūsmu, izmantojot If nosacījumus.
+---
+
+Programmām jāpieņem lēmumi. If nosacījumi ļauj kodam izvēlēties dažādus ceļus, balstoties uz stāvokļiem.
+
+## Pamata If Nosacījums
+
+Vienkāršāka forma pārbauda vienu stāvokli;
+
+```java
+int veseliba = 20;
+
+if (veseliba > 10) {
+    System.out.println("Tu esi vesels!");
+}
+```
+
+### Struktūra
+
+```java
+if (stāvoklis) {
+    // izpildāmais kods, ja nosacījumi sakrīt ar stāvokli - true
+}
+```
+
+## If-Else Nosacījumi
+
+Izvēle starp diviem ceļiem:
+
+```java
+int veseliba = 5;
+
+if (veseliba > 10) {
+    System.out.println("Tu esi vesels!");
+} else {
+    System.out.println("Tev vajadzētu veseļoties!");
+}
+```
+
+## If-Else Else-If Ķēde
+
+Pārbaida vairākus nosacījumus pēc kārtības:
+
+```java
+int veseliba = 7;
+
+if (veseliba > 15) {
+    System.out.println("Tu esi lieliskā stāvoklī!");
+} else if (health > 5) {
+    System.out.println("Tev viss kārtībā");
+} else {
+    System.out.println("Tev vajag veseļoties!");
+}
+```
+
+## Iemitināti If Nosacījumi
+
+Tu vari ievietot nosacījumus iekš citiem nosacījumiem:
+
+```java
+int veseliba = 12;
+
+if (veseliba > 10) {
+    if (veseliba > 15) {
+        System.out.println("Tu esi lieliskā stāvoklī!");
+    } else {
+        System.out.println("Tu esi vesels!");
+    }
+} else {
+    System.out.println("Tev vajag veseļoties");
+}
+```
+
+## Salikti Nosacījumi
+
+Tu vari kombinēt vairākus nosacījumus izmantojot loģikas operātorus:
+
+```java
+// UN - abiem jābūt patiesiem
+int veselība = 12;
+boolean irDziras = true;
+
+if (veselība > 10 && irDziras) {
+    System.out.println("Tu esi vesels un tev ir dziras");
+} else if (veselība > 10) {
+    System.out.println("Tu esi vesels, bet beigušās dziras!");
+} else {
+    System.out.println("Tev vajag veseļoties!");
+}
+
+// VAI - vismaz vienam jābūt patiesam
+
+int veselība = 8;
+boolean irDziras = false;
+if (veselība > 10 || irDziras) {
+    System.out.println("Vai nu tu esi vesels, vai tev ir dziras!");
+} else {
+    System.out.println("Tev vajag veseļoties un dziras!");
+}
+
+// NE - sāc pārbaudit vai kas nav
+
+int veselība = 8;
+if (!(veselība > 10)) {
+    System.out.println("Tev vajag veseļoties!");
+} else {
+    System.out.println("Tu esi vesels!");
+}
+```
+
+## Trīskāršais Operātors
+
+Kompakta metode, lai noteiktu vērtības:
+
+```java
+int veseliba = 12;
+String statuss = (veseliba > 10) ? "Vesels" : "Vajag Veseļoties";
+```
+
+### Sintakse
+
+```java
+mainīgais = (nosacījums) ? jaPatiess : jaNepatiess;
+```

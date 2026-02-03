@@ -1,0 +1,493 @@
+---
+title: 09 - Darbs ar Virknēm
+description: Galvenā teksta manipulācija un virknes operācijas Javā.
+---
+
+Virknes(String) ir viens no visbiežāk izmantotajiem tipiem Java. Tie ir būtiski, lai apstrādātu spēlētāju vārdus, čata ziņojumus, aprakstus un visu, kas izlasāms.
+
+## Virknes Pamati
+
+String ir objekti, kas glabā tekstu:
+
+```java
+String vards = "Simon";
+String zina = "Sveicināts Hytale!";
+String tukss = "";
+```
+
+<Callout type="warning" title="Virknes ir nemainīgas">
+  Pēc izveidošanas virkne \*\* nevar tikt mainīta\*\* Metodes, kas modificē virknes, īstenībā izveido jaunas virknes!
+
+  ```java
+  String teksts = "Sveiki";
+  teksts.uzLieliemBurtiem();           // Izveido "HELLO" bet nesaglabā
+  System.out.println(teksts);     // Joprojām "Hello"
+
+  String lielieBurti = teksts.uzLieliemBurtiem();  // ✓ Saglabā rezultātu
+  System.out.println(lielieBurti);          // "HELLO"
+  ```
+</Callout>
+
+## Virknes Metodes
+
+### Garums
+
+```java
+String vards = "Alice";
+int garums = vards.garums();
+System.out.println(garums);  // 5
+```
+
+### Burtu Maiņa
+
+```java
+String teksts = "Hello World";
+String lieliem = text.uzLieliemBurtiem();  // "HELLO WORLD"
+String maziem = text.uzMaziemBurtiem();  // "hello world"
+```
+
+### Satura Apskatīšana
+
+```java
+String zinojums = "Sveicināts Hytale";
+
+boolean irHytale = message.contains("Hytale");  // true
+boolean irMinecraft = message.contains("Minecraft");  // false
+
+boolean vaiSakas = message.startsWith("Sveicināts");  // true
+boolean vaiBeidzas = message.endsWith("Hytale");  // true
+```
+
+### Daļu Nolasīšana
+
+```java
+String teksts = "Hello World";
+
+char pirmais = text.charAt(0);      // 'H'
+char pedejais = text.charAt(10);      // 'd'
+
+String apVirkne1 = teksts.substring(0, 5);   // "Hello"
+String apVirkne2 = teksts.substring(6);      // "World"
+```
+
+<Callout type="info" title="Apakšvirnes Indeksi">
+  `substring(start, end)` iekļauj `start` bet izņem `end`
+
+  ```java
+  String teksts = "Hytale";
+  //             012345 (indeksi)
+
+  text.substring(0, 2);  // "Hy" (indeksē 0 un 1)
+  text.substring(2, 6);  // "tale" (indeksē 2, 3, 4, 5)
+  text.substring(2);     // "tale" (no 2 līdz galam)
+  ```
+</Callout>
+
+### Teksta Aizvietošana
+
+```java
+String teksts = "Es Mīlu Minecraft";
+String aizvietots = teksts.replace("Minecraft", "Hytale");
+System.out.println(aizvietots);  // "Es Mīlu Hytale"
+
+String bezAtstarpes = "Hello World".replace(" ", "");
+System.out.println(bezAtstarpes);  // "HelloWorld"
+```
+
+### Atstarpju Apgriešana
+
+```java
+String nekartigs = "  Hello World  ";
+String satirits = nekartigs.trim();
+System.out.println(satirits);  // "Hello World" (galā nav liekas atstarpes)
+```
+
+### Virknes Saskaldīšana
+
+```java
+String komanda = "iedot speletajam zobenu 5";
+String[] dalas = komanda.split(" ");
+
+System.out.println(dalas[0]);  // "iedot"
+System.out.println(dalas[1]);  // "speletajam"
+System.out.println(dalas[2]);  // "zobenu"
+System.out.println(dalas[3]);  // "5"
+```
+
+## Virkņu Salīdzināšana
+
+<Callout type="warning" title="Nekad neizmanto == priekš Virknēm">
+  Vienmēr izmanto `.equals()`, lai salīdzinātu saturu!
+
+  ```java
+  String vards1 = "Steve";
+  String vards2 = "Steve";
+
+  // Nepareizi - Salīdzina objektu references
+  if (vards1 == vards2) {
+      System.out.println("Vienādi");
+  }
+
+  // Pareizi - Salīdzina reālo tekstu
+  if (vards1.equals(vards2)) {
+      System.out.println("Vienādi");
+  }
+
+  // Ignorē burtu lielumu, kad salīdzinam
+  if (vards1.equalsIgnoreCase("steve")) {
+      System.out.println("Vienādi (ignorējot lielos burtus)");
+  }
+  ```
+</Callout>
+
+### Salīdzinājuma Secība
+
+```java
+String a = "Ābols";
+String b = "Banāns";
+
+int rezultats = a.compareTo(b);
+// rezultats < 0 ja a nāk pirms b
+// rezultats == 0 ja a equals b
+// rezultats > 0 ja a comes after b
+
+if (a.compareTo(b) < 0) {
+    System.out.println(a + " comes before " + b);
+}
+```
+
+## Virknes Apvienošana
+
+### Izmantojot + Operātoru
+
+```java
+String pirmais = "Hello";
+String otrais = "World";
+String kombinets = pirmais + " " + otrais;  // "Hello World"
+
+int punkti = 100;
+String zinojums = "Punkti: " + punkti;  // "Punkti: 100"
+```
+
+### Izmantojot concat()
+
+```java
+String rezultats = "Hello".concat(" World");  // "Hello World"
+```
+
+### Garas Virknes Veidošana
+
+Ja jāapvieno vairākas virknes, izmanto `StringBuilder`
+
+```java
+StringBuilder salikts = new StringBuilder();
+salikts.append("Speletajs: ");
+salikts.append("Alice");
+salikts.append(", Limenis: ");
+salikts.append(10);
+salikts.append(", Dzivibas: ");
+salikts.append(100);
+
+String rezultats = salikts.toString();
+System.out.println(rezultats);
+// "Speletajs: Alice, Limenis: 10, Dzivibas: 100"
+```
+
+<Callout type="info" title="Kāpēc StringBuilder?">
+  Parasti saliekot veidojas vairākas pagaidu virknes:
+
+  ```java
+  // Nav efektīvi - Veidojot vairākas virknes
+  String rezultats = "";
+  for (int i = 0; i < 1000; i++) {
+      rezultats = rezultats + i;  // Izveidos 1000 pagaidu virknes!
+  }
+
+  // Efektīvi - StringBuilder ir pārveidojams
+  StringBuilder sb = new StringBuilder();
+  for (int i = 0; i < 1000; i++) {
+      sb.append(i);  // Modificē vienu objektu
+  }
+  String rezultats = sb.toString();
+  ```
+
+  Izmanto `StringBuilder`, kad veido virknes ciklus!
+</Callout>
+
+## Praktiski Piemēri
+
+### Parsēt Spēlētāja Komandu
+
+```java
+public class KomandasParsetajs {
+    public static void parsetKomandu(String komanda) {
+        // "/iedot Steve dimanta_zobens 1"
+        String[] dalas = komanda.split(" ");
+        
+        String darbiba = dalas[0].replace("/", "");  // "iedot"
+        String speletajs = dalas[1];                   // "Steve"
+        String prieksmets = dalas[2];                     // "dimanta_zobens"
+        int daudzums = Integer.parseInt(dalas[3]);    // 1
+        
+        System.out.println("Darbiba: " + darbiba);
+        System.out.println("Spēlētājs: " + speletajs);
+        System.out.println("Priekšmets: " + prieksmets);
+        System.out.println("Daudzums: " + daudzums);
+    }
+    
+    public static void main(String[] args) {
+        parsetKomandu("/iedot Steve dimanta_zobens 1");
+    }
+}
+```
+
+### Formatē Spēlētāja Displejvārdu
+
+```java
+public class SpeletajaFormators {
+    public static String formateVardu(String vards, int limenis, String rangs) {
+        StringBuilder formatets = new StringBuilder();
+        
+        if (rank != null && !rank.isEmpty()) {
+            formatets.append("[").append(rank).append("] ");
+        }
+        
+        formatets.append(vards);
+        formatets.append(" (Lv. ").append(limenis).append(")");
+        
+        return formatets.toString();
+    }
+    
+    public static void main(String[] args) {
+        String paradit1 = formateVardu("Alice", 10, "VIP");
+        System.out.println(paradit1);  // "[VIP] Alice (Lv. 10)"
+        
+        String paradit2 = formateVardu("Bob", 5, null);
+        System.out.println(paradit2);  // "Bob (Lv. 5)"
+    }
+}
+```
+
+### Pārbaudi Lietotājvārdu
+
+```java
+public class LietotajvardaParbauditajs {
+    public static boolean irDerigs(String lietotajvards) {
+        // Noteikumi: 3-16 rakstzīmes. tikai burti un skaitļi
+        
+        if (lietotajvards == null || lietotajvards.isEmpty()) {
+            return false;
+        }
+        
+        lietotajvards = lietotajvards.trim();
+        
+        if (lietotajvards.length() < 3 || lietotajvards.length() > 16) {
+            return false;
+        }
+        
+        for (int i = 0; i < lietotajvards.length(); i++) {
+            char c = lietotajvards.charAt(i);
+            if (!Character.isLetterOrDigit(c)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(irDerigs("Steve"));      // true
+        System.out.println(irDerigs("Player_123")); // false (dēļ apakšstrīpas)
+        System.out.println(irDerigs("ab"));         // false (par īsu)
+        System.out.println(irDerigs(""));           // false (tukšs)
+    }
+}
+```
+
+### Priekšmeta Apraksta Veidotājs
+
+```java
+public class prieksmetaApraksts {
+    public static String buvetAprakstu(String nosaukums, String vertiba, 
+                                         int speks, int izturiba) {
+        StringBuilder apraksts = new StringBuilder();
+        
+        // Tituls ar Vērtības krāsu kodu
+        apraksts.append(getVertibasKrasu(vertiba));
+        apraksts.append(nosaukums);
+        apraksts.append("\n");
+        
+        // Statistika
+        apraksts.append("Spēks: ").append(speks).append("\n");
+        apraksts.append("Izturība: ").append(izturiba).append("/");
+        apraksts.append(izturiba).append("\n");
+        apraksts.append("Vērtība: ").append(vertiba);
+        
+        return apraksts.toString();
+    }
+    
+    private static String getVertibasKrasu(String vertiba) {
+        switch (rarity.toLowerCase()) {
+            case "leģendārs": return "§6";  // Zelts
+            case "episks": return "§5";       // Violets
+            case "rets": return "§9";       // Zils
+            case "nerets": return "§f";     // Balts
+            default: return "§7";           // Pelēks
+        }
+    }
+    
+    public static void main(String[] args) {
+        String apraksts = buvetAprakstu("Excalibur", "Leģendārs", 50, 1000);
+        System.out.println(apraksts);
+    }
+}
+```
+
+### Čata Ziņu Filtrs
+
+```java
+public class CataFiltrs {
+    private static String[] bloketieVardi = {"SliktaisVārdiņš1", "SliktaisVārdiņš2"};
+    
+    public static String filtretZinojumu(String zinojums) {
+        String filtrets = zinojums.toLowerCase();
+        
+        for (String vards : bloketieVardi) {
+            if (filtrets.contains(vards)) {
+                String aizvietojums = "*".repeat(vards.length());
+                filtrets = filtrets.replace(vards, aizvietojums);
+            }
+        }
+        
+        return filtrets;
+    }
+    
+    public static void main(String[] args) {
+        String zinojums = "Šis ir SliktaisVārdiņš1 tests";
+        String tirs = filtretZinojumu(zinojums);
+        System.out.println(tirs);  // "Šis ir ************ tests"
+    }
+}
+```
+
+## Virknes Formatēšana
+
+### String.format() izmantošana
+
+```java
+String vards = "Alice";
+int limenis = 10;
+double dzivibas = 85.5;
+
+String formatets = String.format("%s ir %d līmenī ar %.1f%% dzīvības", 
+                                 vards, limenis, dzivibas);
+System.out.println(formatets);
+// "Alice ir 10 līmenī ar 85.5% dzīvības"
+```
+
+<Callout type="info" title="Formāta Apzīmētāji">
+  Biežākie formāta kodi:
+
+  - `%s` - Virkne
+  - `%d` - Skaitlis
+  - `%f` - Peldošā punkta skaitlis vai decimālskaitlis
+  - `%.2f` - Peld. punkta vērtība ar 2 decimālskaitļiem aiz punkta
+  - `%n` - Jauna līnija (neatkarīgi no platformas)
+
+  ```java
+  String.format("Vārds: %s", "Steve");          // "Vārds: Steve"
+  String.format("Līmenis: %d", 10);              // "Līmenis: 10"
+  String.format("Dzīvības: %.1f", 85.5);         // "Dzīvības: 85.5"
+  String.format("Pozīcija: (%d, %d, %d)", 
+                10, 64, -5);                    // "Pozīcija: (10, 64, -5)"
+  ```
+</Callout>
+
+## Biežas Virknes Operācijas
+
+### Pārbaudi vai virkne ir Tukša
+
+```java
+String teksts = "";
+
+// pārbaudi vai ir tukšs vai null
+if (text == null || text.isEmpty()) {
+    System.out.println("Tukšs!");
+}
+
+// Pārbaudi vai ir tukšs, null, vai atstarpe
+if (text == null || text.trim().isEmpty()) {
+    System.out.println("Tukšs vai tikai atstarpe!");
+}
+```
+
+### Gadījumu Skaitīšana
+
+```java
+public static int skaititGadijumus(String teksts, String merkis) {
+    int skaits = 0;
+    int indekss = 0;
+    
+    while ((indekss = teksts.indexOf(merkis, indekss)) != -1) {
+        skaits++;
+        indekss += merkis.length();
+    }
+    
+    return skaits;
+}
+
+// Izmantošana
+int count = countOccurrences("hello hello world", "hello");
+System.out.println(count);  // 2
+```
+
+### Virknes Apvēršana
+
+```java
+public static String apverst(String teksts) {
+    StringBuilder sb = new StringBuilder(teksts);
+    return sb.reverse().toString();
+}
+
+// Izmantošana
+String apversts = reverse("Sveiki");
+System.out.println(apversts);  // "ikievS"
+```
+
+### Pārbaudi, vai Palindroms
+
+```java
+public static boolean irPalindroms(String teksts) {
+    String satirits = text.toLowerCase().replaceAll("[^a-z0-9]", "");
+    String apversts = new StringBuilder(satirits).reverse().toString();
+    return satirits.equals(apversts);
+}
+
+// Izmantošana
+System.out.println(irPalindroms("racecar"));     // true
+System.out.println(irPalindroms("sveiki"));       // false
+```
+
+## Praktiskie Piemēri
+
+1. **Lietotājvārda pārbaudītājs**: Uzrakstiet metodi, kas pārbauda, vai lietotājvārds:
+   - Ir no 3 līdz 16 rakstzīmēm
+   - Satur tikai burtus, ciparus un pasvītrojumus
+   - Nesākas ar skaitli
+   - Atgriež true, ja tas ir derīgs, pretējā gadījumā false
+
+2. **Komandu parsētājs**: Parsē šo komandas formātu: '/teleport x y z'
+   - Koordinātu izvilkšana
+   - Konvertē uz veseliem skaitļiem
+   - Atgriez trīs vērtības no masīva (array)
+
+3. **Tērzēšanas formatētājs**: izveido metodi, kas formatē tērzēšanas ziņojumus:
+   - Ievade: spēlētāja vārds, rangs, ziņojums
+   - Izvade: `"[RANGS] SpēlētājaVārds: ziņojums"`
+   - Ja nav ranga, vienkārši parādiet  `"SpēlētājaVārds: ziņojums"`
+
+4. **Vārdu skaitītājs**: saskaita cik vārdu ir teikumā (vārdi ir atdalīti ar atstarpēm)
+
+5. **Lielie burti Virsrakstiem**: virknes konvertēšana uz virsrakstiem:
+   - Ievadi: `"hello world"`
+   - Izvadi: `"Hello World"`

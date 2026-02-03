@@ -1,0 +1,128 @@
+---
+title: "03 — Управление потоком: оператор if"
+description: Вы узнаете, как управлять потоками ваших программ на Java с помощью оператора if.
+---
+
+Программы должны "принимать определенные решения". Оператор if позволяют вашему коду выбирать различные "пути", основанные на заданных вами условиях.
+
+## Базовый оператор if
+
+Самая простая форма проверяет одно условие;
+
+```java
+int health = 20;
+
+if (health > 10) {
+    System.out.println("Ты здоров!");
+}
+```
+
+### Структура
+
+```java
+if (condition) {
+    // код, который будет выполняться при выполнении условия
+}
+```
+
+## If-Else
+
+Выберите один из двух путей:
+
+```java
+int health = 5;
+
+if (health > 10) {
+    System.out.println("Ты здоров!");
+} else {
+    System.out.println("Джет узнал об отмене Hytale (ему нужна помощь)..");
+}
+```
+
+## Цепочка If-Else Else-If
+
+Позволяет проверять несколько условий в последовательности:
+
+```java
+
+int health = 7;
+
+if (health > 15) {
+    System.out.println("Саймон выкупил Hytale!");
+} else if (health > 5) {
+    System.out.println("Ты жив.");
+} else {
+    System.out.println("Джет узнал об отмене Hytale (ему нужна помощь).."");
+}
+```
+
+## Вложенные операторы If
+
+Вы можете поместить один оператор if внутри другого:
+
+```java
+int health = 12;
+
+if (health > 10) {
+    if (health > 15) {
+        System.out.println("Саймон выкупил Hytale!");
+    } else {
+        System.out.println("Ты жив.");
+    }
+} else {
+    System.out.println("Джет узнал об отмене Hytale (ему нужна помощь).."");
+}
+```
+
+## Составные условия
+
+Вы можете комбинировать несколько условий с помощью логических операторов:
+
+```java
+// AND - оба условия должны быть верными
+int health = 12;
+boolean hasPotion = true;
+
+if (health > 10 && hasPotion) {
+    System.out.println("Саймон выкупил Hytale! Джет обновил пк!");
+} else if (health > 10) {
+    System.out.println("Саймон выкупил Hytale, но Джет пока не собрал новый пк.");
+} else {
+    System.out.println("Джет узнал об отмене Hytale (ему нужна помощь)..");
+}
+
+// OR - как минимум одно из условий должно выполняться
+
+int health = 8;
+boolean hasPotion = false;
+if (health > 10 || hasPotion) {
+    System.out.println("Саймон выкупил Hytale или у Джета начался приступ?");
+} else {
+    System.out.println("Саймон выкупил Hytale и у Джета приступ?!");
+}
+
+// NOT - reverses the condition
+
+int health = 8;
+if (!(health > 10)) {
+    System.out.println("Саймон выкупил Hytale! ");
+} else {
+    System.out.println("Hytale отменили.");
+}
+```
+
+## Условный (тернарный) оператор
+
+Компактный способ присвоения значений:
+
+```java
+int health = 12;
+String status = (health > 10) ? "Проклятие разрушено" : "Проклят"; 
+```
+
+### Синтаксис
+
+```java
+variable = (condition) ? valueIfTrue : valueIfFalse;
+(Формат: (условие) ? "значение при True(health>10)" : "значение при False(health<=10)";)
+```

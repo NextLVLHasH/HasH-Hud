@@ -1,0 +1,75 @@
+{
+  "displayName": "Русский",
+  "nav": {
+    "title": "Моддинг Hytale",
+    "documentation": "Документация",
+    "sponsors": "Спонсоры",
+    "search": "Поиск"
+  },
+  "home": {
+    "title": "#1 Ресурс для Моддинга Hytale",
+    "flipwords": [
+      "Руководства",
+      "Документация",
+      "Ресурсы",
+      "Инструкции"
+    ],
+    "description": "Лучший ресурс для моддинг комьюнити Hytale, включающий в себя\nподробные гайды, документацию и все необходимые инструменты, чтобы начать свое путешествие в мир моддинга.",
+    "documentation": "Документация",
+    "forum": "Форум",
+    "discord": "Присоединись нашей коммьюнити!",
+    "memberCount": "{count} Участников",
+    "countdown": "Hytale releases in {countdown}",
+    "countdownUnits": {
+      "hours": "ч",
+      "minutes": "мин",
+      "seconds": "сек"
+    },
+    "hytaleReleased": "Hytale вышел!"
+  },
+  "sponsors": {
+    "title": "Поддержи нас",
+    "description": "HytaleModding — это проект сообщества с открытым исходным кодом. Для его работы мы оплачиваем сервисы, серверы и инфраструктуру, включая хостинг этого сайта. Если вы хотите поддержать проект, станьте спонсором! Мы используем OpenCollective, поэтому вы всегда можете видеть, на что именно идут собранные средства.",
+    "ourSponsors": "Наши спонсоры"
+  },
+  "misc": {
+    "loading": "Загрузка...",
+    "failedToLoad": "Не удалось загрузить.",
+    "gitInfoUnavailable": "Git недоступен",
+    "credit": "Автор",
+    "supportUs": "Поддержи нас"
+  },
+  "meta": {
+    "established_information": {
+      "title": "Известная информация",
+      "separator": "Особые категории",
+      "server": {
+        "title": "Сервер",
+        "content_categories": {
+          "title": "Категории Контента"
+        },
+        "interface": {
+          "title": "Интерфейс"
+        }
+      },
+      "client": {
+        "title": "Клиент"
+      },
+      "gameplay": {
+        "title": "Игра"
+      },
+      "misc": {
+        "title": "Прочее"
+      }
+    },
+    "guides": {
+      "title": "Руководства",
+      "java_basics": {
+        "title": "Основы Java"
+      }
+    },
+    "community_projects": {
+      "title": "Проекты от коммьюнити"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "displayName": "Deutsch",
+  "nav": {
+    "title": "Hytale Modding",
+    "documentation": "Dokumentation",
+    "sponsors": "Sponsoren",
+    "search": "Suche"
+  },
+  "home": {
+    "title": "#1 Ressource für Hytale Modding {flipwords}",
+    "flipwords": [
+      "Anleitungen",
+      "Dokumentation",
+      "Werkzeuge",
+      "Leitfäden"
+    ],
+    "description": "Das beste Community-Angebot für Hytale Modding mit\numfassenden Anleitungen, detaillierter Dokumentation und wichtigen Tools, um deine Modding-Reise zu starten.",
+    "documentation": "Dokumentation",
+    "forum": "Forum",
+    "discord": "Werde Teil unserer Community!",
+    "memberCount": "{count} Mitglieder",
+    "countdown": "Hytale erscheint in {countdown}",
+    "countdownUnits": {
+      "hours": "h",
+      "minutes": "m",
+      "seconds": "s"
+    },
+    "hytaleReleased": "Hytale ist da!"
+  },
+  "sponsors": {
+    "title": "Unterstütze uns",
+    "description": "HytaleModding ist ein Open-Source-Community-Projekt, und Teil des Managements der Community ist die Bezahlung für Dienste, Server und Infrastruktur, wie das Hosting dieser Website. Wenn du das Projekt unterstützen möchtest, solltest du ein Sponsor werden! Wir verwenden OpenCollective, damit du sehen kannst, wie Gelder verwendet werden, um die Community zu unterstützen.",
+    "ourSponsors": "Unsere Sponsoren"
+  },
+  "misc": {
+    "loading": "Lädt...",
+    "failedToLoad": "Fehler beim Laden.",
+    "gitInfoUnavailable": "Git Info nicht verfügbar",
+    "credit": "Geschrieben von",
+    "supportUs": "Unterstütze uns"
+  },
+  "meta": {
+    "established_information": {
+      "title": "Bekanntes Wissen",
+      "separator": "Spezifische Kategorien",
+      "server": {
+        "title": "Server",
+        "content_categories": {
+          "title": "Kategorien"
+        },
+        "interface": {
+          "title": "Benutzeroberfläche"
+        }
+      },
+      "client": {
+        "title": "Client"
+      },
+      "gameplay": {
+        "title": "Spielmechanik"
+      },
+      "misc": {
+        "title": "Sonstiges"
+      }
+    },
+    "guides": {
+      "title": "Anleitungen",
+      "java_basics": {
+        "title": "Java Grundlagen"
+      }
+    },
+    "community_projects": {
+      "title": "Community-Projekte"
+    }
+  }
+}
