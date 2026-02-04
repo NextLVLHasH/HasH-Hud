@@ -153,6 +153,9 @@ public class MinimapHud {
     private final boolean[] lastCompassVisible = new boolean[MAX_COMPASS_MARKERS];
     private final String[] lastCompassColor = new String[MAX_COMPASS_MARKERS];
 
+    // If true, invert the minimap rotation direction (useful if map appears reversed)
+    private boolean invertMapRotation = false;
+
     private int lastBlockX = Integer.MIN_VALUE;
     private int lastBlockZ = Integer.MIN_VALUE;
     private long lastUpdateMillis = 0L;
@@ -398,7 +401,8 @@ public class MinimapHud {
         if (yawDegrees != lastYaw) {
             double radians = Math.toRadians(yawDegrees + 180.0);
             cachedCos = Math.cos(radians);
-            cachedSin = Math.sin(radians);
+            // Invert rotation direction so the map follows the player's view correctly
+            cachedSin = -Math.sin(radians);
             lastYaw = yawDegrees;
         }
 
@@ -487,8 +491,8 @@ public class MinimapHud {
             Waypoint wp = offMapWaypoints.get(i);
             @SuppressWarnings("null")
             int bearing = getBearingDegrees(playerX, playerZ, wp);
-            // Rotate compass with the map (same rotation as map uses)
-            int adjustedBearing = normalizeDegrees(bearing + (int) yawDegrees);
+            // Rotate compass with the map (same rotation as map uses).
+            int adjustedBearing = normalizeDegrees(invertMapRotation ? (bearing - (int) yawDegrees) : (bearing + (int) yawDegrees));
             int[] pos = compassPositionFromBearing(adjustedBearing);
             changed |= applyCompassMarker(builder, i, pos[0], pos[1], wp.getColor());
         }
