@@ -636,12 +636,12 @@ Group #MinimapContainer {
   }
 
   Group #MinimapOutline {
-    Anchor: (Left: 0, Top: 1, Width: 256, Height: 256);
+    Anchor: (Left: 0, Top: 0, Width: 252, Height: 252);
     Background: @MinimapOutlineTex;
   }
 
   Group #MinimapCompassRing {
-    Anchor: (Left: 0, Top: 1, Width: 256, Height: 256);
+    Anchor: (Left: 0, Top: 0, Width: 252, Height: 252);
 
     Group #CompassMarker0 { Anchor: (Left: 0, Top: 0, Width: 6, Height: 6); Background: #ffffff; Visible: false; }
     Group #CompassMarker1 { Anchor: (Left: 0, Top: 0, Width: 6, Height: 6); Background: #ffffff; Visible: false; }
